@@ -1,0 +1,72 @@
+<svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg">
+  <!-- Office background -->
+  <rect width="480" height="360" fill="#1a1a2e"/>
+  <!-- Floor -->
+  <rect x="0" y="200" width="480" height="160" fill="#2d2d44" rx="0"/>
+  <rect x="0" y="200" width="480" height="4" fill="#3d3d5c"/>
+  <!-- Wall -->
+  <rect x="0" y="0" width="480" height="200" fill="#16213e"/>
+  <!-- Window -->
+  <rect x="180" y="30" width="120" height="80" rx="4" fill="#0f3460" stroke="#2d4a7a" stroke-width="2"/>
+  <rect x="239" y="30" width="2" height="80" fill="#2d4a7a"/>
+  <rect x="180" y="69" width="120" height="2" fill="#2d4a7a"/>
+  <!-- Stars in window -->
+  <circle cx="200" cy="50" r="2" fill="#fff" opacity="0.6"/>
+  <circle cx="230" cy="60" r="1.5" fill="#fff" opacity="0.4"/>
+  <circle cx="270" cy="45" r="2" fill="#fff" opacity="0.7"/>
+  <circle cx="285" cy="65" r="1.5" fill="#fff" opacity="0.5"/>
+  <!-- Desk 1 -->
+  <rect x="40" y="220" width="100" height="50" rx="4" fill="#4a3728"/>
+  <rect x="50" y="210" width="40" height="30" rx="3" fill="#333" stroke="#555" stroke-width="1"/>
+  <rect x="55" y="215" width="30" height="20" rx="2" fill="#1a1a2e"/>
+  <!-- Character 1 - green status -->
+  <circle cx="90" cy="190" r="16" fill="#e8b4b8"/>
+  <rect x="76" y="175" width="28" height="14" rx="4" fill="#5c3d2e"/>
+  <circle cx="90" cy="165" r="4" fill="#4caf50"/>
+  <text x="90" y="168" text-anchor="middle" font-size="5" fill="#fff">OK</text>
+  <!-- Desk 2 -->
+  <rect x="190" y="240" width="100" height="50" rx="4" fill="#4a3728"/>
+  <rect x="200" y="230" width="40" height="30" rx="3" fill="#333" stroke="#555" stroke-width="1"/>
+  <rect x="205" y="235" width="30" height="20" rx="2" fill="#1a1a2e"/>
+  <!-- Character 2 - working status -->
+  <circle cx="240" cy="210" r="16" fill="#c9a96e"/>
+  <rect x="226" y="195" width="28" height="14" rx="4" fill="#2d2d44"/>
+  <circle cx="240" cy="185" r="4" fill="#2196f3"/>
+  <text x="240" y="188" text-anchor="middle" font-size="4" fill="#fff">&#9881;</text>
+  <!-- Desk 3 -->
+  <rect x="340" y="220" width="100" height="50" rx="4" fill="#4a3728"/>
+  <rect x="350" y="210" width="40" height="30" rx="3" fill="#333" stroke="#555" stroke-width="1"/>
+  <rect x="355" y="215" width="30" height="20" rx="2" fill="#1a1a2e"/>
+  <!-- Character 3 - idle -->
+  <circle cx="390" cy="190" r="16" fill="#a1c4fd"/>
+  <rect x="376" y="175" width="28" height="14" rx="4" fill="#1a237e"/>
+  <circle cx="390" cy="165" r="4" fill="#ff9800"/>
+  <!-- Side panel mockup -->
+  <rect x="380" y="20" width="90" height="160" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="425" y="40" text-anchor="middle" font-size="8" fill="#aaa" font-family="Inter, sans-serif">Team</text>
+  <rect x="390" y="50" width="70" height="10" rx="3" fill="rgba(76,175,80,0.2)"/>
+  <circle cx="396" cy="55" r="3" fill="#4caf50"/>
+  <text x="415" y="58" font-size="6" fill="#ccc">Monica</text>
+  <rect x="390" y="66" width="70" height="10" rx="3" fill="rgba(33,150,243,0.2)"/>
+  <circle cx="396" cy="71" r="3" fill="#2196f3"/>
+  <text x="415" y="74" font-size="6" fill="#ccc">Lisa</text>
+  <rect x="390" y="82" width="70" height="10" rx="3" fill="rgba(255,152,0,0.2)"/>
+  <circle cx="396" cy="87" r="3" fill="#ff9800"/>
+  <text x="415" y="90" font-size="6" fill="#ccc">Luka</text>
+  <rect x="390" y="98" width="70" height="10" rx="3" fill="rgba(76,175,80,0.2)"/>
+  <circle cx="396" cy="103" r="3" fill="#4caf50"/>
+  <text x="415" y="106" font-size="6" fill="#ccc">Kai</text>
+  <!-- Event feed mockup -->
+  <rect x="10" y="20" width="120" height="160" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="70" y="40" text-anchor="middle" font-size="8" fill="#aaa" font-family="Inter, sans-serif">Events</text>
+  <text x="20" y="58" font-size="5" fill="#4caf50">12:30</text>
+  <text x="45" y="58" font-size="5" fill="#999">Monica completed task</text>
+  <text x="20" y="72" font-size="5" fill="#2196f3">12:28</text>
+  <text x="45" y="72" font-size="5" fill="#999">Lisa started coding</text>
+  <text x="20" y="86" font-size="5" fill="#ff9800">12:25</text>
+  <text x="45" y="86" font-size="5" fill="#999">Luka reviewing PR</text>
+  <text x="20" y="100" font-size="5" fill="#4caf50">12:20</text>
+  <text x="45" y="100" font-size="5" fill="#999">Gateway healthy</text>
+  <!-- Title -->
+  <text x="240" y="150" text-anchor="middle" font-size="14" font-weight="bold" fill="rgba(255,255,255,0.15)" font-family="Inter, sans-serif">CLAW MONITOR</text>
+</svg>

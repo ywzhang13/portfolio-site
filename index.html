@@ -423,9 +423,194 @@
     .exp-card .detail-body li { margin-bottom: 4px; }
 
     /* ── DEMOS ── */
+    .featured-project {
+      background: var(--milk);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 32px;
+    }
+
+    .carousel-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .carousel-wrapper .carousel-btn {
+      position: static;
+      transform: none;
+      flex-shrink: 0;
+    }
+
+    .featured-project .project-preview {
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+    }
+
+    .carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .carousel img.active {
+      opacity: 1;
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    .carousel-btn {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--latte);
+      background: var(--cream);
+      color: var(--mocha);
+      font-size: 18px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .carousel-btn:hover {
+      background: var(--espresso);
+      color: var(--cream);
+      border-color: var(--espresso);
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
+
+    .carousel-dots .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.15);
+      transition: background 0.3s;
+    }
+
+    .carousel-dots .dot.active {
+      background: var(--mocha);
+    }
+
+    .featured-project .project-detail {
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-project .project-badge {
+      display: inline-block;
+      background: var(--caramel);
+      color: #fff;
+      padding: 4px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      width: fit-content;
+    }
+
+    .featured-project .project-detail h3 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .featured-project .project-detail p {
+      font-size: 14px;
+      color: var(--mocha);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .feature-list li {
+      font-size: 13px;
+      color: var(--espresso);
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: "\2713";
+      position: absolute;
+      left: 0;
+      color: var(--caramel);
+      font-weight: 700;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .project-link {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .project-link.primary {
+      background: var(--espresso);
+      color: var(--cream);
+    }
+
+    .project-link.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--shadow-lg);
+    }
+
+    .project-link.outline {
+      border: 1.5px solid var(--mocha);
+      color: var(--espresso);
+      background: transparent;
+    }
+
+    .project-link.outline:hover {
+      background: var(--espresso);
+      color: var(--cream);
+      border-color: var(--espresso);
+    }
+
     .demo-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 24px;
     }
 
@@ -528,6 +713,91 @@
       font-size: 13px;
     }
 
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img,
+    .lightbox video {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
+    .lightbox .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      color: #fff;
+      font-size: 32px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      z-index: 10;
+    }
+
+    .lightbox .close-btn:hover { opacity: 1; }
+
+    .lightbox .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 24px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 10;
+    }
+
+    .lightbox .lb-nav:hover { background: rgba(255,255,255,0.3); }
+    .lightbox .lb-nav.lb-prev { left: 24px; }
+    .lightbox .lb-nav.lb-next { right: 24px; }
+
+    /* carousel video */
+    .carousel video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+      cursor: pointer;
+    }
+
+    .carousel video.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
     /* ── SCROLL ANIMATIONS ── */
     .reveal {
       opacity: 0;
@@ -604,6 +874,7 @@
       .hero { padding: 0 20px; }
       .hero-text h1 { font-size: 36px; }
       .skills-grid { grid-template-columns: 1fr; }
+      .featured-project { grid-template-columns: 1fr; direction: ltr !important; }
       .demo-grid { grid-template-columns: 1fr; }
       .skills-section { border-radius: 20px; padding: 32px 20px; }
     }
@@ -747,6 +1018,7 @@
           <div class="skill-tags">
             <span class="skill-tag">N8N</span>
             <span class="skill-tag">OpenClaw</span>
+            <span class="skill-tag">RAG</span>
             <span class="skill-tag">GitHub Copilot</span>
             <span class="skill-tag">Airflow</span>
           </div>
@@ -866,39 +1138,193 @@
       <h2>作品集</h2>
       <p>Side Projects & Automation</p>
     </div>
-    <div class="demo-grid stagger">
-      <div class="demo-card reveal-scale">
-        <div class="demo-preview">&#9881;</div>
-        <div class="demo-info">
-          <h3>N8N 自動化工作流</h3>
-          <p>使用 N8N 打造各種自動化工作流程，串接多平台 API 實現任務自動化，提升工作效率。</p>
-          <div class="demo-tags">
-            <span class="demo-tag">N8N</span>
-            <span class="demo-tag">Automation</span>
-            <span class="demo-tag">API Integration</span>
+    <!-- 1. Claw Monitor (OpenClaw Skill) -->
+    <div class="featured-project reveal">
+      <div class="project-preview">
+        <div class="carousel-wrapper">
+          <button class="carousel-btn prev" onclick="slideCarousel(-1)">&#8249;</button>
+          <div class="carousel" id="clawCarousel">
+            <img src="images/claw-monitor-office.png" alt="Claw Monitor 虛擬辦公室全景" class="active" onclick="openLightbox(this)">
+            <video src="images/claw-monitor-v1.mov" muted loop playsinline onclick="openLightbox(this)"></video>
+            <video src="images/claw-monitor-v2.mov" muted loop playsinline onclick="openLightbox(this)"></video>
+            <video src="images/claw-monitor-v3.mov" muted loop playsinline onclick="openLightbox(this)"></video>
           </div>
+          <button class="carousel-btn next" onclick="slideCarousel(1)">&#8250;</button>
+        </div>
+        <div class="carousel-dots" id="clawDots"></div>
+      </div>
+      <div class="project-detail">
+        <span class="project-badge">OpenClaw Skill</span>
+        <h3>Claw Monitor — AI 虛擬辦公室監控</h3>
+        <p>以虛擬辦公室為主題的系統監控儀表板，即時監控 OpenClaw 閘道器、AI Agent 會話狀態與 Claude Code 執行情況。結合像素風角色動畫與即時數據，將枯燥的系統監控轉化為生動的辦公室場景。</p>
+        <ul class="feature-list">
+          <li>HTML5 Canvas 像素風虛擬辦公室場景</li>
+          <li>9 位 AI 角色即時狀態動畫（含方向精靈圖）</li>
+          <li>SSE 串流即時事件推播 + 輪詢雙模式</li>
+          <li>事件時間軸、團隊面板、詳細資訊抽屜</li>
+          <li>離線容錯 + 過期數據提示</li>
+        </ul>
+        <div class="demo-tags" style="margin-bottom: 20px;">
+          <span class="demo-tag">React 18</span>
+          <span class="demo-tag">TypeScript</span>
+          <span class="demo-tag">Canvas</span>
+          <span class="demo-tag">Spring Boot 3</span>
+          <span class="demo-tag">Java 21</span>
+          <span class="demo-tag">SSE</span>
+          <span class="demo-tag">OpenClaw</span>
         </div>
       </div>
-      <div class="demo-card reveal-scale">
-        <div class="demo-preview">&#129302;</div>
-        <div class="demo-info">
-          <h3>OpenClaw 專案</h3>
-          <p>基於 OpenClaw 開發的 AI 應用實作，展示 AI 技術在實際場景中的整合與應用。</p>
-          <div class="demo-tags">
-            <span class="demo-tag">OpenClaw</span>
-            <span class="demo-tag">AI</span>
-            <span class="demo-tag">Claude Code</span>
+    </div>
+
+    <!-- 2. TogetherApp -->
+    <div class="featured-project reveal" style="direction: rtl;">
+      <div class="project-preview" style="direction: ltr;">
+        <div class="carousel-wrapper">
+          <button class="carousel-btn prev" onclick="slideCarousel2(-1)">&#8249;</button>
+          <div class="carousel" id="togetherCarousel">
+            <img src="images/together-map.svg" alt="地圖探索介面" class="active">
           </div>
+          <button class="carousel-btn next" onclick="slideCarousel2(1)">&#8250;</button>
+        </div>
+        <div class="carousel-dots" id="togetherDots"></div>
+      </div>
+      <div class="project-detail" style="direction: ltr;">
+        <span class="project-badge">Featured Project</span>
+        <h3>Together — 地圖社交活動平台</h3>
+        <p>基於地圖的社交活動配對平台。把你想做的事直接釘在地圖上，等人一起來。目標：30 分鐘內找到附近的人一起參與活動。跨平台支援 Android、iOS、Web。</p>
+        <ul class="feature-list">
+          <li>Google Maps 即時地圖，膠囊標記顯示活動</li>
+          <li>活動建立 / 報名 / 分類篩選（社交、運動、美食等）</li>
+          <li>Google OAuth 登入 + Token 認證</li>
+          <li>智慧標記系統：依縮放層級顯示不同細節</li>
+          <li>滑動面板查看活動詳情，一鍵加入</li>
+        </ul>
+        <div class="demo-tags" style="margin-bottom: 20px;">
+          <span class="demo-tag">Flutter</span>
+          <span class="demo-tag">Dart</span>
+          <span class="demo-tag">Google Maps</span>
+          <span class="demo-tag">Provider</span>
+          <span class="demo-tag">Dio</span>
+          <span class="demo-tag">Firebase</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/yah561899/TogetherApp" target="_blank" class="project-link primary">GitHub Repo</a>
         </div>
       </div>
-      <div class="demo-card reveal-scale">
-        <div class="demo-preview">&#128202;</div>
-        <div class="demo-info">
-          <h3>更多作品</h3>
-          <p>持續更新中⋯ 歡迎聯繫我了解更多專案細節與技術實作。</p>
-          <div class="demo-tags">
-            <span class="demo-tag">Coming Soon</span>
+    </div>
+
+    <!-- 3. KiHongan Raid LIFF -->
+    <div class="featured-project reveal">
+      <div class="project-preview">
+        <div class="carousel-wrapper">
+          <button class="carousel-btn prev" onclick="slideCarousel3(-1)">&#8249;</button>
+          <div class="carousel" id="raidCarousel">
+            <img src="images/raid-list.png" alt="團戰列表介面" class="active" onclick="openLightbox(this)">
+            <img src="images/raid-characters.png" alt="角色管理介面" onclick="openLightbox(this)">
+            <img src="images/raid-signup.png" alt="團戰報名介面" onclick="openLightbox(this)">
+            <img src="images/raid-discord-notify.png" alt="Discord 新遠征隊建立通知" onclick="openLightbox(this)">
+            <img src="images/raid-discord-signup.png" alt="Discord 新成員報名通知" onclick="openLightbox(this)">
+            <img src="images/raid-discord-full.png" alt="Discord 遠征已滿員通知" onclick="openLightbox(this)">
           </div>
+          <button class="carousel-btn next" onclick="slideCarousel3(1)">&#8250;</button>
+        </div>
+        <div class="carousel-dots" id="raidDots"></div>
+      </div>
+      <div class="project-detail">
+        <span class="project-badge">Featured Project</span>
+        <h3>KiHongan Raid LIFF System</h3>
+        <p>基於 LINE LIFF 平台的遊戲公會團戰報名系統。解決 LINE 群組中複製貼上報名的混亂問題，提供結構化的數位報名介面，整合 LINE 登入、角色管理、團戰報名與通知推播。</p>
+        <ul class="feature-list">
+          <li>LINE 登入 + JWT 認證，多角色管理</li>
+          <li>團戰建立與報名（上限 6 人 / 重複檢查）</li>
+          <li>每週四 08:00 自動重置</li>
+          <li>Discord & LINE 雙平台通知推播</li>
+          <li>32+ Property-based Tests 完整測試覆蓋</li>
+        </ul>
+        <div class="demo-tags" style="margin-bottom: 20px;">
+          <span class="demo-tag">Java 17</span>
+          <span class="demo-tag">Spring Boot 3</span>
+          <span class="demo-tag">Vue3</span>
+          <span class="demo-tag">PostgreSQL</span>
+          <span class="demo-tag">LINE LIFF</span>
+          <span class="demo-tag">JWT</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ywzhang13/kihongan-raid-liff" target="_blank" class="project-link primary">GitHub Repo</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. N8N AI 業務助理 -->
+    <div class="featured-project reveal" style="direction: rtl;">
+      <div class="project-preview" style="direction: ltr;">
+        <div class="carousel-wrapper">
+          <button class="carousel-btn prev" onclick="slideCarousel4(-1)">&#8249;</button>
+          <div class="carousel" id="n8nCarousel">
+            <img src="images/n8n-contact-scan.png" alt="名片掃描建立聯絡人" class="active" onclick="openLightbox(this)">
+            <img src="images/n8n-contact-info.png" alt="聯絡人資訊查詢" onclick="openLightbox(this)">
+            <img src="images/n8n-schedule.png" alt="行程安排查詢" onclick="openLightbox(this)">
+            <img src="images/n8n-meeting.png" alt="會議安排與討論事項" onclick="openLightbox(this)">
+            <img src="images/n8n-calendar.png" alt="Google 日曆同步" onclick="openLightbox(this)">
+            <img src="images/n8n-notes.png" alt="會議記錄筆記" onclick="openLightbox(this)">
+          </div>
+          <button class="carousel-btn next" onclick="slideCarousel4(1)">&#8250;</button>
+        </div>
+        <div class="carousel-dots" id="n8nDots"></div>
+      </div>
+      <div class="project-detail" style="direction: ltr;">
+        <span class="project-badge">N8N Automation</span>
+        <h3>阿瑋的業務助理</h3>
+        <p>基於 N8N 打造的 LINE AI 業務助理，整合 79 個自動化節點。透過自然語言與 AI 對話即可完成名片掃描建檔、行程查詢與安排、會議記錄管理等日常業務工作。</p>
+        <ul class="feature-list">
+          <li>拍照名片自動辨識並建立聯絡人資料</li>
+          <li>自然語言查詢 / 安排行程，自動同步 Google 日曆</li>
+          <li>會議記錄自動生成筆記與重點整理</li>
+          <li>RAG 向量搜尋聯絡人與會議紀錄</li>
+          <li>語音 / 圖片辨識（Google Gemini）</li>
+        </ul>
+        <div class="demo-tags" style="margin-bottom: 20px;">
+          <span class="demo-tag">N8N</span>
+          <span class="demo-tag">LINE Bot</span>
+          <span class="demo-tag">Gemini</span>
+          <span class="demo-tag">RAG</span>
+          <span class="demo-tag">Supabase</span>
+          <span class="demo-tag">Google Calendar</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Food Map AI Assistant -->
+    <div class="featured-project reveal">
+      <div class="project-preview">
+        <div class="carousel-wrapper">
+          <button class="carousel-btn prev" onclick="slideCarousel5(-1)">&#8249;</button>
+          <div class="carousel" id="foodCarousel">
+            <img src="images/n8n-food-ingest.png" alt="IG 貼文爬取建檔" class="active" onclick="openLightbox(this)">
+            <img src="images/n8n-food-search.png" alt="美食推薦搜尋" onclick="openLightbox(this)">
+            <img src="images/n8n-food-delete.png" alt="餐廳資料管理" onclick="openLightbox(this)">
+          </div>
+          <button class="carousel-btn next" onclick="slideCarousel5(1)">&#8250;</button>
+        </div>
+        <div class="carousel-dots" id="foodDots"></div>
+      </div>
+      <div class="project-detail">
+        <span class="project-badge">N8N Automation</span>
+        <h3>阿瑋的美食地圖 — Food Map AI</h3>
+        <p>基於 N8N 的 LINE AI 美食助理，透過 Apify 爬蟲自動抓取 IG / Threads / Google Maps 餐廳資訊，存入 Supabase 向量資料庫，支援自然語言搜尋推薦附近美食。</p>
+        <ul class="feature-list">
+          <li>貼上 IG 連結自動爬取餐廳資訊並建檔</li>
+          <li>RAG 向量搜尋，自然語言問「台北有什麼好吃的」</li>
+          <li>AI 推薦含餐廳名、地點、特色、原文連結</li>
+          <li>支援刪除餐廳資料管理</li>
+        </ul>
+        <div class="demo-tags" style="margin-bottom: 20px;">
+          <span class="demo-tag">N8N</span>
+          <span class="demo-tag">LINE Bot</span>
+          <span class="demo-tag">Apify</span>
+          <span class="demo-tag">RAG</span>
+          <span class="demo-tag">Supabase</span>
+          <span class="demo-tag">Gemini</span>
         </div>
       </div>
     </div>
@@ -926,6 +1352,14 @@
     </div>
   </section>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="close-btn" onclick="closeLightbox()">&times;</button>
+    <button class="lb-nav lb-prev" onclick="lbNav(-1, event)">&#8249;</button>
+    <div id="lightboxContent"></div>
+    <button class="lb-nav lb-next" onclick="lbNav(1, event)">&#8250;</button>
+  </div>
+
   <footer>
     <p>&copy; 2025 張育瑋. All rights reserved.</p>
   </footer>
@@ -946,6 +1380,198 @@
 
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale')
       .forEach(el => observer.observe(el));
+
+    // Carousel 1 — Claw Monitor
+    const carousel = document.getElementById('clawCarousel');
+    const slides = carousel.querySelectorAll('img, video');
+    const dotsContainer = document.getElementById('clawDots');
+    let currentSlide = 0;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goToSlide(i);
+      dotsContainer.appendChild(dot);
+    });
+
+    function goToSlide(n) {
+      slides[currentSlide].classList.remove('active');
+      dotsContainer.children[currentSlide].classList.remove('active');
+      currentSlide = (n + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+      dotsContainer.children[currentSlide].classList.add('active');
+      updateClawVideos();
+    }
+
+    function slideCarousel(dir) {
+      goToSlide(currentSlide + dir);
+    }
+
+    // Auto play/pause videos in claw carousel
+    function updateClawVideos() {
+      carousel.querySelectorAll('video').forEach(v => {
+        if (v.classList.contains('active')) { v.play(); }
+        else { v.pause(); v.currentTime = 0; }
+      });
+    }
+
+    // Together carousel (placeholder - single image for now)
+    const carousel2 = document.getElementById('togetherCarousel');
+    const slides2 = carousel2.querySelectorAll('img');
+    const dotsContainer2 = document.getElementById('togetherDots');
+    let currentSlide2 = 0;
+
+    slides2.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goToSlide2(i);
+      dotsContainer2.appendChild(dot);
+    });
+
+    function goToSlide2(n) {
+      slides2[currentSlide2].classList.remove('active');
+      dotsContainer2.children[currentSlide2].classList.remove('active');
+      currentSlide2 = (n + slides2.length) % slides2.length;
+      slides2[currentSlide2].classList.add('active');
+      dotsContainer2.children[currentSlide2].classList.add('active');
+    }
+
+    function slideCarousel2(dir) {
+      goToSlide2(currentSlide2 + dir);
+    }
+
+    // Carousel 3 — KiHongan Raid
+    const carousel3 = document.getElementById('raidCarousel');
+    const slides3 = carousel3.querySelectorAll('img');
+    const dotsContainer3 = document.getElementById('raidDots');
+    let currentSlide3 = 0;
+
+    slides3.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goToSlide3(i);
+      dotsContainer3.appendChild(dot);
+    });
+
+    function goToSlide3(n) {
+      slides3[currentSlide3].classList.remove('active');
+      dotsContainer3.children[currentSlide3].classList.remove('active');
+      currentSlide3 = (n + slides3.length) % slides3.length;
+      slides3[currentSlide3].classList.add('active');
+      dotsContainer3.children[currentSlide3].classList.add('active');
+    }
+
+    function slideCarousel3(dir) {
+      goToSlide3(currentSlide3 + dir);
+    }
+
+    // Auto-play for raid carousel
+    let raidAutoPlay = setInterval(() => goToSlide3(currentSlide3 + 1), 5000);
+
+    // Carousel 4 — N8N
+    const carousel4 = document.getElementById('n8nCarousel');
+    const slides4 = carousel4.querySelectorAll('img');
+    const dotsContainer4 = document.getElementById('n8nDots');
+    let currentSlide4 = 0;
+
+    slides4.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goToSlide4(i);
+      dotsContainer4.appendChild(dot);
+    });
+
+    function goToSlide4(n) {
+      slides4[currentSlide4].classList.remove('active');
+      dotsContainer4.children[currentSlide4].classList.remove('active');
+      currentSlide4 = (n + slides4.length) % slides4.length;
+      slides4[currentSlide4].classList.add('active');
+      dotsContainer4.children[currentSlide4].classList.add('active');
+    }
+
+    function slideCarousel4(dir) {
+      goToSlide4(currentSlide4 + dir);
+    }
+
+    // Carousel 5 — Food Map
+    const carousel5 = document.getElementById('foodCarousel');
+    const slides5 = carousel5.querySelectorAll('img');
+    const dotsContainer5 = document.getElementById('foodDots');
+    let currentSlide5 = 0;
+
+    slides5.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goToSlide5(i);
+      dotsContainer5.appendChild(dot);
+    });
+
+    function goToSlide5(n) {
+      slides5[currentSlide5].classList.remove('active');
+      dotsContainer5.children[currentSlide5].classList.remove('active');
+      currentSlide5 = (n + slides5.length) % slides5.length;
+      slides5[currentSlide5].classList.add('active');
+      dotsContainer5.children[currentSlide5].classList.add('active');
+    }
+
+    function slideCarousel5(dir) {
+      goToSlide5(currentSlide5 + dir);
+    }
+
+    // Lightbox with navigation
+    let lbItems = [];
+    let lbIndex = 0;
+
+    function openLightbox(el) {
+      const carouselEl = el.closest('.carousel');
+      if (carouselEl) {
+        lbItems = Array.from(carouselEl.querySelectorAll('img, video')).map(item => ({
+          src: item.src,
+          type: item.tagName === 'VIDEO' ? 'video' : 'img'
+        }));
+        lbIndex = Array.from(carouselEl.querySelectorAll('img, video')).indexOf(el);
+      } else {
+        lbItems = [{ src: el.src, type: el.tagName === 'VIDEO' ? 'video' : 'img' }];
+        lbIndex = 0;
+      }
+      renderLightbox();
+      document.getElementById('lightbox').classList.add('open');
+    }
+
+    function renderLightbox() {
+      const content = document.getElementById('lightboxContent');
+      const item = lbItems[lbIndex];
+      if (item.type === 'video') {
+        content.innerHTML = '<video src="' + item.src + '" controls autoplay style="max-width:90vw;max-height:85vh;border-radius:12px;"></video>';
+      } else {
+        content.innerHTML = '<img src="' + item.src + '" style="max-width:90vw;max-height:90vh;border-radius:12px;object-fit:contain;">';
+      }
+    }
+
+    function lbNav(dir, e) {
+      if (e) e.stopPropagation();
+      // Pause current video if any
+      const vid = document.querySelector('#lightboxContent video');
+      if (vid) vid.pause();
+      lbIndex = (lbIndex + dir + lbItems.length) % lbItems.length;
+      renderLightbox();
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('close-btn')) return;
+      const vid = document.querySelector('#lightboxContent video');
+      if (vid) vid.pause();
+      document.getElementById('lightbox').classList.remove('open');
+      document.getElementById('lightboxContent').innerHTML = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (document.getElementById('lightbox').classList.contains('open')) {
+        if (e.key === 'ArrowLeft') lbNav(-1);
+        if (e.key === 'ArrowRight') lbNav(1);
+      }
+    });
   </script>
 
 </body>
