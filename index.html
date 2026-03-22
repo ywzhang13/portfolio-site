@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>張育瑋 | 後端工程師</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #faf6f0;
+      --latte: #f0e6d6;
+      --caramel: #c9a96e;
+      --mocha: #8b6f47;
+      --espresso: #3d2e1f;
+      --dark: #2a2017;
+      --milk: #fff9f2;
+      --shadow: rgba(61, 46, 31, 0.08);
+      --shadow-lg: rgba(61, 46, 31, 0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', 'Noto Sans TC', sans-serif;
+      background: var(--cream);
+      color: var(--espresso);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 16px 40px;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(250, 246, 240, 0.92);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--latte);
+    }
+
+    nav .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--espresso);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    nav .links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    nav .links a {
+      color: var(--mocha);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    nav .links a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--caramel);
+      transition: width 0.3s;
+    }
+
+    nav .links a:hover { color: var(--espresso); }
+    nav .links a:hover::after { width: 100%; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-text .label {
+      display: inline-block;
+      background: var(--latte);
+      color: var(--mocha);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-text h1 {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 52px;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+
+    .hero-text h1 em {
+      font-style: normal;
+      color: var(--caramel);
+    }
+
+    .hero-text .tagline {
+      font-size: 17px;
+      color: var(--mocha);
+      margin-bottom: 36px;
+      max-width: 440px;
+    }
+
+    .hero-buttons { display: flex; gap: 14px; }
+
+    .btn {
+      padding: 13px 28px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--espresso);
+      color: var(--cream);
+    }
+
+    .btn-primary:hover {
+      background: var(--dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--shadow-lg);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--espresso);
+      border: 1.5px solid var(--mocha);
+    }
+
+    .btn-outline:hover {
+      background: var(--espresso);
+      color: var(--cream);
+      border-color: var(--espresso);
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-card {
+      background: var(--milk);
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: 0 24px 48px var(--shadow), 0 0 0 1px rgba(201, 169, 110, 0.1);
+      max-width: 380px;
+      width: 100%;
+    }
+
+    .hero-card .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--caramel), var(--mocha));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    .hero-card h3 {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .hero-card .role {
+      color: var(--caramel);
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-card .stat-row {
+      display: flex;
+      gap: 24px;
+    }
+
+    .hero-card .stat {
+      text-align: center;
+    }
+
+    .hero-card .stat .num {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--espresso);
+      line-height: 1.2;
+    }
+
+    .hero-card .stat .desc {
+      font-size: 12px;
+      color: var(--mocha);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 56px;
+    }
+
+    .section-header h2 {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 36px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .section-header p {
+      color: var(--mocha);
+      font-size: 15px;
+    }
+
+    /* ── ABOUT ── */
+    .about-content {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 60px;
+    }
+
+    .about-text p {
+      color: var(--espresso);
+      font-size: 15px;
+      margin-bottom: 16px;
+      opacity: 0.85;
+    }
+
+    .about-info {
+      background: var(--milk);
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 8px 32px var(--shadow);
+    }
+
+    .about-info .info-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--latte);
+      font-size: 14px;
+    }
+
+    .about-info .info-item:last-child { border: none; }
+    .about-info .info-label { color: var(--mocha); }
+    .about-info .info-value { font-weight: 600; }
+
+    /* ── SKILLS ── */
+    .skills-section {
+      background: var(--milk);
+      border-radius: 28px;
+      padding: 64px;
+      box-shadow: 0 8px 32px var(--shadow);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--caramel);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px var(--shadow);
+    }
+
+    .skill-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--mocha);
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .skill-tag {
+      background: var(--latte);
+      color: var(--espresso);
+      padding: 5px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .exp-card {
+      background: var(--milk);
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 8px 32px var(--shadow);
+      transition: transform 0.3s;
+    }
+
+    .exp-card:hover { transform: translateY(-4px); }
+
+    .exp-card .badge {
+      display: inline-block;
+      background: var(--caramel);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .exp-card .badge.past {
+      background: var(--latte);
+      color: var(--mocha);
+    }
+
+    .exp-card .date {
+      font-size: 13px;
+      color: var(--mocha);
+      margin-bottom: 4px;
+    }
+
+    .exp-card h3 {
+      font-size: 20px;
+      margin-bottom: 2px;
+    }
+
+    .exp-card .company {
+      color: var(--caramel);
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .exp-card details {
+      margin-bottom: 10px;
+    }
+
+    .exp-card summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 0;
+      color: var(--espresso);
+      border-bottom: 1px solid var(--latte);
+      transition: color 0.2s;
+    }
+
+    .exp-card summary:hover { color: var(--caramel); }
+
+    .exp-card .detail-body {
+      padding: 12px 0;
+      font-size: 13px;
+      color: var(--mocha);
+    }
+
+    .exp-card .detail-body ul { padding-left: 20px; }
+    .exp-card .detail-body li { margin-bottom: 4px; }
+
+    /* ── DEMOS ── */
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .demo-card {
+      background: var(--milk);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .demo-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px var(--shadow-lg);
+    }
+
+    .demo-preview {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      background: linear-gradient(135deg, var(--latte), var(--cream));
+    }
+
+    .demo-info { padding: 28px; }
+
+    .demo-info h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .demo-info p {
+      font-size: 14px;
+      color: var(--mocha);
+      margin-bottom: 16px;
+    }
+
+    .demo-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .demo-tag {
+      background: var(--latte);
+      color: var(--mocha);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* ── CONTACT ── */
+    .contact-bar {
+      background: var(--milk);
+      border-radius: 24px;
+      padding: 48px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 8px 32px var(--shadow);
+    }
+
+    .contact-bar h3 {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .contact-bar p {
+      color: var(--mocha);
+      font-size: 14px;
+    }
+
+    .contact-links { display: flex; gap: 16px; }
+
+    .contact-link {
+      background: var(--cream);
+      border: 1px solid var(--latte);
+      border-radius: 12px;
+      padding: 16px 24px;
+      text-decoration: none;
+      color: var(--espresso);
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.25s;
+      text-align: center;
+    }
+
+    .contact-link:hover {
+      border-color: var(--caramel);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+
+    .contact-link .icon { font-size: 24px; margin-bottom: 8px; }
+    .contact-link .text { display: block; font-size: 13px; color: var(--mocha); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: var(--mocha);
+      font-size: 13px;
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-36px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .stagger > *:nth-child(1) { transition-delay: 0s; }
+    .stagger > *:nth-child(2) { transition-delay: 0.08s; }
+    .stagger > *:nth-child(3) { transition-delay: 0.16s; }
+    .stagger > *:nth-child(4) { transition-delay: 0.24s; }
+    .stagger > *:nth-child(5) { transition-delay: 0.32s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+      .hero-text .tagline { margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
+      .hero-text { order: 1; }
+      .hero-card { max-width: 320px; padding: 36px; }
+      .about-content { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .skills-section { padding: 48px 32px; }
+      .exp-grid { grid-template-columns: 1fr; }
+      .contact-bar { flex-direction: column; text-align: center; gap: 28px; padding: 36px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 12px 20px; }
+      nav .links { gap: 20px; }
+      nav .links a { font-size: 13px; }
+      section { padding: 64px 20px; }
+      .hero { padding: 0 20px; }
+      .hero-text h1 { font-size: 36px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .demo-grid { grid-template-columns: 1fr; }
+      .skills-section { border-radius: 20px; padding: 32px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      nav .links { display: none; }
+      .contact-links { flex-direction: column; width: 100%; }
+      .contact-link { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="inner">
+      <div style="width:24px"></div>
+      <ul class="links">
+        <li><a href="#about">關於我</a></li>
+        <li><a href="#skills">技能</a></li>
+        <li><a href="#experience">經歷</a></li>
+        <li><a href="#demos">作品集</a></li>
+        <li><a href="#contact">聯繫</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-visual reveal-left">
+        <div class="hero-card">
+          <div class="avatar">YW</div>
+          <h3>張育瑋</h3>
+          <div class="role">後端工程師 @ 三方科技</div>
+          <div class="stat-row">
+            <div class="stat">
+              <div class="num">4+</div>
+              <div class="desc">年經驗</div>
+            </div>
+            <div class="stat">
+              <div class="num">6+</div>
+              <div class="desc">企業專案</div>
+            </div>
+            <div class="stat">
+              <div class="num">90%</div>
+              <div class="desc">效能提升</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-text reveal-right">
+        <span class="label">Backend Engineer</span>
+        <p class="tagline">4+ 年全端開發經驗，專注 Spring Boot 微服務架構與 API 設計。熱衷 AI 自動化，善於將效能提升化為具體成果。</p>
+        <div class="hero-buttons">
+          <a href="#demos" class="btn btn-primary">查看作品集</a>
+          <a href="#contact" class="btn btn-outline">聯繫我</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-header reveal">
+      <h2>關於我</h2>
+      <p>從全端到後端，持續精進中</p>
+    </div>
+    <div class="about-content">
+      <div class="about-text reveal-left">
+        <p>我是張育瑋，擔任後端工程師四年的時間，主要工作負責公司平台的前後端 API 開發以及系統的重構翻新。</p>
+        <p>在工作之餘，我也喜愛鑽研新技術，使用各式 AI 軟體輔助開發，並主動改善專案程式碼的技術債，曾經主動將某功能的效能執行時間由數分鐘縮短至幾秒內，節省超過 90% 的時間，並且改善整理舊功能程式碼，進而提升對於專案整體的掌握以及熟悉度。</p>
+        <p>在工作中我是樂於幫助且分享的人，對於不熟的問題會主動尋找解答並與前輩討論溝通，當有同事遇到困難時，也熱心幫助一起構思解決方法，能夠適時的與工作夥伴分析問題、討論技術架構並加以實踐。</p>
+        <p>喜歡挑戰新的工作與領域，熱衷在程式編寫過程尋找成就感，並勇於學習各種新技術。</p>
+      </div>
+      <div class="about-info reveal-right">
+        <div class="info-item"><span class="info-label">姓名</span><span class="info-value">張育瑋</span></div>
+        <div class="info-item"><span class="info-label">學歷</span><span class="info-value">國立勤益科技大學 資工系</span></div>
+        <div class="info-item"><span class="info-label">現職</span><span class="info-value">三方科技 — 後端工程師</span></div>
+        <div class="info-item"><span class="info-label">前職</span><span class="info-value">億科國際 — 全端工程師</span></div>
+        <div class="info-item"><span class="info-label">語言</span><span class="info-value">中文 / 英文 (TOEIC)</span></div>
+        <div class="info-item"><span class="info-label">信箱</span><span class="info-value">ywzhang0913@gmail.com</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <div id="skills" style="padding: 100px 40px; max-width: 1200px; margin: 0 auto;">
+    <div class="skills-section reveal-scale">
+      <div class="section-header">
+        <h2>專業技能</h2>
+        <p>持續學習，不斷擴展技術版圖</p>
+      </div>
+      <div class="skills-grid stagger">
+        <div class="skill-card reveal-scale">
+          <h3>Back-end</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">RESTful API</span>
+            <span class="skill-tag">Struts2</span>
+            <span class="skill-tag">Eureka</span>
+            <span class="skill-tag">Microservices</span>
+          </div>
+        </div>
+        <div class="skill-card reveal-scale">
+          <h3>Front-end</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Vue.js</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">jQuery</span>
+            <span class="skill-tag">AJAX</span>
+            <span class="skill-tag">HTML5 / CSS</span>
+          </div>
+        </div>
+        <div class="skill-card reveal-scale">
+          <h3>Database</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Oracle</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">SQL Server</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Redis</span>
+          </div>
+        </div>
+        <div class="skill-card reveal-scale">
+          <h3>DevOps & Cloud</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Jenkins</span>
+            <span class="skill-tag">Azure</span>
+            <span class="skill-tag">AWS EC2</span>
+            <span class="skill-tag">K8s</span>
+            <span class="skill-tag">CI/CD</span>
+          </div>
+        </div>
+        <div class="skill-card reveal-scale">
+          <h3>AI & Automation</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">N8N</span>
+            <span class="skill-tag">OpenClaw</span>
+            <span class="skill-tag">GitHub Copilot</span>
+            <span class="skill-tag">Airflow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-header reveal">
+      <h2>工作經歷</h2>
+      <p>從全端到後端微服務的成長路徑</p>
+    </div>
+    <div class="exp-grid">
+      <!-- 三方科技 -->
+      <div class="exp-card reveal-left">
+        <span class="badge">CURRENT</span>
+        <div class="date">2025 — 現在</div>
+        <h3>後端工程師</h3>
+        <div class="company">三方科技有限公司</div>
+        <details>
+          <summary>微服務架構開發</summary>
+          <div class="detail-body">
+            <ul>
+              <li>使用 Spring Boot 框架進行微服務 Restful API 開發</li>
+              <li>使用 MongoDB 進行資料存儲與管理</li>
+              <li>使用 Jenkins 建置 CI/CD 自動化部署流程</li>
+              <li>使用 Eureka 進行服務註冊與發現</li>
+              <li>微服務架構設計與系統整合</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <!-- 億科國際 -->
+      <div class="exp-card reveal-right">
+        <span class="badge past">2021 — 2024</span>
+        <div class="date">2021.08 — 2024</div>
+        <h3>全端工程師</h3>
+        <div class="company">億科國際股份有限公司</div>
+        <details>
+          <summary>專案一 — Struts2 前後端專案開發</summary>
+          <div class="detail-body">
+            <ul>
+              <li>使用 Struts2 框架進行前後端專案開發</li>
+              <li>使用 Oracle 進行資料庫維護開發</li>
+              <li>使用 JDBC 與資料庫進行連線</li>
+              <li>使用 jQuery Ajax 進行畫面開發</li>
+              <li>使用 Bootstrap 重構翻新前端畫面</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>專案二 — 多公司合作數據平台</summary>
+          <div class="detail-body">
+            <ul>
+              <li>與三間公司合力開發數據前台、中台、後台，使用 FeignClient 串接 API</li>
+              <li>使用 Filter, WebSecurity 進行驗證卡控</li>
+              <li>使用 Spring Boot 進行 Restful API 開發</li>
+              <li>使用 JWT 與 Redis 存取前端 Token</li>
+              <li>使用 Azure AD 開發 SSO 登入功能</li>
+              <li>使用 Vue.js + ECharts 進行前端 Dashboard 開發</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>專案三 — 排程與報表系統</summary>
+          <div class="detail-body">
+            <ul>
+              <li>使用 Spring Boot 進行 Restful API 開發</li>
+              <li>使用 ScheduleJob 進行排程 Job 開發</li>
+              <li>使用 MySQL 及 PostgreSQL 維護資料庫</li>
+              <li>撰寫 Procedure 進行資料存儲處理</li>
+              <li>使用 POI 套件產出各式報表</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>專案四 — Struts 專案重構翻新</summary>
+          <div class="detail-body">
+            <ul>
+              <li>使用前後端分離技術重構 Struts 專案</li>
+              <li>使用 Spring Boot + Vue.js 全面翻新</li>
+              <li>使用 MFA 實作兩段式登入驗證</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>專案五 — 雲端數據整合平台</summary>
+          <div class="detail-body">
+            <ul>
+              <li>使用 Spring Boot 進行 Restful API 開發</li>
+              <li>使用 MongoDB 進行資料統整運算及存儲</li>
+              <li>使用 Airflow 進行工作流程管理</li>
+              <li>使用 Azure Blob 存儲使用者上傳檔案</li>
+              <li>部分使用 Azure Function 進行資料運算</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>專案六 — 系統架構遷移 (Azure → AWS)</summary>
+          <div class="detail-body">
+            <ul>
+              <li>使用 Docker Compose 將 Azure 環境專案切換部署至 AWS EC2</li>
+              <li>協助重新規劃系統核心架構</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMOS -->
+  <section id="demos">
+    <div class="section-header reveal">
+      <h2>作品集</h2>
+      <p>Side Projects & Automation</p>
+    </div>
+    <div class="demo-grid stagger">
+      <div class="demo-card reveal-scale">
+        <div class="demo-preview">&#9881;</div>
+        <div class="demo-info">
+          <h3>N8N 自動化工作流</h3>
+          <p>使用 N8N 打造各種自動化工作流程，串接多平台 API 實現任務自動化，提升工作效率。</p>
+          <div class="demo-tags">
+            <span class="demo-tag">N8N</span>
+            <span class="demo-tag">Automation</span>
+            <span class="demo-tag">API Integration</span>
+          </div>
+        </div>
+      </div>
+      <div class="demo-card reveal-scale">
+        <div class="demo-preview">&#129302;</div>
+        <div class="demo-info">
+          <h3>OpenClaw 專案</h3>
+          <p>基於 OpenClaw 開發的 AI 應用實作，展示 AI 技術在實際場景中的整合與應用。</p>
+          <div class="demo-tags">
+            <span class="demo-tag">OpenClaw</span>
+            <span class="demo-tag">AI</span>
+            <span class="demo-tag">Claude Code</span>
+          </div>
+        </div>
+      </div>
+      <div class="demo-card reveal-scale">
+        <div class="demo-preview">&#128202;</div>
+        <div class="demo-info">
+          <h3>更多作品</h3>
+          <p>持續更新中⋯ 歡迎聯繫我了解更多專案細節與技術實作。</p>
+          <div class="demo-tags">
+            <span class="demo-tag">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-bar reveal">
+      <div>
+        <h3>一起聊聊吧</h3>
+        <p>歡迎交流技術、討論合作機會</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:ywzhang0913@gmail.com" class="contact-link">
+          <div class="icon">&#9993;</div>
+          ywzhang0913@gmail.com
+          <span class="text">Email</span>
+        </a>
+        <a href="tel:0929091386" class="contact-link">
+          <div class="icon">&#128222;</div>
+          0929-091-386
+          <span class="text">電話</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 張育瑋. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale')
+      .forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
