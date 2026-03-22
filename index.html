@@ -268,7 +268,7 @@
     /* ── ABOUT ── */
     .about-content {
       display: grid;
-      grid-template-columns: 3fr 2fr;
+      grid-template-columns: 2fr 3fr;
       gap: 60px;
       align-items: start;
     }
@@ -301,10 +301,6 @@
 
     /* ── SKILLS ── */
     .skills-section {
-      background: var(--milk);
-      border-radius: 28px;
-      padding: 64px;
-      box-shadow: 0 8px 32px var(--shadow);
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -316,11 +312,12 @@
     }
 
     .skill-card {
-      background: var(--cream);
+      background: var(--milk);
       border-radius: 16px;
       padding: 28px;
-      border: 1px solid transparent;
+      border: 1px solid var(--latte);
       transition: all 0.3s;
+      box-shadow: 0 4px 16px var(--shadow);
     }
 
     .skill-card:hover {
@@ -334,6 +331,9 @@
       font-weight: 700;
       margin-bottom: 16px;
       color: var(--mocha);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -862,7 +862,6 @@
       .hero-card { max-width: 320px; padding: 36px; }
       .about-content { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: repeat(2, 1fr); }
-      .skills-section { padding: 48px 32px; }
       .exp-grid { grid-template-columns: 1fr; }
       .contact-bar { flex-direction: column; text-align: center; gap: 28px; padding: 36px; }
     }
@@ -877,7 +876,6 @@
       .skills-grid { grid-template-columns: 1fr; }
       .featured-project { grid-template-columns: 1fr; direction: ltr !important; }
       .demo-grid { grid-template-columns: 1fr; }
-      .skills-section { border-radius: 20px; padding: 32px 20px; }
     }
 
     @media (max-width: 480px) {
@@ -921,8 +919,8 @@
               <div class="desc">企業專案</div>
             </div>
             <div class="stat">
-              <div class="num">90%</div>
-              <div class="desc">效能提升</div>
+              <div class="num">5+</div>
+              <div class="desc">作品集</div>
             </div>
           </div>
         </div>
@@ -940,34 +938,36 @@
 
   <!-- ABOUT -->
   <section id="about">
+    <div class="section-header reveal">
+      <h2>關於我</h2>
+      <p>從全端到後端，持續精進中</p>
+    </div>
     <div class="about-content">
-      <div class="about-text reveal-left">
-        <h2 style="font-family:'Noto Sans TC',sans-serif;font-size:36px;font-weight:900;margin-bottom:8px;">關於我</h2>
-        <p style="color:var(--mocha);font-size:15px;margin-bottom:32px;">從全端到後端，持續精進中</p>
+      <div class="reveal-left">
+        <div class="about-info" style="margin-top:0;border-radius:0;padding:0;box-shadow:none;background:transparent;">
+          <div class="info-item"><span class="info-label">姓名</span><span class="info-value">張育瑋</span></div>
+          <div class="info-item"><span class="info-label">學歷</span><span class="info-value">國立勤益科技大學 資工系</span></div>
+          <div class="info-item"><span class="info-label">現職</span><span class="info-value">三方科技 — 後端工程師</span></div>
+          <div class="info-item"><span class="info-label">前職</span><span class="info-value">億科國際 — 全端工程師</span></div>
+          <div class="info-item"><span class="info-label">信箱</span><span class="info-value">ywzhang0913@gmail.com</span></div>
+        </div>
+      </div>
+      <div class="about-text reveal-right">
         <p>我是張育瑋，擔任後端工程師四年的時間，主要工作負責公司平台的前後端 API 開發以及系統的重構翻新。</p>
         <p>在工作之餘，我也喜愛鑽研新技術，使用各式 AI 軟體輔助開發，並主動改善專案程式碼的技術債，曾經主動將某功能的效能執行時間由數分鐘縮短至幾秒內，節省超過 90% 的時間，並且改善整理舊功能程式碼，進而提升對於專案整體的掌握以及熟悉度。</p>
         <p>在工作中我是樂於幫助且分享的人，對於不熟的問題會主動尋找解答並與前輩討論溝通，當有同事遇到困難時，也熱心幫助一起構思解決方法，能夠適時的與工作夥伴分析問題、討論技術架構並加以實踐。</p>
         <p>喜歡挑戰新的工作與領域，熱衷在程式編寫過程尋找成就感，並勇於學習各種新技術。</p>
       </div>
-      <div class="about-info reveal-right">
-        <div class="info-item"><span class="info-label">姓名</span><span class="info-value">張育瑋</span></div>
-        <div class="info-item"><span class="info-label">學歷</span><span class="info-value">國立勤益科技大學 資工系</span></div>
-        <div class="info-item"><span class="info-label">現職</span><span class="info-value">三方科技 — 後端工程師</span></div>
-        <div class="info-item"><span class="info-label">前職</span><span class="info-value">億科國際 — 全端工程師</span></div>
-        <div class="info-item"><span class="info-label">語言</span><span class="info-value">中文 / 英文 (TOEIC)</span></div>
-        <div class="info-item"><span class="info-label">信箱</span><span class="info-value">ywzhang0913@gmail.com</span></div>
-      </div>
     </div>
   </section>
 
   <!-- SKILLS -->
-  <div id="skills" style="padding: 100px 40px; max-width: 1200px; margin: 0 auto;">
-    <div class="skills-section reveal-scale">
-      <div class="section-header">
-        <h2>專業技能</h2>
-        <p>持續學習，不斷擴展技術版圖</p>
-      </div>
-      <div class="skills-grid stagger">
+  <section id="skills">
+    <div class="section-header reveal">
+      <h2>專業技能</h2>
+      <p>持續學習，不斷擴展技術版圖</p>
+    </div>
+    <div class="skills-grid stagger">
         <div class="skill-card reveal-scale">
           <h3>Back-end</h3>
           <div class="skill-tags">
@@ -1023,8 +1023,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+  </section>
 
   <!-- EXPERIENCE -->
   <section id="experience">
@@ -1039,7 +1038,7 @@
         <div class="date">2025 — 現在</div>
         <h3>後端工程師</h3>
         <div class="company">三方科技有限公司</div>
-        <details>
+        <details open>
           <summary>串接 Payment B2B 金流服務</summary>
           <div class="detail-body">
             <ul>
