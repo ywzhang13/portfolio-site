@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>張育瑋 | 後端工程師</title>
+  <meta name="description" content="張育瑋 — 4+ 年全端開發經驗，專注 Spring Boot 微服務架構與 API 設計。作品集涵蓋 AI 自動化、LINE Bot、Flutter 跨平台開發。">
+  <meta property="og:title" content="張育瑋 | 後端工程師">
+  <meta property="og:description" content="4+ 年全端開發經驗，專注 Spring Boot 微服務架構與 API 設計">
+  <meta property="og:image" content="images/profile.jpg">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
@@ -324,6 +329,7 @@
       border-color: var(--caramel);
       transform: translateY(-4px);
       box-shadow: 0 12px 32px var(--shadow);
+      cursor: default;
     }
 
     .skill-card h3 {
@@ -882,8 +888,88 @@
 
     @media (max-width: 480px) {
       nav .links { display: none; }
+      nav .menu-btn { display: flex; }
       .contact-links { flex-direction: column; width: 100%; }
       .contact-link { width: 100%; }
+    }
+
+    /* ── MOBILE MENU ── */
+    nav .menu-btn {
+      display: none;
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    nav .menu-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--espresso);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    nav .menu-btn.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    nav .menu-btn.open span:nth-child(2) { opacity: 0; }
+    nav .menu-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(250, 246, 240, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--espresso);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover { color: var(--caramel); }
+
+    /* ── FOCUS STATES ── */
+    a:focus-visible,
+    button:focus-visible,
+    .btn:focus-visible {
+      outline: 2px solid var(--caramel);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ── REDUCED MOTION ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal, .reveal-right, .reveal-scale {
+        opacity: 1 !important;
+        transform: none !important;
+      }
     }
   </style>
 </head>
@@ -900,8 +986,20 @@
         <li><a href="#demos">作品集</a></li>
         <li><a href="#contact">聯繫</a></li>
       </ul>
+      <button class="menu-btn" aria-label="開啟選單" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="toggleMobileMenu()">關於我</a>
+    <a href="#skills" onclick="toggleMobileMenu()">技能</a>
+    <a href="#experience" onclick="toggleMobileMenu()">經歷</a>
+    <a href="#demos" onclick="toggleMobileMenu()">作品集</a>
+    <a href="#contact" onclick="toggleMobileMenu()">聯繫</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -1142,14 +1240,14 @@
     <div class="featured-project reveal">
       <div class="project-preview">
         <div class="carousel-wrapper">
-          <button class="carousel-btn prev" onclick="slideCarousel(-1)">&#8249;</button>
+          <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarousel(-1)">&#8249;</button>
           <div class="carousel" id="clawCarousel">
-            <img src="images/claw-monitor-office.png" alt="Claw Monitor 虛擬辦公室全景" class="active" onclick="openLightbox(this)">
+            <img src="images/claw-monitor-office.png" alt="Claw Monitor 虛擬辦公室全景" class="active" loading="lazy" onclick="openLightbox(this)">
             <video src="images/claw-monitor-v1.mov" muted loop playsinline onclick="openLightbox(this)"></video>
             <video src="images/claw-monitor-v2.mov" muted loop playsinline onclick="openLightbox(this)"></video>
             <video src="images/claw-monitor-v3.mov" muted loop playsinline onclick="openLightbox(this)"></video>
           </div>
-          <button class="carousel-btn next" onclick="slideCarousel(1)">&#8250;</button>
+          <button class="carousel-btn next" aria-label="下一張" onclick="slideCarousel(1)">&#8250;</button>
         </div>
         <div class="carousel-dots" id="clawDots"></div>
       </div>
@@ -1180,11 +1278,11 @@
     <div class="featured-project reveal" style="direction: rtl;">
       <div class="project-preview" style="direction: ltr;">
         <div class="carousel-wrapper">
-          <button class="carousel-btn prev" onclick="slideCarousel2(-1)">&#8249;</button>
+          <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarousel2(-1)">&#8249;</button>
           <div class="carousel" id="togetherCarousel">
-            <img src="images/together-1.png" alt="Together 地圖介面" class="active" onclick="openLightbox(this)">
+            <img src="images/together-1.png" alt="Together 地圖介面" class="active" loading="lazy" onclick="openLightbox(this)">
           </div>
-          <button class="carousel-btn next" onclick="slideCarousel2(1)">&#8250;</button>
+          <button class="carousel-btn next" aria-label="下一張" onclick="slideCarousel2(1)">&#8250;</button>
         </div>
         <div class="carousel-dots" id="togetherDots"></div>
       </div>
@@ -1214,15 +1312,15 @@
     <div class="featured-project reveal">
       <div class="project-preview">
         <div class="carousel-wrapper">
-          <button class="carousel-btn prev" onclick="slideCarousel3(-1)">&#8249;</button>
+          <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarousel3(-1)">&#8249;</button>
           <div class="carousel" id="foodCarousel">
-            <img src="images/food-liff-home.webp" alt="美食收藏家 LIFF 主頁" class="active" onclick="openLightbox(this)">
-            <img src="images/food-collection.webp" alt="我的收藏列表" onclick="openLightbox(this)">
-            <img src="images/food-google-maps.png" alt="Google Maps 收錄餐廳" onclick="openLightbox(this)">
-            <img src="images/food-search.webp" alt="美食搜尋推薦" onclick="openLightbox(this)">
-            <img src="images/food-ig-ingest.webp" alt="IG 貼文爬取建檔" onclick="openLightbox(this)">
+            <img src="images/food-liff-home.webp" alt="美食收藏家 LIFF 主頁" class="active" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/food-collection.webp" alt="我的收藏列表" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/food-google-maps.png" alt="Google Maps 收錄餐廳" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/food-search.webp" alt="美食搜尋推薦" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/food-ig-ingest.webp" alt="IG 貼文爬取建檔" loading="lazy" onclick="openLightbox(this)">
           </div>
-          <button class="carousel-btn next" onclick="slideCarousel3(1)">&#8250;</button>
+          <button class="carousel-btn next" aria-label="下一張" onclick="slideCarousel3(1)">&#8250;</button>
         </div>
         <div class="carousel-dots" id="foodDots"></div>
       </div>
@@ -1251,16 +1349,16 @@
     <div class="featured-project reveal" style="direction: rtl;">
       <div class="project-preview" style="direction: ltr;">
         <div class="carousel-wrapper">
-          <button class="carousel-btn prev" onclick="slideCarousel4(-1)">&#8249;</button>
+          <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarousel4(-1)">&#8249;</button>
           <div class="carousel" id="n8nCarousel">
-            <img src="images/n8n-contact-scan.png" alt="名片掃描建立聯絡人" class="active" onclick="openLightbox(this)">
-            <img src="images/n8n-contact-info.png" alt="聯絡人資訊查詢" onclick="openLightbox(this)">
-            <img src="images/n8n-schedule.png" alt="行程安排查詢" onclick="openLightbox(this)">
-            <img src="images/n8n-meeting.png" alt="會議安排與討論事項" onclick="openLightbox(this)">
-            <img src="images/n8n-calendar.png" alt="Google 日曆同步" onclick="openLightbox(this)">
-            <img src="images/n8n-notes.png" alt="會議記錄筆記" onclick="openLightbox(this)">
+            <img src="images/n8n-contact-scan.png" alt="名片掃描建立聯絡人" class="active" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/n8n-contact-info.png" alt="聯絡人資訊查詢" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/n8n-schedule.png" alt="行程安排查詢" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/n8n-meeting.png" alt="會議安排與討論事項" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/n8n-calendar.png" alt="Google 日曆同步" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/n8n-notes.png" alt="會議記錄筆記" loading="lazy" onclick="openLightbox(this)">
           </div>
-          <button class="carousel-btn next" onclick="slideCarousel4(1)">&#8250;</button>
+          <button class="carousel-btn next" aria-label="下一張" onclick="slideCarousel4(1)">&#8250;</button>
         </div>
         <div class="carousel-dots" id="n8nDots"></div>
       </div>
@@ -1290,16 +1388,16 @@
     <div class="featured-project reveal">
       <div class="project-preview">
         <div class="carousel-wrapper">
-          <button class="carousel-btn prev" onclick="slideCarousel5(-1)">&#8249;</button>
+          <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarousel5(-1)">&#8249;</button>
           <div class="carousel" id="raidCarousel">
-            <img src="images/raid-list.png" alt="團戰列表介面" class="active" onclick="openLightbox(this)">
-            <img src="images/raid-characters.png" alt="角色管理介面" onclick="openLightbox(this)">
-            <img src="images/raid-signup.png" alt="團戰報名介面" onclick="openLightbox(this)">
-            <img src="images/raid-discord-notify.png" alt="Discord 新遠征隊建立通知" onclick="openLightbox(this)">
-            <img src="images/raid-discord-signup.png" alt="Discord 新成員報名通知" onclick="openLightbox(this)">
-            <img src="images/raid-discord-full.png" alt="Discord 遠征已滿員通知" onclick="openLightbox(this)">
+            <img src="images/raid-list.png" alt="團戰列表介面" class="active" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/raid-characters.png" alt="角色管理介面" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/raid-signup.png" alt="團戰報名介面" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/raid-discord-notify.png" alt="Discord 新遠征隊建立通知" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/raid-discord-signup.png" alt="Discord 新成員報名通知" loading="lazy" onclick="openLightbox(this)">
+            <img src="images/raid-discord-full.png" alt="Discord 遠征已滿員通知" loading="lazy" onclick="openLightbox(this)">
           </div>
-          <button class="carousel-btn next" onclick="slideCarousel5(1)">&#8250;</button>
+          <button class="carousel-btn next" aria-label="下一張" onclick="slideCarousel5(1)">&#8250;</button>
         </div>
         <div class="carousel-dots" id="raidDots"></div>
       </div>
@@ -1366,6 +1464,15 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     });
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.querySelector('.menu-btn');
+      menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
 
     // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
