@@ -1496,12 +1496,17 @@
     });
 
     function goToSlide(n) {
+      if (sliding) return;
+      const next = ((n % slides.length) + slides.length) % slides.length;
+      if (next === currentSlide) return;
+      sliding = true;
       slides[currentSlide].classList.remove('active');
       dotsContainer.children[currentSlide].classList.remove('active');
-      currentSlide = (n + slides.length) % slides.length;
+      currentSlide = next;
       slides[currentSlide].classList.add('active');
       dotsContainer.children[currentSlide].classList.add('active');
       updateClawVideos();
+      setTimeout(() => { sliding = false; }, 150);
     }
 
     function slideCarousel(dir) {
@@ -1516,8 +1521,9 @@
       });
     }
 
-    // ── 通用輪播系統 ──
+    // ── 通用輪播系統（含防抖）──
     const carousels = {};
+    let sliding = false;
 
     function initCarousel(id, carouselId, dotsId) {
       const el = document.getElementById(carouselId);
@@ -1535,11 +1541,15 @@
     }
 
     function goTo(id, n) {
+      if (sliding) return;
       const s = carousels[id];
       if (!s || s.items.length === 0) return;
+      const next = ((n % s.items.length) + s.items.length) % s.items.length;
+      if (next === s.current) return;
+      sliding = true;
       s.items[s.current].classList.remove('active');
       if (s.dots.children[s.current]) s.dots.children[s.current].classList.remove('active');
-      s.current = ((n % s.items.length) + s.items.length) % s.items.length;
+      s.current = next;
       s.items[s.current].classList.add('active');
       if (s.dots.children[s.current]) s.dots.children[s.current].classList.add('active');
       // Auto play/pause videos
@@ -1549,6 +1559,7 @@
           else { item.pause(); item.currentTime = 0; }
         }
       });
+      setTimeout(() => { sliding = false; }, 150);
     }
 
     initCarousel(2, 'togetherCarousel', 'togetherDots');
