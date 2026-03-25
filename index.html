@@ -1521,107 +1521,50 @@
       });
     }
 
-    // Together carousel (placeholder - single image for now)
-    const carousel2 = document.getElementById('togetherCarousel');
-    const slides2 = carousel2.querySelectorAll('img');
-    const dotsContainer2 = document.getElementById('togetherDots');
-    let currentSlide2 = 0;
+    // ── 通用輪播系統 ──
+    const carousels = {};
 
-    slides2.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.className = 'dot' + (i === 0 ? ' active' : '');
-      dot.onclick = () => goToSlide2(i);
-      dotsContainer2.appendChild(dot);
-    });
+    function initCarousel(id, carouselId, dotsId) {
+      const el = document.getElementById(carouselId);
+      const items = el.querySelectorAll('img, video');
+      const dots = document.getElementById(dotsId);
+      const state = { items, dots, current: 0 };
+      carousels[id] = state;
 
-    function goToSlide2(n) {
-      slides2[currentSlide2].classList.remove('active');
-      dotsContainer2.children[currentSlide2].classList.remove('active');
-      currentSlide2 = (n + slides2.length) % slides2.length;
-      slides2[currentSlide2].classList.add('active');
-      dotsContainer2.children[currentSlide2].classList.add('active');
+      items.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => goTo(id, i);
+        dots.appendChild(dot);
+      });
     }
 
-    function slideCarousel2(dir) {
-      goToSlide2(currentSlide2 + dir);
+    function goTo(id, n) {
+      const s = carousels[id];
+      if (!s || s.items.length === 0) return;
+      s.items[s.current].classList.remove('active');
+      if (s.dots.children[s.current]) s.dots.children[s.current].classList.remove('active');
+      s.current = ((n % s.items.length) + s.items.length) % s.items.length;
+      s.items[s.current].classList.add('active');
+      if (s.dots.children[s.current]) s.dots.children[s.current].classList.add('active');
+      // Auto play/pause videos
+      s.items.forEach(item => {
+        if (item.tagName === 'VIDEO') {
+          if (item.classList.contains('active')) item.play();
+          else { item.pause(); item.currentTime = 0; }
+        }
+      });
     }
 
-    // Carousel 3 — 美食收藏家
-    const carousel3 = document.getElementById('foodCarousel');
-    const slides3 = carousel3.querySelectorAll('img');
-    const dotsContainer3 = document.getElementById('foodDots');
-    let currentSlide3 = 0;
+    initCarousel(2, 'togetherCarousel', 'togetherDots');
+    initCarousel(3, 'foodCarousel', 'foodDots');
+    initCarousel(4, 'n8nCarousel', 'n8nDots');
+    initCarousel(5, 'raidCarousel', 'raidDots');
 
-    slides3.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.className = 'dot' + (i === 0 ? ' active' : '');
-      dot.onclick = () => goToSlide3(i);
-      dotsContainer3.appendChild(dot);
-    });
-
-    function goToSlide3(n) {
-      slides3[currentSlide3].classList.remove('active');
-      dotsContainer3.children[currentSlide3].classList.remove('active');
-      currentSlide3 = (n + slides3.length) % slides3.length;
-      slides3[currentSlide3].classList.add('active');
-      dotsContainer3.children[currentSlide3].classList.add('active');
-    }
-
-    function slideCarousel3(dir) {
-      goToSlide3(currentSlide3 + dir);
-    }
-
-    // No auto-play for raid carousel
-
-    // Carousel 4 — N8N
-    const carousel4 = document.getElementById('n8nCarousel');
-    const slides4 = carousel4.querySelectorAll('img');
-    const dotsContainer4 = document.getElementById('n8nDots');
-    let currentSlide4 = 0;
-
-    slides4.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.className = 'dot' + (i === 0 ? ' active' : '');
-      dot.onclick = () => goToSlide4(i);
-      dotsContainer4.appendChild(dot);
-    });
-
-    function goToSlide4(n) {
-      slides4[currentSlide4].classList.remove('active');
-      dotsContainer4.children[currentSlide4].classList.remove('active');
-      currentSlide4 = (n + slides4.length) % slides4.length;
-      slides4[currentSlide4].classList.add('active');
-      dotsContainer4.children[currentSlide4].classList.add('active');
-    }
-
-    function slideCarousel4(dir) {
-      goToSlide4(currentSlide4 + dir);
-    }
-
-    // Carousel 5 — KiHongan Raid
-    const carousel5 = document.getElementById('raidCarousel');
-    const slides5 = carousel5.querySelectorAll('img');
-    const dotsContainer5 = document.getElementById('raidDots');
-    let currentSlide5 = 0;
-
-    slides5.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.className = 'dot' + (i === 0 ? ' active' : '');
-      dot.onclick = () => goToSlide5(i);
-      dotsContainer5.appendChild(dot);
-    });
-
-    function goToSlide5(n) {
-      slides5[currentSlide5].classList.remove('active');
-      dotsContainer5.children[currentSlide5].classList.remove('active');
-      currentSlide5 = (n + slides5.length) % slides5.length;
-      slides5[currentSlide5].classList.add('active');
-      dotsContainer5.children[currentSlide5].classList.add('active');
-    }
-
-    function slideCarousel5(dir) {
-      goToSlide5(currentSlide5 + dir);
-    }
+    function slideCarousel2(dir) { goTo(2, carousels[2].current + dir); }
+    function slideCarousel3(dir) { goTo(3, carousels[3].current + dir); }
+    function slideCarousel4(dir) { goTo(4, carousels[4].current + dir); }
+    function slideCarousel5(dir) { goTo(5, carousels[5].current + dir); }
 
     // Lightbox with navigation
     let lbItems = [];
