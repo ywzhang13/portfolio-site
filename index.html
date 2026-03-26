@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>張育瑋 | 後端工程師</title>
-  <meta name="description" content="張育瑋 — 4+ 年全端開發經驗，專注 Spring Boot 微服務架構與 API 設計。作品集涵蓋 AI 自動化、LINE Bot、Flutter 跨平台開發。">
+  <meta name="description" content="張育瑋 — 4+ 年全端開發經驗，專注 Spring Boot 微服務架構與 API 設計。作品集涵蓋旅行分帳 App、AI 自動化、LINE Bot、Flutter 跨平台開發。">
   <meta property="og:title" content="張育瑋 | 後端工程師">
   <meta property="og:description" content="4+ 年全端開發經驗，專注 Spring Boot 微服務架構與 API 設計">
   <meta property="og:image" content="images/profile.jpg">
@@ -1268,7 +1268,46 @@
       </div>
     </div>
 
-    <!-- 2. TogetherApp -->
+    <!-- 2. 揪旅 JiuTrip -->
+    <div class="featured-project reveal" style="direction: rtl;">
+      <div class="project-preview" style="direction: ltr;">
+        <div class="carousel-wrapper">
+          <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarouselJiutrip(-1)">&#8249;</button>
+          <div class="carousel" id="jiutripCarousel">
+            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80" alt="揪旅首頁 — 東京旅程" class="active" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=800&q=80" alt="揪旅行程規劃 — 東京街景" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1528181304800-259b08848526?w=800&q=80" alt="揪旅探索頁 — 曼谷寺廟" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="揪旅帳本 — 墾丁衝浪" onclick="openLightbox(this)">
+          </div>
+          <button class="carousel-btn next" aria-label="下一張" onclick="slideCarouselJiutrip(1)">&#8250;</button>
+        </div>
+        <div class="carousel-dots" id="jiutripDots"></div>
+      </div>
+      <div class="project-detail" style="direction: ltr;">
+        <span class="project-badge">Latest Project</span>
+        <h3>揪旅 JiuTrip — 旅行分帳 App</h3>
+        <p>結合旅行規劃與分帳功能的行動 Web App，透過 LINE LIFF 登入，支援多幣值旅程管理、即時行程規劃、智慧結算與討論功能。多幣值（TWD / JPY / THB）自動識別顯示，貪心演算法最少轉帳次數結算。</p>
+        <ul class="feature-list">
+          <li>LINE LIFF 登入 + Supabase Auth 雙認證</li>
+          <li>行程規劃器：拖拉排序、每日景點 / 花費管理</li>
+          <li>多幣值分帳：均分 / 自訂比例 / 不分攤</li>
+          <li>貪心演算法最佳結算方案（最少轉帳次數）</li>
+          <li>即時討論、邀請碼加入、LINE 分享</li>
+          <li>行程範本探索 / 複製 / 評分系統</li>
+        </ul>
+        <div class="demo-tags" style="margin-bottom: 20px;">
+          <span class="demo-tag">Next.js 15</span>
+          <span class="demo-tag">TypeScript</span>
+          <span class="demo-tag">Tailwind CSS</span>
+          <span class="demo-tag">Supabase</span>
+          <span class="demo-tag">LINE LIFF</span>
+          <span class="demo-tag">Vercel</span>
+        </div>
+        <a href="https://jiutrip.vercel.app/" target="_blank" class="btn btn-primary" style="display:inline-block;text-decoration:none;margin-top:8px;">查看 Live Demo &rarr;</a>
+      </div>
+    </div>
+
+    <!-- 3. TogetherApp -->
     <div class="featured-project reveal" style="direction: rtl;">
       <div class="project-preview" style="direction: ltr;">
         <div class="carousel-wrapper">
@@ -1562,11 +1601,13 @@
       setTimeout(() => { sliding = false; }, 150);
     }
 
+    initCarousel(6, 'jiutripCarousel', 'jiutripDots');
     initCarousel(2, 'togetherCarousel', 'togetherDots');
     initCarousel(3, 'foodCarousel', 'foodDots');
     initCarousel(4, 'n8nCarousel', 'n8nDots');
     initCarousel(5, 'raidCarousel', 'raidDots');
 
+    function slideCarouselJiutrip(dir) { goTo(6, carousels[6].current + dir); }
     function slideCarousel2(dir) { goTo(2, carousels[2].current + dir); }
     function slideCarousel3(dir) { goTo(3, carousels[3].current + dir); }
     function slideCarousel4(dir) { goTo(4, carousels[4].current + dir); }
