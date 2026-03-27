@@ -1274,10 +1274,18 @@
         <div class="carousel-wrapper">
           <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarouselJiutrip(-1)">&#8249;</button>
           <div class="carousel" id="jiutripCarousel">
-            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80" alt="揪旅首頁 — 東京旅程" class="active" onclick="openLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=800&q=80" alt="揪旅行程規劃 — 東京街景" onclick="openLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1528181304800-259b08848526?w=800&q=80" alt="揪旅探索頁 — 曼谷寺廟" onclick="openLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="揪旅帳本 — 墾丁衝浪" onclick="openLightbox(this)">
+            <img src="images/jiutrip-splash.png" alt="揪旅 — 啟動畫面" class="active" onclick="openLightbox(this)">
+            <img src="images/jiutrip-login.png" alt="揪旅 — LINE 登入頁" onclick="openLightbox(this)">
+            <img src="images/jiutrip-home.png" alt="揪旅首頁 — 旅程總覽與花費概覽" onclick="openLightbox(this)">
+            <img src="images/jiutrip-expense-overview.png" alt="揪旅花費概覽 — 分類統計與近期消費" onclick="openLightbox(this)">
+            <img src="images/jiutrip-trip-detail.png" alt="揪旅行程詳情 — 時間軸每日行程" onclick="openLightbox(this)">
+            <img src="images/jiutrip-itinerary.png" alt="揪旅行程規劃器 — 拖拉排序景點" onclick="openLightbox(this)">
+            <img src="images/jiutrip-route.png" alt="揪旅路線規劃 — Google Maps 最佳路線" onclick="openLightbox(this)">
+            <img src="images/jiutrip-ledger.png" alt="揪旅帳本 — 多幣值分帳管理" onclick="openLightbox(this)">
+            <img src="images/jiutrip-settle.png" alt="揪旅結算 — 最佳結算方案" onclick="openLightbox(this)">
+            <img src="images/jiutrip-todo.png" alt="揪旅待辦 — 多人指派待辦清單" onclick="openLightbox(this)">
+            <img src="images/jiutrip-discussion.png" alt="揪旅討論 — 即時留言討論" onclick="openLightbox(this)">
+            <img src="images/jiutrip-ledger-full.png" alt="揪旅帳本總覽 — 結清狀態管理" onclick="openLightbox(this)">
           </div>
           <button class="carousel-btn next" aria-label="下一張" onclick="slideCarouselJiutrip(1)">&#8250;</button>
         </div>
@@ -1286,14 +1294,14 @@
       <div class="project-detail" style="direction: ltr;">
         <span class="project-badge">Latest Project</span>
         <h3>揪旅 JiuTrip — 旅行分帳 App</h3>
-        <p>結合旅行規劃與分帳功能的行動 Web App，透過 LINE LIFF 登入，支援多幣值旅程管理、即時行程規劃、智慧結算與討論功能。多幣值（TWD / JPY / THB）自動識別顯示，貪心演算法最少轉帳次數結算。</p>
+        <p>結合旅行規劃與分帳功能的行動 Web App，透過 LINE LIFF 登入，支援多幣值旅程管理、拖拉行程規劃、Google Maps 路線規劃、智慧結算、待辦清單與即時討論。貪心演算法計算最少轉帳次數，Places API 快取優化降低 API 成本。</p>
         <ul class="feature-list">
           <li>LINE LIFF 登入 + Supabase Auth 雙認證</li>
-          <li>行程規劃器：拖拉排序、每日景點 / 花費管理</li>
-          <li>多幣值分帳：均分 / 自訂比例 / 不分攤</li>
-          <li>貪心演算法最佳結算方案（最少轉帳次數）</li>
-          <li>即時討論、邀請碼加入、LINE 分享</li>
-          <li>行程範本探索 / 複製 / 評分系統</li>
+          <li>行程規劃器：觸控拖拉排序、Google Places 搜尋、每日景點管理</li>
+          <li>路線規劃：Google Maps / Naver Map 最佳路線、一鍵套用排序</li>
+          <li>多幣值分帳：均分 / 自訂比例，貪心演算法最少轉帳次數結算</li>
+          <li>待辦清單：多人指派、分類管理、快速新增旅行準備事項</li>
+          <li>即時討論、邀請碼加入、帳本結清狀態同步</li>
         </ul>
         <div class="demo-tags" style="margin-bottom: 20px;">
           <span class="demo-tag">Next.js 15</span>
@@ -1301,6 +1309,7 @@
           <span class="demo-tag">Tailwind CSS</span>
           <span class="demo-tag">Supabase</span>
           <span class="demo-tag">LINE LIFF</span>
+          <span class="demo-tag">Google Maps API</span>
           <span class="demo-tag">Vercel</span>
         </div>
         <a href="https://jiutrip.vercel.app/" target="_blank" class="btn btn-primary" style="display:inline-block;text-decoration:none;margin-top:8px;">查看 Live Demo &rarr;</a>
@@ -1601,13 +1610,13 @@
       setTimeout(() => { sliding = false; }, 150);
     }
 
-    initCarousel(6, 'jiutripCarousel', 'jiutripDots');
+    initCarousel(12, 'jiutripCarousel', 'jiutripDots');
     initCarousel(2, 'togetherCarousel', 'togetherDots');
     initCarousel(3, 'foodCarousel', 'foodDots');
     initCarousel(4, 'n8nCarousel', 'n8nDots');
     initCarousel(5, 'raidCarousel', 'raidDots');
 
-    function slideCarouselJiutrip(dir) { goTo(6, carousels[6].current + dir); }
+    function slideCarouselJiutrip(dir) { goTo(12, carousels[12].current + dir); }
     function slideCarousel2(dir) { goTo(2, carousels[2].current + dir); }
     function slideCarousel3(dir) { goTo(3, carousels[3].current + dir); }
     function slideCarousel4(dir) { goTo(4, carousels[4].current + dir); }
