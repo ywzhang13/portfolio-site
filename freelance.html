@@ -95,60 +95,31 @@ section{padding:80px 0}
 .skill-col li{font-size:14px;color:var(--text-2);padding:7px 0;font-weight:500}
 
 /* Projects */
-.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-@media(max-width:768px){.projects-grid{grid-template-columns:1fr}}
-.proj{background:var(--bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .25s;cursor:pointer}
-.proj:hover{border-color:var(--blue);box-shadow:0 12px 40px rgba(37,99,235,.08);transform:translateY(-3px)}
-.proj-img{height:200px;overflow:hidden;background:var(--bg-3)}
-.proj-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.proj:hover .proj-img img{transform:scale(1.04)}
-.proj-body{padding:24px}
-.proj-type{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
-.proj-body h3{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:6px}
-.proj-body p{font-size:13px;color:var(--text-3);line-height:1.7;margin-bottom:12px}
-.proj-highlights-sm{list-style:none;margin-bottom:14px}
-.proj-highlights-sm li{font-size:12px;color:var(--text-2);padding:3px 0;padding-left:16px;position:relative;line-height:1.6}
-.proj-highlights-sm li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--blue)}
-.proj-tags{display:flex;flex-wrap:wrap;gap:6px}
-.proj-tags span{font-size:11px;font-weight:600;padding:3px 10px;border-radius:5px;background:var(--blue-bg);color:var(--blue)}
-
-/* Featured project */
-.proj-featured{display:grid;grid-template-columns:1fr 1.2fr;gap:0;background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .25s;cursor:pointer}
-.proj-featured:hover{border-color:var(--blue);box-shadow:0 12px 40px rgba(37,99,235,.08)}
-@media(max-width:768px){.proj-featured{grid-template-columns:1fr}}
-.proj-featured-img{overflow:hidden;height:280px;background:var(--bg-3);position:relative}
-.proj-featured-img img,.proj-featured-img video{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0;transition:opacity .4s}
-.proj-featured-img img.active,.proj-featured-img video.active{opacity:1;position:relative}
-.proj-featured-body{padding:32px;display:flex;flex-direction:column;justify-content:center}
-@media(max-width:768px){.proj-featured-body{padding:24px}}
-.proj-featured-body .proj-type{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
-.proj-featured-body h3{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:8px}
-.proj-featured-body > p{font-size:14px;color:var(--text-3);margin-bottom:16px}
-.proj-highlights{list-style:none;margin-bottom:20px}
-.proj-highlights li{font-size:13px;color:var(--text-2);padding:5px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
-.proj-highlights li svg{width:16px;height:16px;color:var(--blue);flex-shrink:0;margin-top:2px}
-
-/* Small project grid */
-.projects-grid-sm{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media(max-width:768px){.projects-grid-sm{grid-template-columns:1fr}}
-.proj-sm{background:var(--bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .25s;cursor:default}
-.proj-sm:hover{border-color:var(--blue);box-shadow:0 8px 24px rgba(37,99,235,.06);transform:translateY(-2px)}
-.proj-sm-imgs{height:180px;overflow:hidden;background:var(--bg-3);position:relative}
-.proj-sm-imgs img{width:100%;height:100%;object-fit:contain;object-position:center;background:var(--bg-3);position:absolute;inset:0;opacity:0;transition:opacity .4s}
-.proj-sm-imgs img.active{opacity:1;position:relative}
-
-/* Carousel arrows */
-.carousel-arrows{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 10px;pointer-events:none;z-index:10}
-.carousel-arrows button{pointer-events:auto;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.15)}
-.carousel-arrows button:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.2);transform:scale(1.1)}
-.carousel-arrows button svg{width:16px;height:16px;color:var(--navy)}
-.carousel-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:2}
-.carousel-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4);transition:all .2s}
-.carousel-dots span.active{background:#fff;width:16px;border-radius:3px}
-.proj-sm-body{padding:16px 18px}
-.proj-sm-body .proj-type{margin-bottom:4px}
-.proj-sm-body h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px}
-.proj-sm-body p{font-size:12px;color:var(--text-3);line-height:1.6;margin-bottom:12px}
+.featured-project{background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:24px;transition:all .25s}
+.featured-project:hover{border-color:var(--blue);box-shadow:0 12px 40px rgba(37,99,235,.08)}
+@media(max-width:768px){.featured-project{grid-template-columns:1fr;direction:ltr !important}}
+.featured-project .project-preview{padding:0;overflow:hidden;position:relative}
+.carousel{position:relative;width:100%;aspect-ratio:3/4;background:var(--bg-3)}
+.carousel img,.carousel video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none;transition:opacity .3s}
+.carousel img.active,.carousel video.active{opacity:1;pointer-events:auto}
+.carousel-wrapper{display:flex;align-items:center}
+.carousel-btn{width:36px;height:36px;border:none;background:rgba(255,255,255,.9);border-radius:50%;cursor:pointer;font-size:20px;color:var(--navy);display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.1);position:absolute;top:50%;transform:translateY(-50%);z-index:5}
+.carousel-btn:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.carousel-btn.prev{left:8px}
+.carousel-btn.next{right:8px}
+.carousel-dots{display:flex;justify-content:center;gap:6px;padding:8px 0}
+.carousel-dots span{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .2s}
+.carousel-dots span.active{background:var(--blue);width:20px;border-radius:4px}
+.project-detail{padding:32px;display:flex;flex-direction:column;justify-content:center}
+@media(max-width:768px){.project-detail{padding:24px}}
+.project-badge{display:inline-block;font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
+.project-detail h3{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:8px}
+.project-detail p{font-size:13px;color:var(--text-3);line-height:1.7;margin-bottom:16px}
+.feature-list{list-style:none;margin-bottom:16px}
+.feature-list li{font-size:13px;color:var(--text-2);padding:4px 0;padding-left:20px;position:relative;line-height:1.6}
+.feature-list li::before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.demo-tags{display:flex;flex-wrap:wrap;gap:6px}
+.demo-tags span{font-size:11px;font-weight:600;padding:3px 10px;border-radius:5px;background:var(--blue-bg);color:var(--blue)}
 
 /* Process */
 .process-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
@@ -326,136 +297,147 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
       <p class="section-desc">從構想到上線，每個專案都是完整交付的產品</p>
     </div>
 
-    <!-- Featured: 即時監控系統 -->
-    <div class="proj-featured">
-      <div class="proj-featured-img" data-carousel>
-        <img src="images/claw-monitor-office.png" alt="即時監控系統 - 辦公室視圖" class="active">
-        <video src="images/claw-monitor-v1.mp4" muted loop playsinline></video>
-        <video src="images/claw-monitor-v2.mp4" muted loop playsinline></video>
-        <video src="images/claw-monitor-v3.mp4" muted loop playsinline></video>
-        <img src="images/claw-monitor-1.png" alt="即時監控系統 - 監控面板">
-        <img src="images/claw-monitor-2.png" alt="即時監控系統 - 數據分析">
-        <img src="images/claw-monitor-3.png" alt="即時監控系統 - 詳細資訊">
-        <div class="carousel-arrows">
-          <button onclick="slideCarousel(this,-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg></button>
-          <button onclick="slideCarousel(this,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg></button>
+    <!-- Project 1: 即時監控系統 -->
+    <div class="featured-project">
+      <div class="project-preview">
+        <div class="carousel" id="monitorCarousel">
+          <img src="images/claw-monitor-office.png" alt="即時監控系統" class="active">
+          <video src="images/claw-monitor-v1.mp4" muted loop playsinline></video>
+          <video src="images/claw-monitor-v2.mp4" muted loop playsinline></video>
+          <video src="images/claw-monitor-v3.mp4" muted loop playsinline></video>
+          <button class="carousel-btn prev" onclick="goTo(1,carousels[1].current-1)">&#8249;</button>
+          <button class="carousel-btn next" onclick="goTo(1,carousels[1].current+1)">&#8250;</button>
         </div>
-        <div class="carousel-dots"></div>
+        <div class="carousel-dots" id="monitorDots"></div>
       </div>
-      <div class="proj-featured-body">
-        <div class="proj-type">全端即時監控系統</div>
+      <div class="project-detail">
+        <div class="project-badge">Full-Stack System</div>
         <h3>即時監控管理系統</h3>
         <p>前後端分離的即時監控平台，透過排程輪詢 + SSE 串流推送，遠端掌握系統狀態、即時告警、數據視覺化。</p>
-        <ul class="proj-highlights">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Spring Boot 3 後端，RESTful API + SSE（Server-Sent Events）即時串流
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            React + TypeScript + Vite 前端，Canvas 2D 視覺化即時看板
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            排程輪詢偵測狀態變化，增量推送（snapshot + delta）降低頻寬
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            跨 session 生命週期追蹤，異常告警與事件時間軸
-          </li>
+        <ul class="feature-list">
+          <li>Spring Boot 3 + SSE</li>
+          <li>React + Canvas 2D 看板</li>
+          <li>排程偵測 + 增量推送</li>
+          <li>跨 session 生命週期追蹤</li>
         </ul>
-        <div class="proj-tags"><span>Spring Boot 3</span><span>React</span><span>TypeScript</span><span>Vite</span><span>SSE</span><span>Canvas 2D</span></div>
+        <div class="demo-tags"><span>Spring Boot 3</span><span>React</span><span>TypeScript</span><span>Vite</span><span>SSE</span><span>Canvas 2D</span></div>
       </div>
     </div>
 
-    <!-- Featured: 揪旅 -->
-    <div class="proj-featured" style="margin-top:24px" onclick="window.open('https://jiutrip.vercel.app','_blank')">
-      <div class="proj-featured-img" data-carousel>
-        <img src="images/jiutrip-home.png" alt="揪旅 - 首頁" class="active">
-        <img src="images/jiutrip-itinerary.png" alt="揪旅 - 行程規劃">
-        <img src="images/jiutrip-settle.png" alt="揪旅 - 結算">
-        <img src="images/jiutrip-route.png" alt="揪旅 - 路線">
-        <div class="carousel-arrows">
-          <button onclick="slideCarousel(this,-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg></button>
-          <button onclick="slideCarousel(this,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg></button>
+    <!-- Project 2: 揪旅 JiuTrip -->
+    <div class="featured-project" style="direction:rtl">
+      <div class="project-preview" style="direction:ltr">
+        <div class="carousel" id="jiutripCarousel">
+          <img src="images/jiutrip-splash.png" alt="揪旅 JiuTrip" class="active">
+          <img src="images/jiutrip-home.png" alt="揪旅 - 首頁">
+          <img src="images/jiutrip-itinerary.png" alt="揪旅 - 行程">
+          <img src="images/jiutrip-route.png" alt="揪旅 - 路線">
+          <img src="images/jiutrip-settle.png" alt="揪旅 - 結算">
+          <img src="images/jiutrip-todo.png" alt="揪旅 - 待辦">
+          <button class="carousel-btn prev" onclick="goTo(2,carousels[2].current-1)">&#8249;</button>
+          <button class="carousel-btn next" onclick="goTo(2,carousels[2].current+1)">&#8250;</button>
         </div>
-        <div class="carousel-dots"></div>
+        <div class="carousel-dots" id="jiutripDots"></div>
       </div>
-      <div class="proj-featured-body">
-        <div class="proj-type">LINE LIFF App</div>
+      <div class="project-detail" style="direction:ltr">
+        <div class="project-badge">LINE LIFF App</div>
         <h3>揪旅 JiuTrip — 旅行規劃 x 分帳</h3>
         <p>多人旅行協作平台，整合行程規劃、分帳結算、待辦清單、即時討論。</p>
-        <ul class="proj-highlights">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            觸控拖拉排序行程，自製 drag engine + auto-scroll
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Google Maps 路線規劃 + 交通時間計算
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            貪心演算法最少轉帳次數，多幣值結算
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            API 成本優化：Session Token + Photo 遷移，降低 80%+ 費用
-          </li>
+        <ul class="feature-list">
+          <li>觸控拖拉排序 + auto-scroll</li>
+          <li>Google Maps 路線規劃 + 交通時間</li>
+          <li>貪心演算法多幣值結算</li>
+          <li>API 成本優化降低 80%+</li>
         </ul>
-        <div class="proj-tags"><span>Next.js 15</span><span>TypeScript</span><span>Supabase</span><span>LINE LIFF</span><span>Google Maps API</span></div>
+        <div class="demo-tags"><span>Next.js 15</span><span>TypeScript</span><span>Supabase</span><span>LINE LIFF</span><span>Google Maps API</span></div>
+        <a href="https://jiutrip.vercel.app/" target="_blank" style="margin-top:12px;font-size:13px;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:4px">查看專案 &rarr;</a>
       </div>
     </div>
 
-    <!-- Small project grid -->
-    <div class="projects-grid-sm" style="margin-top:24px">
-      <div class="proj-sm">
-        <div class="proj-sm-imgs" data-carousel>
-          <img src="images/food-liff-home.webp" alt="美食收藏家 - 首頁" class="active">
-          <img src="images/food-search.webp" alt="美食收藏家 - 搜尋">
+    <!-- Project 3: 美食收藏家 -->
+    <div class="featured-project">
+      <div class="project-preview">
+        <div class="carousel" id="foodCarousel">
+          <img src="images/food-liff-home.webp" alt="美食收藏家" class="active">
           <img src="images/food-collection.webp" alt="美食收藏家 - 收藏">
-          <div class="carousel-arrows"><button onclick="slideCarousel(this,-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg></button><button onclick="slideCarousel(this,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg></button></div>
-          <div class="carousel-dots"></div>
+          <img src="images/food-search.webp" alt="美食收藏家 - 搜尋">
+          <img src="images/food-ig-ingest.webp" alt="美食收藏家 - IG 匯入">
+          <button class="carousel-btn prev" onclick="goTo(3,carousels[3].current-1)">&#8249;</button>
+          <button class="carousel-btn next" onclick="goTo(3,carousels[3].current+1)">&#8250;</button>
         </div>
-        <div class="proj-sm-body">
-          <div class="proj-type">LINE Bot + SaaS</div>
-          <h3>美食收藏家</h3>
-          <p>AI 美食助理，貼 IG / Google Maps 連結自動收藏，自然語言搜尋推薦，綠界金流訂閱制。</p>
-          <div class="proj-tags"><span>Next.js</span><span>LINE Bot</span><span>OpenAI</span><span>ECPay</span></div>
-        </div>
+        <div class="carousel-dots" id="foodDots"></div>
       </div>
-      <div class="proj-sm">
-        <div class="proj-sm-imgs" data-carousel>
-          <img src="images/n8n-contact-scan.png" alt="AI 業務助理 - 名片辨識" class="active">
-          <img src="images/n8n-schedule.png" alt="AI 業務助理 - 行程查詢">
-          <img src="images/n8n-meeting.png" alt="AI 業務助理 - 會議記錄">
-          <img src="images/n8n-calendar.png" alt="AI 業務助理 - 行事曆">
-          <div class="carousel-arrows"><button onclick="slideCarousel(this,-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg></button><button onclick="slideCarousel(this,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg></button></div>
-          <div class="carousel-dots"></div>
-        </div>
-        <div class="proj-sm-body">
-          <div class="proj-type">AI + LINE Bot</div>
-          <h3>AI 業務助理</h3>
-          <p>N8N 79 節點自動化 LINE Bot：名片拍照辨識、自然語言查行程、會議記錄摘要、RAG 向量搜尋。</p>
-          <div class="proj-tags"><span>N8N</span><span>Google Gemini</span><span>LINE Bot</span><span>Supabase</span></div>
-        </div>
-      </div>
-      <div class="proj-sm">
-        <div class="proj-sm-imgs" data-carousel>
-          <img src="images/together-map.jpg" alt="Together - 地圖" class="active">
-          <img src="images/together-detail.jpg" alt="Together - 活動詳情">
-          <img src="images/together-create.jpg" alt="Together - 建立活動">
-          <div class="carousel-arrows"><button onclick="slideCarousel(this,-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg></button><button onclick="slideCarousel(this,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg></button></div>
-          <div class="carousel-dots"></div>
-        </div>
-        <div class="proj-sm-body">
-          <div class="proj-type">社交平台</div>
-          <h3>Together 揪團活動</h3>
-          <p>地圖式活動媒合平台，FastAPI + Flutter，Google Maps 整合、即時聊天、活動報名。</p>
-          <div class="proj-tags"><span>FastAPI</span><span>Flutter</span><span>PostgreSQL</span><span>Google Maps</span></div>
-        </div>
+      <div class="project-detail">
+        <div class="project-badge">LINE Bot + SaaS</div>
+        <h3>美食收藏家 — Food Map AI</h3>
+        <p>LINE AI 美食助理，貼上 IG / Google Maps 連結自動收藏餐廳，自然語言搜尋推薦，綠界金流 NT$39/月訂閱制。</p>
+        <ul class="feature-list">
+          <li>AI 解析連結自動擷取餐廳資訊</li>
+          <li>RAG 向量搜尋自然語言推薦</li>
+          <li>綠界金流訂閱制 + 推薦碼</li>
+          <li>Supabase 向量資料庫</li>
+        </ul>
+        <div class="demo-tags"><span>Next.js</span><span>LINE Bot</span><span>OpenAI</span><span>ECPay</span><span>Supabase</span><span>N8N</span></div>
       </div>
     </div>
+
+    <!-- Project 4: AI 業務助理 -->
+    <div class="featured-project" style="direction:rtl">
+      <div class="project-preview" style="direction:ltr">
+        <div class="carousel" id="n8nCarousel">
+          <img src="images/n8n-contact-scan.png" alt="AI 業務助理" class="active">
+          <img src="images/n8n-contact-info.png" alt="AI 業務助理 - 聯絡人">
+          <img src="images/n8n-schedule.png" alt="AI 業務助理 - 行程">
+          <img src="images/n8n-meeting.png" alt="AI 業務助理 - 會議">
+          <img src="images/n8n-calendar.png" alt="AI 業務助理 - 行事曆">
+          <img src="images/n8n-notes.png" alt="AI 業務助理 - 筆記">
+          <button class="carousel-btn prev" onclick="goTo(4,carousels[4].current-1)">&#8249;</button>
+          <button class="carousel-btn next" onclick="goTo(4,carousels[4].current+1)">&#8250;</button>
+        </div>
+        <div class="carousel-dots" id="n8nDots"></div>
+      </div>
+      <div class="project-detail" style="direction:ltr">
+        <div class="project-badge">AI Automation</div>
+        <h3>AI 業務助理 — N8N 自動化</h3>
+        <p>79 節點 N8N 自動化 LINE Bot，名片拍照辨識、自然語言查行程、會議記錄摘要、RAG 向量搜尋聯絡人與會議。</p>
+        <ul class="feature-list">
+          <li>名片拍照 → AI 辨識 → 存通訊錄</li>
+          <li>自然語言查詢行程 + Google Calendar 同步</li>
+          <li>會議記錄自動摘要</li>
+          <li>RAG 向量搜尋聯絡人與會議</li>
+        </ul>
+        <div class="demo-tags"><span>N8N</span><span>Google Gemini</span><span>LINE Bot</span><span>Supabase</span><span>Google Calendar</span></div>
+      </div>
+    </div>
+
+    <!-- Project 5: Together -->
+    <div class="featured-project">
+      <div class="project-preview">
+        <div class="carousel" id="togetherCarousel">
+          <img src="images/together-map.jpg" alt="Together" class="active">
+          <img src="images/together-create.jpg" alt="Together - 建立活動">
+          <img src="images/together-detail.jpg" alt="Together - 活動詳情">
+          <img src="images/together-activities.jpg" alt="Together - 活動列表">
+          <img src="images/together-splash.jpg" alt="Together - 啟動畫面">
+          <button class="carousel-btn prev" onclick="goTo(5,carousels[5].current-1)">&#8249;</button>
+          <button class="carousel-btn next" onclick="goTo(5,carousels[5].current+1)">&#8250;</button>
+        </div>
+        <div class="carousel-dots" id="togetherDots"></div>
+      </div>
+      <div class="project-detail">
+        <div class="project-badge">Social Platform</div>
+        <h3>Together — 地圖社交活動平台</h3>
+        <p>地圖式活動媒合平台，把你想做的事釘在地圖上等人一起來。FastAPI 後端 + Flutter 跨平台前端。</p>
+        <ul class="feature-list">
+          <li>Google Maps 即時地圖 + 膠囊標記</li>
+          <li>活動建立/報名/分類篩選</li>
+          <li>Google OAuth + JWT 認證</li>
+          <li>滑動面板查看詳情</li>
+        </ul>
+        <div class="demo-tags"><span>FastAPI</span><span>Flutter</span><span>PostgreSQL</span><span>Google Maps</span><span>Google Auth</span></div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -511,45 +493,40 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
 
 <script>
 // Carousel
-function initCarousels(){
-  document.querySelectorAll('[data-carousel]').forEach(c=>{
-    const items=c.querySelectorAll(':scope > img, :scope > video');
-    const dots=c.querySelector('.carousel-dots');
-    if(!dots||items.length<2)return;
-    dots.innerHTML='';
-    items.forEach((_,i)=>{
-      const d=document.createElement('span');
-      if(i===0)d.classList.add('active');
-      d.onclick=(e)=>{e.stopPropagation();goToSlide(c,i)};
-      dots.appendChild(d);
-    });
+const carousels={};
+function initCarousel(id,carouselId,dotsId){
+  const el=document.getElementById(carouselId);
+  const items=el.querySelectorAll('img, video');
+  const dots=document.getElementById(dotsId);
+  const state={items,dots,current:0};
+  carousels[id]=state;
+  dots.innerHTML='';
+  items.forEach((_,i)=>{
+    const d=document.createElement('span');
+    if(i===0)d.classList.add('active');
+    d.onclick=()=>goTo(id,i);
+    dots.appendChild(d);
   });
 }
-function goToSlide(container,idx){
-  const items=container.querySelectorAll(':scope > img, :scope > video');
-  const dots=container.querySelectorAll('.carousel-dots span');
-  items.forEach((item,i)=>{
-    const isActive=i===idx;
-    item.classList.toggle('active',isActive);
+function goTo(id,idx){
+  const s=carousels[id];
+  if(!s)return;
+  const n=s.items.length;
+  idx=((idx%n)+n)%n;
+  s.current=idx;
+  s.items.forEach((item,i)=>{
+    item.classList.toggle('active',i===idx);
     if(item.tagName==='VIDEO'){
-      if(isActive){item.currentTime=0;item.play();}
-      else{item.pause();}
+      if(i===idx){item.currentTime=0;item.play();}else item.pause();
     }
   });
-  dots.forEach((d,i)=>{d.classList.toggle('active',i===idx)});
+  s.dots.querySelectorAll('span').forEach((d,i)=>d.classList.toggle('active',i===idx));
 }
-function slideCarousel(btn,dir){
-  if(window.event)window.event.stopPropagation();
-  const container=btn.closest('[data-carousel]');
-  const items=container.querySelectorAll(':scope > img, :scope > video');
-  let current=0;
-  items.forEach((item,i)=>{if(item.classList.contains('active'))current=i});
-  let next=current+dir;
-  if(next<0)next=items.length-1;
-  if(next>=items.length)next=0;
-  goToSlide(container,next);
-}
-initCarousels();
+initCarousel(1,'monitorCarousel','monitorDots');
+initCarousel(2,'jiutripCarousel','jiutripDots');
+initCarousel(3,'foodCarousel','foodDots');
+initCarousel(4,'n8nCarousel','n8nDots');
+initCarousel(5,'togetherCarousel','togetherDots');
 
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
@@ -561,7 +538,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}});
 },{threshold:.1});
-document.querySelectorAll('.svc,.proj,.step,.skill-col,.hero-card').forEach(el=>{
+document.querySelectorAll('.svc,.featured-project,.step,.skill-col').forEach(el=>{
   el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .5s ease,transform .5s ease';obs.observe(el);
 });
 </script>
