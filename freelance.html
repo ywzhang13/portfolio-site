@@ -138,10 +138,10 @@ section{padding:80px 0}
 .proj-sm-imgs img.active{opacity:1;position:relative}
 
 /* Carousel arrows */
-.carousel-arrows{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 8px;pointer-events:none;z-index:2}
-.carousel-arrows button{pointer-events:auto;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.85);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.1)}
-.carousel-arrows button:hover{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.15)}
-.carousel-arrows button svg{width:14px;height:14px;color:var(--navy)}
+.carousel-arrows{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 10px;pointer-events:none;z-index:10}
+.carousel-arrows button{pointer-events:auto;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.carousel-arrows button:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.2);transform:scale(1.1)}
+.carousel-arrows button svg{width:16px;height:16px;color:var(--navy)}
 .carousel-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:2}
 .carousel-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4);transition:all .2s}
 .carousel-dots span.active{background:#fff;width:16px;border-radius:3px}
@@ -529,7 +529,7 @@ function goToSlide(container,idx){
   dots.forEach((d,i)=>{d.classList.toggle('active',i===idx)});
 }
 function slideCarousel(btn,dir){
-  event.stopPropagation();
+  if(window.event)window.event.stopPropagation();
   const container=btn.closest('[data-carousel]');
   const imgs=container.querySelectorAll(':scope > img');
   let current=0;
