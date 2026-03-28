@@ -325,34 +325,34 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
       <p class="section-desc">從構想到上線，每個專案都是完整交付的產品</p>
     </div>
 
-    <!-- Featured: IoT 監控系統 -->
+    <!-- Featured: 即時監控系統 -->
     <div class="proj-featured">
       <div class="proj-featured-img">
         <img src="images/claw-monitor-office.png" alt="即時監控系統" loading="lazy">
       </div>
       <div class="proj-featured-body">
-        <div class="proj-type">IoT + 跨平台 App</div>
+        <div class="proj-type">全端即時監控系統</div>
         <h3>即時監控管理系統</h3>
-        <p>從硬體串接到跨平台 App，完整的 IoT 即時監控解決方案。遠端掌握設備狀態、數據分析、告警通知。</p>
+        <p>前後端分離的即時監控平台，透過排程輪詢 + SSE 串流推送，遠端掌握系統狀態、即時告警、數據視覺化。</p>
         <ul class="proj-highlights">
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Spring Boot 微服務架構後端，RESTful API + WebSocket 即時通訊
+            Spring Boot 3 後端，RESTful API + SSE（Server-Sent Events）即時串流
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Flutter 跨平台 App（iOS + Android），即時數據看板 Dashboard
+            React + TypeScript + Vite 前端，Canvas 2D 視覺化即時看板
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            硬體 API 串接，即時推送設備狀態、異常告警與歷史報表
+            排程輪詢偵測狀態變化，增量推送（snapshot + delta）降低頻寬
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Docker 容器化部署，支援多據點遠端管理
+            跨 session 生命週期追蹤，異常告警與事件時間軸
           </li>
         </ul>
-        <div class="proj-tags"><span>Spring Boot</span><span>Flutter</span><span>WebSocket</span><span>Docker</span><span>IoT</span><span>RESTful API</span></div>
+        <div class="proj-tags"><span>Spring Boot 3</span><span>React</span><span>TypeScript</span><span>Vite</span><span>SSE</span><span>Canvas 2D</span></div>
       </div>
     </div>
 
