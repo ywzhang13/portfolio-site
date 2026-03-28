@@ -1,1682 +1,479 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>張育瑋 | 後端工程師</title>
-  <meta name="description" content="張育瑋 — 4+ 年全端開發經驗，專注 Spring Boot 微服務架構與 API 設計。作品集涵蓋旅行分帳 App、AI 自動化、LINE Bot、Flutter 跨平台開發。">
-  <meta property="og:title" content="張育瑋 | 後端工程師">
-  <meta property="og:description" content="4+ 年全端開發經驗，專注 Spring Boot 微服務架構與 API 設計">
-  <meta property="og:image" content="images/profile.jpg">
-  <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --cream: #faf6f0;
-      --latte: #f0e6d6;
-      --caramel: #c9a96e;
-      --mocha: #8b6f47;
-      --espresso: #3d2e1f;
-      --dark: #2a2017;
-      --milk: #fff9f2;
-      --shadow: rgba(61, 46, 31, 0.08);
-      --shadow-lg: rgba(61, 46, 31, 0.12);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', 'Noto Sans TC', sans-serif;
-      background: var(--cream);
-      color: var(--espresso);
-      line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      padding: 16px 40px;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-
-    nav.scrolled {
-      background: rgba(250, 246, 240, 0.92);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 1px 0 var(--latte);
-    }
-
-    nav .inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    nav .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--espresso);
-      text-decoration: none;
-      letter-spacing: -0.5px;
-    }
-
-    nav .links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    nav .links a {
-      color: var(--mocha);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.3px;
-      position: relative;
-      transition: color 0.2s;
-    }
-
-    nav .links a::after {
-      content: "";
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--caramel);
-      transition: width 0.3s;
-    }
-
-    nav .links a:hover { color: var(--espresso); }
-    nav .links a:hover::after { width: 100%; }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 0 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      width: 100%;
-    }
-
-    .hero-text .label {
-      display: inline-block;
-      background: var(--latte);
-      color: var(--mocha);
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 24px;
-      letter-spacing: 0.5px;
-    }
-
-    .hero-text h1 {
-      font-family: 'Noto Sans TC', sans-serif;
-      font-size: 52px;
-      font-weight: 900;
-      line-height: 1.2;
-      margin-bottom: 20px;
-      color: var(--dark);
-    }
-
-    .hero-text h1 em {
-      font-style: normal;
-      color: var(--caramel);
-    }
-
-    .hero-text .tagline {
-      font-size: 17px;
-      color: var(--mocha);
-      margin-bottom: 36px;
-      max-width: 440px;
-    }
-
-    .hero-buttons { display: flex; gap: 14px; }
-
-    .btn {
-      padding: 13px 28px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.25s;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary {
-      background: var(--espresso);
-      color: var(--cream);
-    }
-
-    .btn-primary:hover {
-      background: var(--dark);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px var(--shadow-lg);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--espresso);
-      border: 1.5px solid var(--mocha);
-    }
-
-    .btn-outline:hover {
-      background: var(--espresso);
-      color: var(--cream);
-      border-color: var(--espresso);
-    }
-
-    .hero-visual {
-      display: flex;
-      justify-content: center;
-    }
-
-    .hero-card {
-      background: var(--milk);
-      border-radius: 24px;
-      padding: 48px;
-      box-shadow: 0 24px 48px var(--shadow), 0 0 0 1px rgba(201, 169, 110, 0.1);
-      max-width: 380px;
-      width: 100%;
-    }
-
-    .hero-card .avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
-      overflow: hidden;
-      margin-bottom: 24px;
-    }
-
-    .hero-card .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-card h3 {
-      font-size: 20px;
-      margin-bottom: 4px;
-    }
-
-    .hero-card .role {
-      color: var(--caramel);
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-
-    .hero-card .stat-row {
-      display: flex;
-      gap: 24px;
-    }
-
-    .hero-card .stat {
-      text-align: center;
-    }
-
-    .hero-card .stat .num {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--espresso);
-      line-height: 1.2;
-    }
-
-    .hero-card .stat .desc {
-      font-size: 12px;
-      color: var(--mocha);
-    }
-
-    /* ── SECTIONS ── */
-    section {
-      padding: 100px 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      margin-bottom: 56px;
-    }
-
-    .section-header h2 {
-      font-family: 'Noto Sans TC', sans-serif;
-      font-size: 36px;
-      font-weight: 900;
-      margin-bottom: 8px;
-    }
-
-    .section-header p {
-      color: var(--mocha);
-      font-size: 15px;
-    }
-
-    /* ── ABOUT ── */
-    .about-content {
-      display: grid;
-      grid-template-columns: 2fr 3fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--espresso);
-      font-size: 15px;
-      margin-bottom: 16px;
-      opacity: 0.85;
-    }
-
-    .about-info {
-      background: var(--milk);
-      border-radius: 20px;
-      padding: 36px;
-      box-shadow: 0 8px 32px var(--shadow);
-    }
-
-    .about-info .info-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--latte);
-      font-size: 14px;
-    }
-
-    .about-info .info-item:last-child { border: none; }
-    .about-info .info-label { color: var(--mocha); }
-    .about-info .info-value { font-weight: 600; }
-
-    /* ── SKILLS ── */
-    .skills-section {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .skill-card {
-      background: var(--milk);
-      border-radius: 16px;
-      padding: 28px;
-      border: 1px solid var(--latte);
-      transition: all 0.3s;
-      box-shadow: 0 4px 16px var(--shadow);
-    }
-
-    .skill-card:hover {
-      border-color: var(--caramel);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px var(--shadow);
-      cursor: default;
-    }
-
-    .skill-card h3 {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: var(--mocha);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-
-    .skill-tag {
-      background: var(--latte);
-      color: var(--espresso);
-      padding: 5px 14px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    /* ── EXPERIENCE ── */
-    .exp-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-    }
-
-    .exp-card {
-      background: var(--milk);
-      border-radius: 20px;
-      padding: 36px;
-      box-shadow: 0 8px 32px var(--shadow);
-      transition: transform 0.3s;
-    }
-
-    .exp-card:hover { transform: translateY(-4px); }
-
-    .exp-card .badge {
-      display: inline-block;
-      background: var(--caramel);
-      color: #fff;
-      padding: 4px 12px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .exp-card .badge.past {
-      background: var(--latte);
-      color: var(--mocha);
-    }
-
-    .exp-card .date {
-      font-size: 13px;
-      color: var(--mocha);
-      margin-bottom: 4px;
-    }
-
-    .exp-card h3 {
-      font-size: 20px;
-      margin-bottom: 2px;
-    }
-
-    .exp-card .company {
-      color: var(--caramel);
-      font-weight: 600;
-      font-size: 15px;
-      margin-bottom: 20px;
-    }
-
-    .exp-card details {
-      margin-bottom: 10px;
-    }
-
-    .exp-card summary {
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 14px;
-      padding: 10px 0;
-      color: var(--espresso);
-      border-bottom: 1px solid var(--latte);
-      transition: color 0.2s;
-    }
-
-    .exp-card summary:hover { color: var(--caramel); }
-
-    .exp-card .detail-body {
-      padding: 12px 0;
-      font-size: 13px;
-      color: var(--mocha);
-    }
-
-    .exp-card .detail-body ul { padding-left: 20px; }
-    .exp-card .detail-body li { margin-bottom: 4px; }
-
-    /* ── DEMOS ── */
-    .featured-project {
-      background: var(--milk);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 12px 40px var(--shadow);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      margin-bottom: 32px;
-    }
-
-    .carousel-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 0;
-    }
-
-    .carousel-wrapper .carousel-btn {
-      position: static;
-      transform: none;
-      flex-shrink: 0;
-    }
-
-    .featured-project .project-preview {
-      padding: 0;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .carousel {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      background: var(--cream);
-    }
-
-    .carousel img, .carousel video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      opacity: 0;
-      pointer-events: none;
-      border-radius: 16px;
-    }
-
-    .carousel img.active, .carousel video.active {
-      opacity: 1;
-      pointer-events: auto;
-      cursor: pointer;
-    }
-
-    .carousel-btn {
-      width: 36px;
-      height: 36px;
-      border: 1px solid var(--latte);
-      background: var(--cream);
-      color: var(--mocha);
-      font-size: 18px;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .carousel-btn:hover {
-      background: var(--espresso);
-      color: var(--cream);
-      border-color: var(--espresso);
-    }
-
-    .carousel-dots {
-      position: absolute;
-      bottom: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
-    }
-
-    .carousel-dots .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.15);
-      transition: background 0.3s;
-    }
-
-    .carousel-dots .dot.active {
-      background: var(--mocha);
-    }
-
-    .featured-project .project-detail {
-      padding: 48px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .featured-project .project-badge {
-      display: inline-block;
-      background: var(--caramel);
-      color: #fff;
-      padding: 4px 14px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 16px;
-      width: fit-content;
-    }
-
-    .featured-project .project-detail h3 {
-      font-size: 24px;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
-
-    .featured-project .project-detail p {
-      font-size: 14px;
-      color: var(--mocha);
-      margin-bottom: 20px;
-      line-height: 1.8;
-    }
-
-    .feature-list {
-      list-style: none;
-      margin-bottom: 24px;
-    }
-
-    .feature-list li {
-      font-size: 13px;
-      color: var(--espresso);
-      padding: 6px 0;
-      padding-left: 20px;
-      position: relative;
-    }
-
-    .feature-list li::before {
-      content: "\2713";
-      position: absolute;
-      left: 0;
-      color: var(--caramel);
-      font-weight: 700;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .project-link {
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.25s;
-    }
-
-    .project-link.primary {
-      background: var(--espresso);
-      color: var(--cream);
-    }
-
-    .project-link.primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px var(--shadow-lg);
-    }
-
-    .project-link.outline {
-      border: 1.5px solid var(--mocha);
-      color: var(--espresso);
-      background: transparent;
-    }
-
-    .project-link.outline:hover {
-      background: var(--espresso);
-      color: var(--cream);
-      border-color: var(--espresso);
-    }
-
-    .demo-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .demo-card {
-      background: var(--milk);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 32px var(--shadow);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .demo-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 48px var(--shadow-lg);
-    }
-
-    .demo-preview {
-      height: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 56px;
-      background: linear-gradient(135deg, var(--latte), var(--cream));
-    }
-
-    .demo-info { padding: 28px; }
-
-    .demo-info h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .demo-info p {
-      font-size: 14px;
-      color: var(--mocha);
-      margin-bottom: 16px;
-    }
-
-    .demo-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-
-    .demo-tag {
-      background: var(--latte);
-      color: var(--mocha);
-      padding: 4px 12px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    /* ── CONTACT ── */
-    .contact-bar {
-      background: var(--milk);
-      border-radius: 24px;
-      padding: 48px 64px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 8px 32px var(--shadow);
-    }
-
-    .contact-bar h3 {
-      font-size: 24px;
-      margin-bottom: 4px;
-    }
-
-    .contact-bar p {
-      color: var(--mocha);
-      font-size: 14px;
-    }
-
-    .contact-links { display: flex; gap: 16px; }
-
-    .contact-link {
-      background: var(--cream);
-      border: 1px solid var(--latte);
-      border-radius: 12px;
-      padding: 16px 24px;
-      text-decoration: none;
-      color: var(--espresso);
-      font-size: 14px;
-      font-weight: 500;
-      transition: all 0.25s;
-      text-align: center;
-    }
-
-    .contact-link:hover {
-      border-color: var(--caramel);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px var(--shadow);
-    }
-
-    .contact-link .icon { font-size: 24px; margin-bottom: 8px; }
-    .contact-link .text { display: block; font-size: 13px; color: var(--mocha); }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: var(--mocha);
-      font-size: 13px;
-    }
-
-    /* ── LIGHTBOX ── */
-    .lightbox {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      z-index: 999;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-
-    .lightbox.open {
-      display: flex;
-    }
-
-    .lightbox img,
-    .lightbox video {
-      max-width: 90vw;
-      max-height: 90vh;
-      border-radius: 12px;
-      object-fit: contain;
-    }
-
-    .lightbox .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 28px;
-      color: #fff;
-      font-size: 32px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-      z-index: 10;
-    }
-
-    .lightbox .close-btn:hover { opacity: 1; }
-
-    .lightbox .lb-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 48px;
-      height: 48px;
-      border: none;
-      background: rgba(255,255,255,0.15);
-      color: #fff;
-      font-size: 24px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-      z-index: 10;
-    }
-
-    .lightbox .lb-nav:hover { background: rgba(255,255,255,0.3); }
-    .lightbox .lb-nav.lb-prev { left: 24px; }
-    .lightbox .lb-nav.lb-next { right: 24px; }
-
-    /* carousel video */
-    .carousel video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      pointer-events: none;
-      cursor: pointer;
-    }
-
-    /* ── SCROLL ANIMATIONS ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-36px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .reveal-left.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(36px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .reveal-right.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .reveal-scale {
-      opacity: 0;
-      transform: scale(0.95);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal-scale.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .stagger > *:nth-child(1) { transition-delay: 0s; }
-    .stagger > *:nth-child(2) { transition-delay: 0.08s; }
-    .stagger > *:nth-child(3) { transition-delay: 0.16s; }
-    .stagger > *:nth-child(4) { transition-delay: 0.24s; }
-    .stagger > *:nth-child(5) { transition-delay: 0.32s; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1024px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
-      .hero-text .tagline { margin-left: auto; margin-right: auto; }
-      .hero-buttons { justify-content: center; }
-      .hero-text { order: 1; }
-      .hero-card { max-width: 320px; padding: 36px; }
-      .about-content { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
-      .exp-grid { grid-template-columns: 1fr; }
-      .contact-bar { flex-direction: column; text-align: center; gap: 28px; padding: 36px; }
-    }
-
-    @media (max-width: 768px) {
-      nav { padding: 12px 20px; }
-      nav .links { gap: 20px; }
-      nav .links a { font-size: 13px; }
-      section { padding: 64px 20px; }
-      .hero { padding: 0 20px; }
-      .hero-text h1 { font-size: 36px; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .featured-project { grid-template-columns: 1fr; direction: ltr !important; }
-      .demo-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 480px) {
-      nav .links { display: none; }
-      nav .menu-btn { display: flex; }
-      .contact-links { flex-direction: column; width: 100%; }
-      .contact-link { width: 100%; }
-    }
-
-    /* ── MOBILE MENU ── */
-    nav .menu-btn {
-      display: none;
-      width: 40px;
-      height: 40px;
-      align-items: center;
-      justify-content: center;
-      background: none;
-      border: none;
-      cursor: pointer;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    nav .menu-btn span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--espresso);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
-    nav .menu-btn.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    nav .menu-btn.open span:nth-child(2) { opacity: 0; }
-    nav .menu-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(250, 246, 240, 0.98);
-      backdrop-filter: blur(20px);
-      z-index: 99;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 32px;
-    }
-
-    .mobile-menu.open { display: flex; }
-
-    .mobile-menu a {
-      font-family: 'Noto Sans TC', sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--espresso);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .mobile-menu a:hover { color: var(--caramel); }
-
-    /* ── FOCUS STATES ── */
-    a:focus-visible,
-    button:focus-visible,
-    .btn:focus-visible {
-      outline: 2px solid var(--caramel);
-      outline-offset: 3px;
-      border-radius: 4px;
-    }
-
-    /* ── REDUCED MOTION ── */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-      .reveal, .reveal-right, .reveal-scale {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>張育瑋 | 軟體開發服務</title>
+<meta name="description" content="全端工程師，承接 Web App、LINE Bot、AI 自動化開發。從需求到上線，一條龍服務。">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0F172A;--navy-2:#1E293B;--slate:#475569;--slate-light:#94A3B8;
+  --blue:#2563EB;--blue-light:#3B82F6;--blue-bg:#EFF6FF;
+  --bg:#FFFFFF;--bg-2:#F8FAFC;--bg-3:#F1F5F9;
+  --border:#E2E8F0;
+  --text:#020617;--text-2:#334155;--text-3:#64748B;
+}
+body{font-family:'Poppins','Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 40px}
+@media(max-width:768px){.container{padding:0 24px}}
+
+/* Nav */
+nav{position:fixed;top:0;width:100%;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0}
+nav .inner{max-width:1100px;margin:0 auto;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between}
+@media(max-width:768px){nav .inner{padding:0 24px}}
+nav .logo{font-weight:800;font-size:20px;color:var(--navy);letter-spacing:-.5px}
+nav .logo span{color:var(--blue)}
+nav .links{display:flex;gap:32px;list-style:none}
+nav .links a{color:var(--text-3);font-size:14px;font-weight:500;transition:color .2s;padding:4px 0;border-bottom:2px solid transparent}
+nav .links a:hover{color:var(--text);border-bottom-color:var(--blue)}
+nav .contact-btn{background:var(--navy);color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;font-weight:600;transition:all .2s;letter-spacing:.3px}
+nav .contact-btn:hover{background:var(--navy-2);box-shadow:0 4px 12px rgba(15,23,42,.15)}
+@media(max-width:768px){nav .links{display:none}}
+
+/* Hero */
+.hero{padding:140px 0 60px;position:relative}
+.hero-inner{text-align:center;max-width:720px;margin:0 auto}
+.hero .overline{font-size:13px;font-weight:600;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+.hero h1{font-size:52px;font-weight:800;line-height:1.15;color:var(--navy);margin-bottom:20px;letter-spacing:-1.5px}
+@media(max-width:640px){.hero h1{font-size:32px}}
+.hero h1 .highlight{position:relative;display:inline}
+.hero h1 .highlight::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:14px;background:rgba(37,99,235,.12);z-index:-1;border-radius:2px}
+.hero p{font-size:18px;color:var(--text-2);line-height:1.8;margin-bottom:36px;max-width:560px;margin-left:auto;margin-right:auto}
+@media(max-width:640px){.hero p{font-size:15px}}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-fill{background:var(--blue);color:#fff;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:600;transition:all .2s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:inherit}
+.btn-fill:hover{background:var(--blue-light);box-shadow:0 8px 24px rgba(37,99,235,.2);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--navy);padding:14px 32px;border-radius:8px;font-size:15px;font-weight:600;border:1.5px solid var(--border);transition:all .2s;display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-family:inherit}
+.btn-outline:hover{border-color:var(--slate-light);background:var(--bg-2)}
+.hero-stats{display:flex;gap:0;justify-content:center;margin-top:48px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px;overflow:hidden;max-width:520px;margin-left:auto;margin-right:auto}
+.hero-stat{flex:1;padding:24px 20px;text-align:center;border-right:1px solid var(--border)}
+.hero-stat:last-child{border-right:none}
+.hero-stat .num{font-size:28px;font-weight:800;color:var(--blue)}
+.hero-stat .label{font-size:12px;color:var(--text-3);font-weight:500;margin-top:2px}
+
+/* Logos/Trust */
+.trust-bar{padding:40px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-2)}
+.trust-bar .inner{text-align:center}
+.trust-bar p{font-size:12px;color:var(--slate-light);text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:20px}
+.trust-logos{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;align-items:center;opacity:.5}
+.trust-logos span{font-size:15px;font-weight:700;color:var(--slate)}
+
+/* Section */
+section{padding:80px 0}
+.section-header{margin-bottom:48px}
+.section-header.center{text-align:center}
+.section-overline{font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.section-title{font-size:32px;font-weight:800;color:var(--navy);letter-spacing:-.5px;margin-bottom:8px}
+@media(max-width:768px){.section-title{font-size:24px}}
+.section-desc{font-size:15px;color:var(--text-3);max-width:500px}
+.section-header.center .section-desc{margin:0 auto}
+
+/* Services */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:768px){.services-grid{grid-template-columns:1fr}}
+.svc{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:32px 28px;transition:all .25s;cursor:default}
+.svc:hover{border-color:var(--blue);box-shadow:0 8px 32px rgba(37,99,235,.06);transform:translateY(-2px)}
+.svc-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.svc-icon svg{width:24px;height:24px}
+.svc-icon.blue{background:var(--blue-bg);color:var(--blue)}
+.svc-icon.green{background:#F0FDF4;color:#16A34A}
+.svc-icon.purple{background:#FAF5FF;color:#9333EA}
+.svc h3{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--navy)}
+.svc p{font-size:14px;color:var(--text-3);line-height:1.7;margin-bottom:16px}
+.svc-stack{display:flex;flex-wrap:wrap;gap:6px}
+.svc-stack span{font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;background:var(--bg-3);color:var(--text-3)}
+
+/* Skills */
+.skills-section{background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+@media(max-width:768px){.skills-grid{grid-template-columns:repeat(2,1fr);gap:24px}}
+.skill-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--blue);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--blue-bg)}
+.skill-col ul{list-style:none}
+.skill-col li{font-size:14px;color:var(--text-2);padding:7px 0;font-weight:500}
+
+/* Projects */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+@media(max-width:768px){.projects-grid{grid-template-columns:1fr}}
+.proj{background:var(--bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .25s;cursor:pointer}
+.proj:hover{border-color:var(--blue);box-shadow:0 12px 40px rgba(37,99,235,.08);transform:translateY(-3px)}
+.proj-img{height:200px;overflow:hidden;background:var(--bg-3)}
+.proj-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.proj:hover .proj-img img{transform:scale(1.04)}
+.proj-body{padding:24px}
+.proj-type{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+.proj-body h3{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.proj-body p{font-size:13px;color:var(--text-3);line-height:1.7;margin-bottom:12px}
+.proj-highlights-sm{list-style:none;margin-bottom:14px}
+.proj-highlights-sm li{font-size:12px;color:var(--text-2);padding:3px 0;padding-left:16px;position:relative;line-height:1.6}
+.proj-highlights-sm li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--blue)}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px}
+.proj-tags span{font-size:11px;font-weight:600;padding:3px 10px;border-radius:5px;background:var(--blue-bg);color:var(--blue)}
+
+/* Featured project */
+.proj-featured{display:grid;grid-template-columns:1fr 1.2fr;gap:32px;background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .25s;cursor:pointer}
+.proj-featured:hover{border-color:var(--blue);box-shadow:0 12px 40px rgba(37,99,235,.08)}
+@media(max-width:768px){.proj-featured{grid-template-columns:1fr}}
+.proj-featured-img{overflow:hidden;min-height:280px;background:var(--bg-3)}
+.proj-featured-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.proj-featured:hover .proj-featured-img img{transform:scale(1.04)}
+.proj-featured-body{padding:32px 32px 32px 0;display:flex;flex-direction:column;justify-content:center}
+@media(max-width:768px){.proj-featured-body{padding:24px}}
+.proj-featured-body .proj-type{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
+.proj-featured-body h3{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:8px}
+.proj-featured-body > p{font-size:14px;color:var(--text-3);margin-bottom:16px}
+.proj-highlights{list-style:none;margin-bottom:20px}
+.proj-highlights li{font-size:13px;color:var(--text-2);padding:5px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.proj-highlights li svg{width:16px;height:16px;color:var(--blue);flex-shrink:0;margin-top:2px}
+
+/* Small project grid */
+.projects-grid-sm{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:768px){.projects-grid-sm{grid-template-columns:1fr}}
+.proj-sm{background:var(--bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .25s;cursor:default}
+.proj-sm:hover{border-color:var(--blue);box-shadow:0 8px 24px rgba(37,99,235,.06);transform:translateY(-2px)}
+.proj-sm img{width:100%;height:140px;object-fit:cover}
+.proj-sm-body{padding:16px 18px}
+.proj-sm-body .proj-type{margin-bottom:4px}
+.proj-sm-body h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.proj-sm-body p{font-size:12px;color:var(--text-3);line-height:1.6;margin-bottom:12px}
+
+/* Process */
+.process-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+@media(max-width:768px){.process-row{grid-template-columns:repeat(2,1fr)}}
+.step{text-align:center;padding:24px 16px;position:relative}
+.step-circle{width:56px;height:56px;border-radius:50%;background:var(--blue-bg);color:var(--blue);font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.step h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.step p{font-size:12px;color:var(--text-3);line-height:1.6}
+
+/* CTA */
+.cta-section{background:var(--navy);color:#fff;border-radius:20px;padding:64px 48px;text-align:center;margin:0 40px 80px}
+@media(max-width:768px){.cta-section{margin:0 24px 60px;padding:48px 28px;border-radius:16px}}
+.cta-section h2{font-size:32px;font-weight:800;margin-bottom:12px;letter-spacing:-.5px}
+@media(max-width:768px){.cta-section h2{font-size:24px}}
+.cta-section p{color:rgba(255,255,255,.6);font-size:15px;margin-bottom:32px;max-width:440px;margin-left:auto;margin-right:auto}
+.cta-section .btn-fill{background:#fff;color:var(--navy)}
+.cta-section .btn-fill:hover{background:var(--bg-2);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.cta-email{font-size:15px;color:rgba(255,255,255,.5);margin-top:16px;font-weight:500}
+
+/* Footer */
+footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color:var(--text-3);font-size:12px}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="inner">
-      <div style="width:24px"></div>
-      <ul class="links">
-        <li><a href="#about">關於我</a></li>
-        <li><a href="#skills">技能</a></li>
-        <li><a href="#experience">經歷</a></li>
-        <li><a href="#demos">作品集</a></li>
-        <li><a href="#contact">聯繫</a></li>
-      </ul>
-      <button class="menu-btn" aria-label="開啟選單" onclick="toggleMobileMenu()">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#about" onclick="toggleMobileMenu()">關於我</a>
-    <a href="#skills" onclick="toggleMobileMenu()">技能</a>
-    <a href="#experience" onclick="toggleMobileMenu()">經歷</a>
-    <a href="#demos" onclick="toggleMobileMenu()">作品集</a>
-    <a href="#contact" onclick="toggleMobileMenu()">聯繫</a>
+<nav>
+  <div class="inner">
+    <a href="#" class="logo">YW<span>.</span></a>
+    <ul class="links">
+      <li><a href="#services">服務項目</a></li>
+      <li><a href="#skills">技術能力</a></li>
+      <li><a href="#projects">作品案例</a></li>
+      <li><a href="#process">合作流程</a></li>
+    </ul>
+    <a href="#contact" class="contact-btn">聯繫我</a>
   </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
     <div class="hero-inner">
-      <div class="hero-visual reveal-left">
-        <div class="hero-card">
-          <div class="avatar"><img src="images/profile.jpg" alt="張育瑋"></div>
-          <h3>張育瑋</h3>
-          <div class="role">後端工程師 @ 三方科技</div>
-          <div class="stat-row">
-            <div class="stat">
-              <div class="num">4+</div>
-              <div class="desc">年經驗</div>
-            </div>
-            <div class="stat">
-              <div class="num">6+</div>
-              <div class="desc">企業專案</div>
-            </div>
-            <div class="stat">
-              <div class="num">5+</div>
-              <div class="desc">作品集</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-text reveal-right">
-        <span class="label">Backend Engineer</span>
-        <p class="tagline">4+ 年全端開發經驗，專注 Spring Boot 微服務架構與 API 設計。熱衷 AI 自動化，善於將效能提升化為具體成果。</p>
-        <div class="hero-buttons">
-          <a href="#demos" class="btn btn-primary">查看作品集</a>
-          <a href="#contact" class="btn btn-outline">聯繫我</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-header reveal">
-      <h2>關於我</h2>
-      <p>從全端到後端，持續精進中</p>
-    </div>
-    <div class="about-content">
-      <div class="reveal-left">
-        <div class="about-info" style="margin-top:0;border-radius:0;padding:0;box-shadow:none;background:transparent;">
-          <div class="info-item"><span class="info-label">姓名</span><span class="info-value">張育瑋</span></div>
-          <div class="info-item"><span class="info-label">學歷</span><span class="info-value">國立勤益科技大學 資工系</span></div>
-          <div class="info-item"><span class="info-label">現職</span><span class="info-value">三方科技 — 後端工程師</span></div>
-          <div class="info-item"><span class="info-label">前職</span><span class="info-value">億科國際 — 全端工程師</span></div>
-          <div class="info-item"><span class="info-label">信箱</span><span class="info-value">ywzhang0913@gmail.com</span></div>
-        </div>
-      </div>
-      <div class="about-text reveal-right">
-        <p>我是張育瑋，擔任後端工程師四年的時間，主要工作負責公司平台的前後端 API 開發以及系統的重構翻新。</p>
-        <p>在工作之餘，我也喜愛鑽研新技術，使用各式 AI 軟體輔助開發，並主動改善專案程式碼的技術債，曾經主動將某功能的效能執行時間由數分鐘縮短至幾秒內，節省超過 90% 的時間，並且改善整理舊功能程式碼，進而提升對於專案整體的掌握以及熟悉度。</p>
-        <p>在工作中我是樂於幫助且分享的人，對於不熟的問題會主動尋找解答並與前輩討論溝通，當有同事遇到困難時，也熱心幫助一起構思解決方法，能夠適時的與工作夥伴分析問題、討論技術架構並加以實踐。</p>
-        <p>喜歡挑戰新的工作與領域，熱衷在程式編寫過程尋找成就感，並勇於學習各種新技術。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="section-header reveal">
-      <h2>專業技能</h2>
-      <p>持續學習，不斷擴展技術版圖</p>
-    </div>
-    <div class="skills-grid stagger">
-        <div class="skill-card reveal-scale">
-          <h3>Back-end</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">Spring Boot</span>
-            <span class="skill-tag">RESTful API</span>
-            <span class="skill-tag">Struts2</span>
-            <span class="skill-tag">Eureka</span>
-            <span class="skill-tag">Microservices</span>
-          </div>
-        </div>
-        <div class="skill-card reveal-scale">
-          <h3>Front-end</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Vue.js</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">jQuery</span>
-            <span class="skill-tag">AJAX</span>
-            <span class="skill-tag">HTML5 / CSS</span>
-          </div>
-        </div>
-        <div class="skill-card reveal-scale">
-          <h3>Database</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Oracle</span>
-            <span class="skill-tag">MySQL</span>
-            <span class="skill-tag">SQL Server</span>
-            <span class="skill-tag">PostgreSQL</span>
-            <span class="skill-tag">MongoDB</span>
-            <span class="skill-tag">Redis</span>
-          </div>
-        </div>
-        <div class="skill-card reveal-scale">
-          <h3>DevOps & Cloud</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Git</span>
-            <span class="skill-tag">Docker</span>
-            <span class="skill-tag">Jenkins</span>
-            <span class="skill-tag">Azure</span>
-            <span class="skill-tag">AWS EC2</span>
-            <span class="skill-tag">K8s</span>
-            <span class="skill-tag">CI/CD</span>
-          </div>
-        </div>
-        <div class="skill-card reveal-scale">
-          <h3>AI & Automation</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">N8N</span>
-            <span class="skill-tag">OpenClaw</span>
-            <span class="skill-tag">RAG</span>
-            <span class="skill-tag">GitHub Copilot</span>
-            <span class="skill-tag">Airflow</span>
-          </div>
-        </div>
-      </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="section-header reveal">
-      <h2>工作經歷</h2>
-      <p>從全端到後端微服務的成長路徑</p>
-    </div>
-    <div class="exp-grid">
-      <!-- 三方科技 -->
-      <div class="exp-card reveal-left">
-        <span class="badge">CURRENT</span>
-        <div class="date">2025 — 現在</div>
-        <h3>後端工程師</h3>
-        <div class="company">三方科技有限公司</div>
-        <details open>
-          <summary>串接 Payment B2B 金流服務</summary>
-          <div class="detail-body">
-            <ul>
-              <li>使用 Spring Boot 框架進行微服務 Restful API 開發</li>
-              <li>使用 MongoDB 進行資料存儲與管理</li>
-              <li>使用 Jenkins 建置 CI/CD 自動化部署流程</li>
-              <li>使用 Eureka 進行服務註冊與發現</li>
-              <li>微服務架構設計與系統整合</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-
-      <!-- 億科國際 -->
-      <div class="exp-card reveal-right">
-        <span class="badge past">2021 — 2025</span>
-        <div class="date">2021.08 — 2025</div>
-        <h3>全端工程師</h3>
-        <div class="company">億科國際股份有限公司</div>
-        <details>
-          <summary>專案一 — Struts2 前後端專案開發</summary>
-          <div class="detail-body">
-            <ul>
-              <li>使用 Struts2 框架進行前後端專案開發</li>
-              <li>使用 Oracle 進行資料庫維護開發</li>
-              <li>使用 JDBC 與資料庫進行連線</li>
-              <li>使用 jQuery Ajax 進行畫面開發</li>
-              <li>使用 Bootstrap 重構翻新前端畫面</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>專案二 — 多公司合作數據平台</summary>
-          <div class="detail-body">
-            <ul>
-              <li>與三間公司合力開發數據前台、中台、後台，使用 FeignClient 串接 API</li>
-              <li>使用 Filter, WebSecurity 進行驗證卡控</li>
-              <li>使用 Spring Boot 進行 Restful API 開發</li>
-              <li>使用 JWT 與 Redis 存取前端 Token</li>
-              <li>使用 Azure AD 開發 SSO 登入功能</li>
-              <li>使用 Vue.js + ECharts 進行前端 Dashboard 開發</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>專案三 — 排程與報表系統</summary>
-          <div class="detail-body">
-            <ul>
-              <li>使用 Spring Boot 進行 Restful API 開發</li>
-              <li>使用 ScheduleJob 進行排程 Job 開發</li>
-              <li>使用 MySQL 及 PostgreSQL 維護資料庫</li>
-              <li>撰寫 Procedure 進行資料存儲處理</li>
-              <li>使用 POI 套件產出各式報表</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>專案四 — Struts 專案重構翻新</summary>
-          <div class="detail-body">
-            <ul>
-              <li>使用前後端分離技術重構 Struts 專案</li>
-              <li>使用 Spring Boot + Vue.js 全面翻新</li>
-              <li>使用 MFA 實作兩段式登入驗證</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>專案五 — 雲端數據整合平台</summary>
-          <div class="detail-body">
-            <ul>
-              <li>使用 Spring Boot 進行 Restful API 開發</li>
-              <li>使用 MongoDB 進行資料統整運算及存儲</li>
-              <li>使用 Airflow 進行工作流程管理</li>
-              <li>使用 Azure Blob 存儲使用者上傳檔案</li>
-              <li>部分使用 Azure Function 進行資料運算</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>專案六 — 系統架構遷移 (Azure → AWS)</summary>
-          <div class="detail-body">
-            <ul>
-              <li>使用 Docker Compose 將 Azure 環境專案切換部署至 AWS EC2</li>
-              <li>協助重新規劃系統核心架構</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- DEMOS -->
-  <section id="demos">
-    <div class="section-header reveal">
-      <h2>作品集</h2>
-      <p>Side Projects & Automation</p>
-    </div>
-    <!-- 1. Claw Monitor (OpenClaw Skill) -->
-    <div class="featured-project reveal">
-      <div class="project-preview">
-        <div class="carousel-wrapper">
-          <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarousel(-1)">&#8249;</button>
-          <div class="carousel" id="clawCarousel">
-            <img src="images/claw-monitor-office.png" alt="Claw Monitor 虛擬辦公室全景" class="active" onclick="openLightbox(this)">
-            <video src="images/claw-monitor-v1.mov" muted loop playsinline onclick="openLightbox(this)"></video>
-            <video src="images/claw-monitor-v2.mov" muted loop playsinline onclick="openLightbox(this)"></video>
-            <video src="images/claw-monitor-v3.mov" muted loop playsinline onclick="openLightbox(this)"></video>
-          </div>
-          <button class="carousel-btn next" aria-label="下一張" onclick="slideCarousel(1)">&#8250;</button>
-        </div>
-        <div class="carousel-dots" id="clawDots"></div>
-      </div>
-      <div class="project-detail">
-        <span class="project-badge">OpenClaw Skill</span>
-        <h3>Claw Monitor — AI 虛擬辦公室監控</h3>
-        <p>以虛擬辦公室為主題的系統監控儀表板，即時監控 OpenClaw 閘道器、AI Agent 會話狀態與 Claude Code 執行情況。結合像素風角色動畫與即時數據，將枯燥的系統監控轉化為生動的辦公室場景。</p>
-        <ul class="feature-list">
-          <li>HTML5 Canvas 像素風虛擬辦公室場景</li>
-          <li>9 位 AI 角色即時狀態動畫（含方向精靈圖）</li>
-          <li>SSE 串流即時事件推播 + 輪詢雙模式</li>
-          <li>事件時間軸、團隊面板、詳細資訊抽屜</li>
-          <li>離線容錯 + 過期數據提示</li>
-        </ul>
-        <div class="demo-tags" style="margin-bottom: 20px;">
-          <span class="demo-tag">React 18</span>
-          <span class="demo-tag">TypeScript</span>
-          <span class="demo-tag">Canvas</span>
-          <span class="demo-tag">Spring Boot 3</span>
-          <span class="demo-tag">Java 21</span>
-          <span class="demo-tag">SSE</span>
-          <span class="demo-tag">OpenClaw</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2. 揪旅 JiuTrip -->
-    <div class="featured-project reveal" style="direction: rtl;">
-      <div class="project-preview" style="direction: ltr;">
-        <div class="carousel-wrapper">
-          <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarouselJiutrip(-1)">&#8249;</button>
-          <div class="carousel" id="jiutripCarousel">
-            <img src="images/jiutrip-splash.png" alt="揪旅 — 啟動畫面" class="active" onclick="openLightbox(this)">
-            <img src="images/jiutrip-login.png" alt="揪旅 — LINE 登入頁" onclick="openLightbox(this)">
-            <img src="images/jiutrip-home.png" alt="揪旅首頁 — 旅程總覽與花費概覽" onclick="openLightbox(this)">
-            <img src="images/jiutrip-expense-overview.png" alt="揪旅花費概覽 — 分類統計與近期消費" onclick="openLightbox(this)">
-            <img src="images/jiutrip-trip-detail.png" alt="揪旅行程詳情 — 時間軸每日行程" onclick="openLightbox(this)">
-            <img src="images/jiutrip-itinerary.png" alt="揪旅行程規劃器 — 拖拉排序景點" onclick="openLightbox(this)">
-            <img src="images/jiutrip-route.png" alt="揪旅路線規劃 — Google Maps 最佳路線" onclick="openLightbox(this)">
-            <img src="images/jiutrip-ledger.png" alt="揪旅帳本 — 多幣值分帳管理" onclick="openLightbox(this)">
-            <img src="images/jiutrip-settle.png" alt="揪旅結算 — 最佳結算方案" onclick="openLightbox(this)">
-            <img src="images/jiutrip-todo.png" alt="揪旅待辦 — 多人指派待辦清單" onclick="openLightbox(this)">
-            <img src="images/jiutrip-discussion.png" alt="揪旅討論 — 即時留言討論" onclick="openLightbox(this)">
-            <img src="images/jiutrip-ledger-full.png" alt="揪旅帳本總覽 — 結清狀態管理" onclick="openLightbox(this)">
-          </div>
-          <button class="carousel-btn next" aria-label="下一張" onclick="slideCarouselJiutrip(1)">&#8250;</button>
-        </div>
-        <div class="carousel-dots" id="jiutripDots"></div>
-      </div>
-      <div class="project-detail" style="direction: ltr;">
-        <span class="project-badge">Latest Project</span>
-        <h3>揪旅 JiuTrip — 旅行分帳 App</h3>
-        <p>結合旅行規劃與分帳功能的行動 Web App，透過 LINE LIFF 登入，支援多幣值旅程管理、拖拉行程規劃、Google Maps 路線規劃、智慧結算、待辦清單與即時討論。貪心演算法計算最少轉帳次數，Places API 快取優化降低 API 成本。</p>
-        <ul class="feature-list">
-          <li>LINE LIFF 登入 + Supabase Auth 雙認證</li>
-          <li>行程規劃器：觸控拖拉排序、Google Places 搜尋、每日景點管理</li>
-          <li>路線規劃：Google Maps / Naver Map 最佳路線、一鍵套用排序</li>
-          <li>多幣值分帳：均分 / 自訂比例，貪心演算法最少轉帳次數結算</li>
-          <li>待辦清單：多人指派、分類管理、快速新增旅行準備事項</li>
-          <li>即時討論、邀請碼加入、帳本結清狀態同步</li>
-        </ul>
-        <div class="demo-tags" style="margin-bottom: 20px;">
-          <span class="demo-tag">Next.js 15</span>
-          <span class="demo-tag">TypeScript</span>
-          <span class="demo-tag">Tailwind CSS</span>
-          <span class="demo-tag">Supabase</span>
-          <span class="demo-tag">LINE LIFF</span>
-          <span class="demo-tag">Google Maps API</span>
-          <span class="demo-tag">Vercel</span>
-        </div>
-        <a href="https://jiutrip.vercel.app/" target="_blank" class="btn btn-primary" style="display:inline-block;text-decoration:none;margin-top:8px;">查看 Live Demo &rarr;</a>
-      </div>
-    </div>
-
-    <!-- 3. TogetherApp -->
-    <div class="featured-project reveal" style="direction: rtl;">
-      <div class="project-preview" style="direction: ltr;">
-        <div class="carousel-wrapper">
-          <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarousel2(-1)">&#8249;</button>
-          <div class="carousel" id="togetherCarousel">
-            <img src="images/together-map.jpg" alt="Together 地圖主頁" class="active" onclick="openLightbox(this)">
-            <img src="images/together-create.jpg" alt="Together 建立活動" onclick="openLightbox(this)">
-            <img src="images/together-detail.jpg" alt="Together 活動詳情" onclick="openLightbox(this)">
-            <img src="images/together-activities.jpg" alt="Together 我的活動" onclick="openLightbox(this)">
-            <img src="images/together-splash.jpg" alt="Together 開場動畫" onclick="openLightbox(this)">
-          </div>
-          <button class="carousel-btn next" aria-label="下一張" onclick="slideCarousel2(1)">&#8250;</button>
-        </div>
-        <div class="carousel-dots" id="togetherDots"></div>
-      </div>
-      <div class="project-detail" style="direction: ltr;">
-        <span class="project-badge">Featured Project</span>
-        <h3>Together — 地圖社交活動平台</h3>
-        <p>基於地圖的社交活動配對平台。把你想做的事直接釘在地圖上，等人一起來。目標：30 分鐘內找到附近的人一起參與活動。跨平台支援 Android、iOS、Web。</p>
-        <ul class="feature-list">
-          <li>Google Maps 即時地圖，膠囊標記顯示活動</li>
-          <li>活動建立 / 報名 / 分類篩選（社交、運動、美食等）</li>
-          <li>Google OAuth 登入 + Token 認證</li>
-          <li>智慧標記系統：依縮放層級顯示不同細節</li>
-          <li>滑動面板查看活動詳情，一鍵加入</li>
-        </ul>
-        <div class="demo-tags" style="margin-bottom: 20px;">
-          <span class="demo-tag">Flutter</span>
-          <span class="demo-tag">Dart</span>
-          <span class="demo-tag">Google Maps</span>
-          <span class="demo-tag">Provider</span>
-          <span class="demo-tag">Dio</span>
-          <span class="demo-tag">Firebase</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3. 美食收藏家 (Food Map AI) -->
-    <div class="featured-project reveal">
-      <div class="project-preview">
-        <div class="carousel-wrapper">
-          <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarousel3(-1)">&#8249;</button>
-          <div class="carousel" id="foodCarousel">
-            <img src="images/food-liff-home.webp" alt="美食收藏家 LIFF 主頁" class="active" onclick="openLightbox(this)">
-            <img src="images/food-collection.webp" alt="我的收藏列表" onclick="openLightbox(this)">
-            <img src="images/food-google-maps.png" alt="Google Maps 收錄餐廳" onclick="openLightbox(this)">
-            <img src="images/food-search.webp" alt="美食搜尋推薦" onclick="openLightbox(this)">
-            <img src="images/food-ig-ingest.webp" alt="IG 貼文爬取建檔" onclick="openLightbox(this)">
-          </div>
-          <button class="carousel-btn next" aria-label="下一張" onclick="slideCarousel3(1)">&#8250;</button>
-        </div>
-        <div class="carousel-dots" id="foodDots"></div>
-      </div>
-      <div class="project-detail">
-        <span class="project-badge">N8N Automation</span>
-        <h3>美食收藏家 — Food Map AI</h3>
-        <p>基於 N8N 的 LINE AI 美食助理，透過 Apify 爬蟲自動抓取 IG / Threads / Google Maps 餐廳資訊，存入 Supabase 向量資料庫，支援自然語言搜尋推薦附近美食。</p>
-        <ul class="feature-list">
-          <li>貼上 IG 連結自動爬取餐廳資訊並建檔</li>
-          <li>RAG 向量搜尋，自然語言問「台北有什麼好吃的」</li>
-          <li>AI 推薦含餐廳名、地點、特色、原文連結</li>
-          <li>支援刪除餐廳資料管理</li>
-        </ul>
-        <div class="demo-tags" style="margin-bottom: 20px;">
-          <span class="demo-tag">N8N</span>
-          <span class="demo-tag">LINE Bot</span>
-          <span class="demo-tag">Apify</span>
-          <span class="demo-tag">RAG</span>
-          <span class="demo-tag">Supabase</span>
-          <span class="demo-tag">Gemini</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4. N8N AI 業務助理 -->
-    <div class="featured-project reveal" style="direction: rtl;">
-      <div class="project-preview" style="direction: ltr;">
-        <div class="carousel-wrapper">
-          <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarousel4(-1)">&#8249;</button>
-          <div class="carousel" id="n8nCarousel">
-            <img src="images/n8n-contact-scan.png" alt="名片掃描建立聯絡人" class="active" onclick="openLightbox(this)">
-            <img src="images/n8n-contact-info.png" alt="聯絡人資訊查詢" onclick="openLightbox(this)">
-            <img src="images/n8n-schedule.png" alt="行程安排查詢" onclick="openLightbox(this)">
-            <img src="images/n8n-meeting.png" alt="會議安排與討論事項" onclick="openLightbox(this)">
-            <img src="images/n8n-calendar.png" alt="Google 日曆同步" onclick="openLightbox(this)">
-            <img src="images/n8n-notes.png" alt="會議記錄筆記" onclick="openLightbox(this)">
-          </div>
-          <button class="carousel-btn next" aria-label="下一張" onclick="slideCarousel4(1)">&#8250;</button>
-        </div>
-        <div class="carousel-dots" id="n8nDots"></div>
-      </div>
-      <div class="project-detail" style="direction: ltr;">
-        <span class="project-badge">N8N Automation</span>
-        <h3>阿瑋的業務助理</h3>
-        <p>基於 N8N 打造的 LINE AI 業務助理，整合 79 個自動化節點。透過自然語言與 AI 對話即可完成名片掃描建檔、行程查詢與安排、會議記錄管理等日常業務工作。</p>
-        <ul class="feature-list">
-          <li>拍照名片自動辨識並建立聯絡人資料</li>
-          <li>自然語言查詢 / 安排行程，自動同步 Google 日曆</li>
-          <li>會議記錄自動生成筆記與重點整理</li>
-          <li>RAG 向量搜尋聯絡人與會議紀錄</li>
-          <li>語音 / 圖片辨識（Google Gemini）</li>
-        </ul>
-        <div class="demo-tags" style="margin-bottom: 20px;">
-          <span class="demo-tag">N8N</span>
-          <span class="demo-tag">LINE Bot</span>
-          <span class="demo-tag">Gemini</span>
-          <span class="demo-tag">RAG</span>
-          <span class="demo-tag">Supabase</span>
-          <span class="demo-tag">Google Calendar</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 5. KiHongan Raid LIFF -->
-    <div class="featured-project reveal">
-      <div class="project-preview">
-        <div class="carousel-wrapper">
-          <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarousel5(-1)">&#8249;</button>
-          <div class="carousel" id="raidCarousel">
-            <img src="images/raid-list.png" alt="團戰列表介面" class="active" onclick="openLightbox(this)">
-            <img src="images/raid-characters.png" alt="角色管理介面" onclick="openLightbox(this)">
-            <img src="images/raid-signup.png" alt="團戰報名介面" onclick="openLightbox(this)">
-            <img src="images/raid-discord-notify.png" alt="Discord 新遠征隊建立通知" onclick="openLightbox(this)">
-            <img src="images/raid-discord-signup.png" alt="Discord 新成員報名通知" onclick="openLightbox(this)">
-            <img src="images/raid-discord-full.png" alt="Discord 遠征已滿員通知" onclick="openLightbox(this)">
-          </div>
-          <button class="carousel-btn next" aria-label="下一張" onclick="slideCarousel5(1)">&#8250;</button>
-        </div>
-        <div class="carousel-dots" id="raidDots"></div>
-      </div>
-      <div class="project-detail">
-        <span class="project-badge">Featured Project</span>
-        <h3>KiHongan Raid LIFF System</h3>
-        <p>基於 LINE LIFF 平台的遊戲公會團戰報名系統。解決 LINE 群組中複製貼上報名的混亂問題，提供結構化的數位報名介面，整合 LINE 登入、角色管理、團戰報名與通知推播。</p>
-        <ul class="feature-list">
-          <li>LINE 登入 + JWT 認證，多角色管理</li>
-          <li>團戰建立與報名（上限 6 人 / 重複檢查）</li>
-          <li>每週四 08:00 自動重置</li>
-          <li>Discord & LINE 雙平台通知推播</li>
-          <li>32+ Property-based Tests 完整測試覆蓋</li>
-        </ul>
-        <div class="demo-tags" style="margin-bottom: 20px;">
-          <span class="demo-tag">Java 17</span>
-          <span class="demo-tag">Spring Boot 3</span>
-          <span class="demo-tag">Vue3</span>
-          <span class="demo-tag">PostgreSQL</span>
-          <span class="demo-tag">LINE LIFF</span>
-          <span class="demo-tag">JWT</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-bar reveal">
-      <div>
-        <h3>一起聊聊吧</h3>
-        <p>歡迎交流技術、討論合作機會</p>
-      </div>
-      <div class="contact-links">
-        <a href="mailto:ywzhang0913@gmail.com" class="contact-link">
-          <div class="icon">&#9993;</div>
-          ywzhang0913@gmail.com
-          <span class="text">Email</span>
+      <div class="overline">Software Development Service</div>
+      <h1>幫你把<span class="highlight">想法</span>打造成<span class="highlight">產品</span></h1>
+      <p>全端工程師，提供 Web App、LINE Bot、AI 自動化等軟體開發服務。從需求訪談到部署上線，我來處理技術面的事。</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-fill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          開始合作
         </a>
-        <a href="tel:0929091386" class="contact-link">
-          <div class="icon">&#128222;</div>
-          0929-091-386
-          <span class="text">電話</span>
-        </a>
+        <a href="#projects" class="btn-outline">查看作品</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">4+</div><div class="label">年開發經驗</div></div>
+        <div class="hero-stat"><div class="num">10+</div><div class="label">交付專案</div></div>
+        <div class="hero-stat"><div class="num">6</div><div class="label">技術領域</div></div>
       </div>
     </div>
-  </section>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-    <button class="close-btn" onclick="closeLightbox()">&times;</button>
-    <button class="lb-nav lb-prev" onclick="lbNav(-1, event)">&#8249;</button>
-    <div id="lightboxContent"></div>
-    <button class="lb-nav lb-next" onclick="lbNav(1, event)">&#8250;</button>
   </div>
+</section>
 
-  <footer>
-    <p>&copy; 2025 張育瑋. All rights reserved.</p>
-  </footer>
+<!-- Trust -->
+<div class="trust-bar">
+  <div class="inner">
+    <p>技術生態系</p>
+    <div class="trust-logos">
+      <span>Spring Boot</span>
+      <span>Next.js</span>
+      <span>React</span>
+      <span>LINE LIFF</span>
+      <span>Supabase</span>
+      <span>AWS</span>
+      <span>Docker</span>
+    </div>
+  </div>
+</div>
 
-  <script>
-    // Nav scroll effect
-    const nav = document.querySelector('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    });
+<!-- Services -->
+<section id="services">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-overline">Services</div>
+      <h2 class="section-title">服務項目</h2>
+      <p class="section-desc">根據你的需求，提供最適合的技術方案</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc">
+        <div class="svc-icon blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Web & App 開發</h3>
+        <p>企業官網、SaaS 平台、管理後台、一頁式網站。前後端全包，響應式設計，支援手機與桌面。</p>
+        <div class="svc-stack">
+          <span>Next.js</span><span>React</span><span>Vue.js</span><span>Spring Boot</span><span>TypeScript</span>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="svc-icon green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3>LINE Bot & LIFF</h3>
+        <p>LINE 聊天機器人、LIFF 前端應用、會員訂閱系統、金流串接（綠界 / 藍新）、推播通知。</p>
+        <div class="svc-stack">
+          <span>LINE LIFF</span><span>Messaging API</span><span>ECPay</span><span>Webhook</span>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="svc-icon purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <h3>AI & 自動化</h3>
+        <p>N8N 工作流、AI 整合應用、排程機器人、資料爬取、自動通知。用自動化幫你省下重複工作。</p>
+        <div class="svc-stack">
+          <span>N8N</span><span>OpenAI API</span><span>RAG</span><span>排程自動化</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    // Mobile menu toggle
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      const btn = document.querySelector('.menu-btn');
-      menu.classList.toggle('open');
-      btn.classList.toggle('open');
-      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-    }
+<!-- Skills -->
+<section id="skills" class="skills-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-overline">Tech Stack</div>
+      <h2 class="section-title">技術能力</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-col">
+        <h4>Back-end</h4>
+        <ul>
+          <li>Java / Spring Boot</li>
+          <li>Node.js</li>
+          <li>RESTful API</li>
+          <li>Microservices</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h4>Front-end</h4>
+        <ul>
+          <li>React / Next.js</li>
+          <li>Vue.js</li>
+          <li>TypeScript</li>
+          <li>Tailwind CSS</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h4>Database</h4>
+        <ul>
+          <li>PostgreSQL / MySQL</li>
+          <li>MongoDB</li>
+          <li>Redis</li>
+          <li>Supabase</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h4>DevOps</h4>
+        <ul>
+          <li>Docker / K8s</li>
+          <li>AWS / Azure</li>
+          <li>CI/CD</li>
+          <li>Vercel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+<!-- Projects -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-overline">Portfolio</div>
+      <h2 class="section-title">作品案例</h2>
+      <p class="section-desc">從構想到上線，每個專案都是完整交付的產品</p>
+    </div>
 
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale')
-      .forEach(el => observer.observe(el));
+    <!-- Featured: 即時監控系統 -->
+    <div class="proj-featured">
+      <div class="proj-featured-img">
+        <img src="images/claw-monitor-office.png" alt="即時監控系統" loading="lazy">
+      </div>
+      <div class="proj-featured-body">
+        <div class="proj-type">全端即時監控系統</div>
+        <h3>即時監控管理系統</h3>
+        <p>前後端分離的即時監控平台，透過排程輪詢 + SSE 串流推送，遠端掌握系統狀態、即時告警、數據視覺化。</p>
+        <ul class="proj-highlights">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Spring Boot 3 後端，RESTful API + SSE（Server-Sent Events）即時串流
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            React + TypeScript + Vite 前端，Canvas 2D 視覺化即時看板
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            排程輪詢偵測狀態變化，增量推送（snapshot + delta）降低頻寬
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            跨 session 生命週期追蹤，異常告警與事件時間軸
+          </li>
+        </ul>
+        <div class="proj-tags"><span>Spring Boot 3</span><span>React</span><span>TypeScript</span><span>Vite</span><span>SSE</span><span>Canvas 2D</span></div>
+      </div>
+    </div>
 
-    // Carousel 1 — Claw Monitor
-    const carousel = document.getElementById('clawCarousel');
-    const slides = carousel.querySelectorAll('img, video');
-    const dotsContainer = document.getElementById('clawDots');
-    let currentSlide = 0;
+    <!-- Featured: 揪旅 -->
+    <div class="proj-featured" style="margin-top:24px" onclick="window.open('https://jiutrip.vercel.app','_blank')">
+      <div class="proj-featured-img">
+        <img src="images/jiutrip-home.png" alt="揪旅 JiuTrip" loading="lazy">
+      </div>
+      <div class="proj-featured-body">
+        <div class="proj-type">LINE LIFF App</div>
+        <h3>揪旅 JiuTrip — 旅行規劃 x 分帳</h3>
+        <p>多人旅行協作平台，整合行程規劃、分帳結算、待辦清單、即時討論。</p>
+        <ul class="proj-highlights">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            觸控拖拉排序行程，自製 drag engine + auto-scroll
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Google Maps 路線規劃 + 交通時間計算
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            貪心演算法最少轉帳次數，多幣值結算
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            API 成本優化：Session Token + Photo 遷移，降低 80%+ 費用
+          </li>
+        </ul>
+        <div class="proj-tags"><span>Next.js 15</span><span>TypeScript</span><span>Supabase</span><span>LINE LIFF</span><span>Google Maps API</span></div>
+      </div>
+    </div>
 
-    slides.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.className = 'dot' + (i === 0 ? ' active' : '');
-      dot.onclick = () => goToSlide(i);
-      dotsContainer.appendChild(dot);
-    });
+    <!-- Small project grid -->
+    <div class="projects-grid-sm" style="margin-top:24px">
+      <div class="proj-sm">
+        <img src="images/food-liff-home.webp" alt="美食收藏家" loading="lazy">
+        <div class="proj-sm-body">
+          <div class="proj-type">LINE Bot + SaaS</div>
+          <h3>美食收藏家</h3>
+          <p>AI 美食助理，貼 IG / Google Maps 連結自動收藏，自然語言搜尋推薦，綠界金流訂閱制。</p>
+          <div class="proj-tags"><span>Next.js</span><span>LINE Bot</span><span>OpenAI</span><span>ECPay</span></div>
+        </div>
+      </div>
+      <div class="proj-sm">
+        <img src="images/n8n-contact-scan.png" alt="AI 業務助理" loading="lazy">
+        <div class="proj-sm-body">
+          <div class="proj-type">AI + LINE Bot</div>
+          <h3>AI 業務助理</h3>
+          <p>N8N 79 節點自動化 LINE Bot：名片拍照辨識、自然語言查行程、會議記錄摘要、RAG 向量搜尋。</p>
+          <div class="proj-tags"><span>N8N</span><span>Google Gemini</span><span>LINE Bot</span><span>Supabase</span></div>
+        </div>
+      </div>
+      <div class="proj-sm">
+        <img src="images/together-map.jpg" alt="TogetherApp" loading="lazy">
+        <div class="proj-sm-body">
+          <div class="proj-type">社交平台</div>
+          <h3>Together 揪團活動</h3>
+          <p>地圖式活動媒合平台，FastAPI + Flutter，Google Maps 整合、即時聊天、活動報名。</p>
+          <div class="proj-tags"><span>FastAPI</span><span>Flutter</span><span>PostgreSQL</span><span>Google Maps</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    function goToSlide(n) {
-      if (sliding) return;
-      const next = ((n % slides.length) + slides.length) % slides.length;
-      if (next === currentSlide) return;
-      sliding = true;
-      slides[currentSlide].classList.remove('active');
-      dotsContainer.children[currentSlide].classList.remove('active');
-      currentSlide = next;
-      slides[currentSlide].classList.add('active');
-      dotsContainer.children[currentSlide].classList.add('active');
-      updateClawVideos();
-      setTimeout(() => { sliding = false; }, 150);
-    }
+<!-- Process -->
+<section id="process" style="background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-overline">Workflow</div>
+      <h2 class="section-title">合作流程</h2>
+      <p class="section-desc">簡單四步，從想法到上線</p>
+    </div>
+    <div class="process-row">
+      <div class="step">
+        <div class="step-circle">1</div>
+        <h3>需求討論</h3>
+        <p>了解你的目標與需求<br>評估可行性與時程</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">2</div>
+        <h3>報價確認</h3>
+        <p>提供明確報價<br>確認開發計畫</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">3</div>
+        <h3>開發交付</h3>
+        <p>分階段交付成果<br>隨時溝通回饋</p>
+      </div>
+      <div class="step">
+        <div class="step-circle">4</div>
+        <h3>上線維護</h3>
+        <p>部署上線 + 交接文件<br>提供後續技術支援</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    function slideCarousel(dir) {
-      goToSlide(currentSlide + dir);
-    }
+<!-- CTA -->
+<section id="contact" style="padding:0">
+  <div class="cta-section">
+    <h2>有專案想討論？</h2>
+    <p>不確定需求也沒關係，先聊聊你的想法，我幫你評估技術方案與報價。</p>
+    <a href="mailto:ywzhang0913@gmail.com" class="btn-fill">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      寄信聯繫
+    </a>
+    <div class="cta-email">ywzhang0913@gmail.com</div>
+  </div>
+</section>
 
-    // Auto play/pause videos in claw carousel
-    function updateClawVideos() {
-      carousel.querySelectorAll('video').forEach(v => {
-        if (v.classList.contains('active')) { v.play(); }
-        else { v.pause(); v.currentTime = 0; }
-      });
-    }
+<footer>
+  <div class="container">&copy; 2026 張育瑋. All rights reserved.</div>
+</footer>
 
-    // ── 通用輪播系統（含防抖）──
-    const carousels = {};
-    let sliding = false;
-
-    function initCarousel(id, carouselId, dotsId) {
-      const el = document.getElementById(carouselId);
-      const items = el.querySelectorAll('img, video');
-      const dots = document.getElementById(dotsId);
-      const state = { items, dots, current: 0 };
-      carousels[id] = state;
-
-      items.forEach((_, i) => {
-        const dot = document.createElement('div');
-        dot.className = 'dot' + (i === 0 ? ' active' : '');
-        dot.onclick = () => goTo(id, i);
-        dots.appendChild(dot);
-      });
-    }
-
-    function goTo(id, n) {
-      if (sliding) return;
-      const s = carousels[id];
-      if (!s || s.items.length === 0) return;
-      const next = ((n % s.items.length) + s.items.length) % s.items.length;
-      if (next === s.current) return;
-      sliding = true;
-      s.items[s.current].classList.remove('active');
-      if (s.dots.children[s.current]) s.dots.children[s.current].classList.remove('active');
-      s.current = next;
-      s.items[s.current].classList.add('active');
-      if (s.dots.children[s.current]) s.dots.children[s.current].classList.add('active');
-      // Auto play/pause videos
-      s.items.forEach(item => {
-        if (item.tagName === 'VIDEO') {
-          if (item.classList.contains('active')) item.play();
-          else { item.pause(); item.currentTime = 0; }
-        }
-      });
-      setTimeout(() => { sliding = false; }, 150);
-    }
-
-    initCarousel(12, 'jiutripCarousel', 'jiutripDots');
-    initCarousel(2, 'togetherCarousel', 'togetherDots');
-    initCarousel(3, 'foodCarousel', 'foodDots');
-    initCarousel(4, 'n8nCarousel', 'n8nDots');
-    initCarousel(5, 'raidCarousel', 'raidDots');
-
-    function slideCarouselJiutrip(dir) { goTo(12, carousels[12].current + dir); }
-    function slideCarousel2(dir) { goTo(2, carousels[2].current + dir); }
-    function slideCarousel3(dir) { goTo(3, carousels[3].current + dir); }
-    function slideCarousel4(dir) { goTo(4, carousels[4].current + dir); }
-    function slideCarousel5(dir) { goTo(5, carousels[5].current + dir); }
-
-    // Lightbox with navigation
-    let lbItems = [];
-    let lbIndex = 0;
-
-    function openLightbox(el) {
-      const carouselEl = el.closest('.carousel');
-      if (carouselEl) {
-        lbItems = Array.from(carouselEl.querySelectorAll('img, video')).map(item => ({
-          src: item.src,
-          type: item.tagName === 'VIDEO' ? 'video' : 'img'
-        }));
-        lbIndex = Array.from(carouselEl.querySelectorAll('img, video')).indexOf(el);
-      } else {
-        lbItems = [{ src: el.src, type: el.tagName === 'VIDEO' ? 'video' : 'img' }];
-        lbIndex = 0;
-      }
-      renderLightbox();
-      document.getElementById('lightbox').classList.add('open');
-    }
-
-    function renderLightbox() {
-      const content = document.getElementById('lightboxContent');
-      const item = lbItems[lbIndex];
-      if (item.type === 'video') {
-        content.innerHTML = '<video src="' + item.src + '" controls autoplay style="max-width:90vw;max-height:85vh;border-radius:12px;"></video>';
-      } else {
-        content.innerHTML = '<img src="' + item.src + '" style="max-width:90vw;max-height:90vh;border-radius:12px;object-fit:contain;">';
-      }
-    }
-
-    function lbNav(dir, e) {
-      if (e) e.stopPropagation();
-      // Pause current video if any
-      const vid = document.querySelector('#lightboxContent video');
-      if (vid) vid.pause();
-      lbIndex = (lbIndex + dir + lbItems.length) % lbItems.length;
-      renderLightbox();
-    }
-
-    function closeLightbox(e) {
-      if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('close-btn')) return;
-      const vid = document.querySelector('#lightboxContent video');
-      if (vid) vid.pause();
-      document.getElementById('lightbox').classList.remove('open');
-      document.getElementById('lightboxContent').innerHTML = '';
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-      if (document.getElementById('lightbox').classList.contains('open')) {
-        if (e.key === 'ArrowLeft') lbNav(-1);
-        if (e.key === 'ArrowRight') lbNav(1);
-      }
-    });
-  </script>
-
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}});
+},{threshold:.1});
+document.querySelectorAll('.svc,.proj,.step,.skill-col,.hero-card').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .5s ease,transform .5s ease';obs.observe(el);
+});
+</script>
 </body>
 </html>
