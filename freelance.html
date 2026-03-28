@@ -116,10 +116,9 @@ section{padding:80px 0}
 .proj-featured{display:grid;grid-template-columns:1fr 1.2fr;gap:0;background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .25s;cursor:pointer}
 .proj-featured:hover{border-color:var(--blue);box-shadow:0 12px 40px rgba(37,99,235,.08)}
 @media(max-width:768px){.proj-featured{grid-template-columns:1fr}}
-.proj-featured-img{overflow:hidden;min-height:320px;background:var(--bg-3);display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px}
-.proj-featured-img.single{grid-template-columns:1fr;grid-template-rows:1fr}
-.proj-featured-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.proj-featured:hover .proj-featured-img img{transform:scale(1.03)}
+.proj-featured-img{overflow:hidden;min-height:320px;background:var(--bg-3);position:relative}
+.proj-featured-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0;transition:opacity .4s}
+.proj-featured-img img.active{opacity:1;position:relative}
 .proj-featured-body{padding:32px;display:flex;flex-direction:column;justify-content:center}
 @media(max-width:768px){.proj-featured-body{padding:24px}}
 .proj-featured-body .proj-type{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
@@ -134,9 +133,18 @@ section{padding:80px 0}
 @media(max-width:768px){.projects-grid-sm{grid-template-columns:1fr}}
 .proj-sm{background:var(--bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .25s;cursor:default}
 .proj-sm:hover{border-color:var(--blue);box-shadow:0 8px 24px rgba(37,99,235,.06);transform:translateY(-2px)}
-.proj-sm-imgs{display:grid;grid-template-columns:1fr 1fr;gap:2px;height:140px;overflow:hidden;background:var(--bg-3)}
-.proj-sm-imgs.single{grid-template-columns:1fr}
-.proj-sm-imgs img{width:100%;height:100%;object-fit:cover}
+.proj-sm-imgs{height:160px;overflow:hidden;background:var(--bg-3);position:relative}
+.proj-sm-imgs img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0;transition:opacity .4s}
+.proj-sm-imgs img.active{opacity:1;position:relative}
+
+/* Carousel arrows */
+.carousel-arrows{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 8px;pointer-events:none;z-index:2}
+.carousel-arrows button{pointer-events:auto;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.85);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.carousel-arrows button:hover{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.carousel-arrows button svg{width:14px;height:14px;color:var(--navy)}
+.carousel-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:2}
+.carousel-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4);transition:all .2s}
+.carousel-dots span.active{background:#fff;width:16px;border-radius:3px}
 .proj-sm-body{padding:16px 18px}
 .proj-sm-body .proj-type{margin-bottom:4px}
 .proj-sm-body h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px}
@@ -320,11 +328,16 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
 
     <!-- Featured: 即時監控系統 -->
     <div class="proj-featured">
-      <div class="proj-featured-img">
-        <img src="images/claw-monitor-office.png" alt="即時監控系統 - 辦公室視圖" loading="lazy">
-        <img src="images/claw-monitor-1.png" alt="即時監控系統 - 監控面板" loading="lazy">
-        <img src="images/claw-monitor-2.png" alt="即時監控系統 - 數據分析" loading="lazy">
-        <img src="images/claw-monitor-3.png" alt="即時監控系統 - 詳細資訊" loading="lazy">
+      <div class="proj-featured-img" data-carousel>
+        <img src="images/claw-monitor-office.png" alt="即時監控系統 - 辦公室視圖" class="active">
+        <img src="images/claw-monitor-1.png" alt="即時監控系統 - 監控面板">
+        <img src="images/claw-monitor-2.png" alt="即時監控系統 - 數據分析">
+        <img src="images/claw-monitor-3.png" alt="即時監控系統 - 詳細資訊">
+        <div class="carousel-arrows">
+          <button onclick="slideCarousel(this,-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg></button>
+          <button onclick="slideCarousel(this,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+        <div class="carousel-dots"></div>
       </div>
       <div class="proj-featured-body">
         <div class="proj-type">全端即時監控系統</div>
@@ -354,11 +367,16 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
 
     <!-- Featured: 揪旅 -->
     <div class="proj-featured" style="margin-top:24px" onclick="window.open('https://jiutrip.vercel.app','_blank')">
-      <div class="proj-featured-img">
-        <img src="images/jiutrip-home.png" alt="揪旅 - 首頁" loading="lazy">
-        <img src="images/jiutrip-itinerary.png" alt="揪旅 - 行程規劃" loading="lazy">
-        <img src="images/jiutrip-settle.png" alt="揪旅 - 結算" loading="lazy">
-        <img src="images/jiutrip-route.png" alt="揪旅 - 路線" loading="lazy">
+      <div class="proj-featured-img" data-carousel>
+        <img src="images/jiutrip-home.png" alt="揪旅 - 首頁" class="active">
+        <img src="images/jiutrip-itinerary.png" alt="揪旅 - 行程規劃">
+        <img src="images/jiutrip-settle.png" alt="揪旅 - 結算">
+        <img src="images/jiutrip-route.png" alt="揪旅 - 路線">
+        <div class="carousel-arrows">
+          <button onclick="slideCarousel(this,-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg></button>
+          <button onclick="slideCarousel(this,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+        <div class="carousel-dots"></div>
       </div>
       <div class="proj-featured-body">
         <div class="proj-type">LINE LIFF App</div>
@@ -389,9 +407,12 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
     <!-- Small project grid -->
     <div class="projects-grid-sm" style="margin-top:24px">
       <div class="proj-sm">
-        <div class="proj-sm-imgs">
-          <img src="images/food-liff-home.webp" alt="美食收藏家 - 首頁" loading="lazy">
-          <img src="images/food-search.webp" alt="美食收藏家 - 搜尋" loading="lazy">
+        <div class="proj-sm-imgs" data-carousel>
+          <img src="images/food-liff-home.webp" alt="美食收藏家 - 首頁" class="active">
+          <img src="images/food-search.webp" alt="美食收藏家 - 搜尋">
+          <img src="images/food-collection.webp" alt="美食收藏家 - 收藏">
+          <div class="carousel-arrows"><button onclick="slideCarousel(this,-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg></button><button onclick="slideCarousel(this,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg></button></div>
+          <div class="carousel-dots"></div>
         </div>
         <div class="proj-sm-body">
           <div class="proj-type">LINE Bot + SaaS</div>
@@ -401,9 +422,13 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
         </div>
       </div>
       <div class="proj-sm">
-        <div class="proj-sm-imgs">
-          <img src="images/n8n-contact-scan.png" alt="AI 業務助理 - 名片辨識" loading="lazy">
-          <img src="images/n8n-schedule.png" alt="AI 業務助理 - 行程查詢" loading="lazy">
+        <div class="proj-sm-imgs" data-carousel>
+          <img src="images/n8n-contact-scan.png" alt="AI 業務助理 - 名片辨識" class="active">
+          <img src="images/n8n-schedule.png" alt="AI 業務助理 - 行程查詢">
+          <img src="images/n8n-meeting.png" alt="AI 業務助理 - 會議記錄">
+          <img src="images/n8n-calendar.png" alt="AI 業務助理 - 行事曆">
+          <div class="carousel-arrows"><button onclick="slideCarousel(this,-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg></button><button onclick="slideCarousel(this,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg></button></div>
+          <div class="carousel-dots"></div>
         </div>
         <div class="proj-sm-body">
           <div class="proj-type">AI + LINE Bot</div>
@@ -413,9 +438,12 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
         </div>
       </div>
       <div class="proj-sm">
-        <div class="proj-sm-imgs">
-          <img src="images/together-map.jpg" alt="Together - 地圖" loading="lazy">
-          <img src="images/together-detail.jpg" alt="Together - 活動詳情" loading="lazy">
+        <div class="proj-sm-imgs" data-carousel>
+          <img src="images/together-map.jpg" alt="Together - 地圖" class="active">
+          <img src="images/together-detail.jpg" alt="Together - 活動詳情">
+          <img src="images/together-create.jpg" alt="Together - 建立活動">
+          <div class="carousel-arrows"><button onclick="slideCarousel(this,-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg></button><button onclick="slideCarousel(this,1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg></button></div>
+          <div class="carousel-dots"></div>
         </div>
         <div class="proj-sm-body">
           <div class="proj-type">社交平台</div>
@@ -479,6 +507,40 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
 </footer>
 
 <script>
+// Carousel
+function initCarousels(){
+  document.querySelectorAll('[data-carousel]').forEach(c=>{
+    const imgs=c.querySelectorAll(':scope > img');
+    const dots=c.querySelector('.carousel-dots');
+    if(!dots||imgs.length<2)return;
+    dots.innerHTML='';
+    imgs.forEach((_,i)=>{
+      const d=document.createElement('span');
+      if(i===0)d.classList.add('active');
+      d.onclick=(e)=>{e.stopPropagation();goToSlide(c,i)};
+      dots.appendChild(d);
+    });
+  });
+}
+function goToSlide(container,idx){
+  const imgs=container.querySelectorAll(':scope > img');
+  const dots=container.querySelectorAll('.carousel-dots span');
+  imgs.forEach((img,i)=>{img.classList.toggle('active',i===idx)});
+  dots.forEach((d,i)=>{d.classList.toggle('active',i===idx)});
+}
+function slideCarousel(btn,dir){
+  event.stopPropagation();
+  const container=btn.closest('[data-carousel]');
+  const imgs=container.querySelectorAll(':scope > img');
+  let current=0;
+  imgs.forEach((img,i)=>{if(img.classList.contains('active'))current=i});
+  let next=current+dir;
+  if(next<0)next=imgs.length-1;
+  if(next>=imgs.length)next=0;
+  goToSlide(container,next);
+}
+initCarousels();
+
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     e.preventDefault();
