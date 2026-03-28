@@ -131,6 +131,17 @@ section{padding:80px 0}
 .proj-highlights li{font-size:13px;color:var(--text-2);padding:5px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
 .proj-highlights li svg{width:16px;height:16px;color:var(--blue);flex-shrink:0;margin-top:2px}
 
+/* Small project grid */
+.projects-grid-sm{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:768px){.projects-grid-sm{grid-template-columns:1fr}}
+.proj-sm{background:var(--bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .25s;cursor:default}
+.proj-sm:hover{border-color:var(--blue);box-shadow:0 8px 24px rgba(37,99,235,.06);transform:translateY(-2px)}
+.proj-sm img{width:100%;height:140px;object-fit:cover}
+.proj-sm-body{padding:16px 18px}
+.proj-sm-body .proj-type{margin-bottom:4px}
+.proj-sm-body h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.proj-sm-body p{font-size:12px;color:var(--text-3);line-height:1.6;margin-bottom:12px}
+
 /* Process */
 .process-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 @media(max-width:768px){.process-row{grid-template-columns:repeat(2,1fr)}}
@@ -314,8 +325,39 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
       <p class="section-desc">從構想到上線，每個專案都是完整交付的產品</p>
     </div>
 
-    <!-- Project 1: Featured -->
-    <div class="proj-featured" onclick="window.open('https://jiutrip.vercel.app','_blank')">
+    <!-- Featured: IoT 監控系統 -->
+    <div class="proj-featured">
+      <div class="proj-featured-img">
+        <img src="images/claw-monitor-office.png" alt="即時監控系統" loading="lazy">
+      </div>
+      <div class="proj-featured-body">
+        <div class="proj-type">IoT + 跨平台 App</div>
+        <h3>即時監控管理系統</h3>
+        <p>從硬體串接到跨平台 App，完整的 IoT 即時監控解決方案。遠端掌握設備狀態、數據分析、告警通知。</p>
+        <ul class="proj-highlights">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Spring Boot 微服務架構後端，RESTful API + WebSocket 即時通訊
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Flutter 跨平台 App（iOS + Android），即時數據看板 Dashboard
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            硬體 API 串接，即時推送設備狀態、異常告警與歷史報表
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Docker 容器化部署，支援多據點遠端管理
+          </li>
+        </ul>
+        <div class="proj-tags"><span>Spring Boot</span><span>Flutter</span><span>WebSocket</span><span>Docker</span><span>IoT</span><span>RESTful API</span></div>
+      </div>
+    </div>
+
+    <!-- Featured: 揪旅 -->
+    <div class="proj-featured" style="margin-top:24px" onclick="window.open('https://jiutrip.vercel.app','_blank')">
       <div class="proj-featured-img">
         <img src="images/jiutrip-home.png" alt="揪旅 JiuTrip" loading="lazy">
       </div>
@@ -330,77 +372,48 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Google Maps 路線規劃 + Directions API 交通時間計算
+            Google Maps 路線規劃 + 交通時間計算
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            貪心演算法計算最少轉帳次數，多幣值（TWD/JPY/KRW）結算
+            貪心演算法最少轉帳次數，多幣值結算
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Places API Session Token 優化，降低 80%+ API 成本
+            API 成本優化：Session Token + Photo 遷移，降低 80%+ 費用
           </li>
         </ul>
-        <div class="proj-tags"><span>Next.js 15</span><span>TypeScript</span><span>Supabase</span><span>LINE LIFF</span><span>Google Maps API</span><span>Tailwind CSS</span></div>
+        <div class="proj-tags"><span>Next.js 15</span><span>TypeScript</span><span>Supabase</span><span>LINE LIFF</span><span>Google Maps API</span></div>
       </div>
     </div>
 
-    <!-- Project Grid -->
-    <div class="projects-grid" style="margin-top:24px">
-      <div class="proj">
-        <div class="proj-img"><img src="images/food-liff-home.webp" alt="美食收藏家" loading="lazy"></div>
-        <div class="proj-body">
+    <!-- Small project grid -->
+    <div class="projects-grid-sm" style="margin-top:24px">
+      <div class="proj-sm">
+        <img src="images/food-liff-home.webp" alt="美食收藏家" loading="lazy">
+        <div class="proj-sm-body">
           <div class="proj-type">LINE Bot + SaaS</div>
           <h3>美食收藏家</h3>
-          <p>LINE AI 美食助理，貼連結自動收藏餐廳，自然語言搜尋推薦。</p>
-          <ul class="proj-highlights-sm">
-            <li>AI 解析 IG / Google Maps 連結，自動擷取餐廳資訊</li>
-            <li>綠界金流 NT$39/月訂閱制，含退訂與推薦碼機制</li>
-            <li>RAG 架構自然語言搜尋，從收藏中智慧推薦</li>
-          </ul>
-          <div class="proj-tags"><span>Next.js</span><span>LINE Bot</span><span>OpenAI</span><span>ECPay</span><span>Supabase</span></div>
+          <p>AI 美食助理，貼 IG / Google Maps 連結自動收藏，自然語言搜尋推薦，綠界金流訂閱制。</p>
+          <div class="proj-tags"><span>Next.js</span><span>LINE Bot</span><span>OpenAI</span><span>ECPay</span></div>
         </div>
       </div>
-      <div class="proj">
-        <div class="proj-img"><img src="images/claw-monitor-office.png" alt="IoT 監控系統" loading="lazy"></div>
-        <div class="proj-body">
-          <div class="proj-type">IoT + 跨平台 App</div>
-          <h3>即時監控系統</h3>
-          <p>跨平台 IoT 監控 App，即時數據回傳 + 遠端管理。</p>
-          <ul class="proj-highlights-sm">
-            <li>Spring Boot 微服務後端 + Flutter 跨平台前端</li>
-            <li>WebSocket 即時推送硬體狀態與告警</li>
-            <li>報表分析與數據視覺化 Dashboard</li>
-          </ul>
-          <div class="proj-tags"><span>Spring Boot</span><span>Flutter</span><span>WebSocket</span><span>IoT</span></div>
-        </div>
-      </div>
-      <div class="proj">
-        <div class="proj-img"><img src="images/n8n-food-ingest.png" alt="N8N 自動化" loading="lazy"></div>
-        <div class="proj-body">
+      <div class="proj-sm">
+        <img src="images/n8n-food-ingest.png" alt="N8N 自動化" loading="lazy">
+        <div class="proj-sm-body">
           <div class="proj-type">AI 自動化</div>
           <h3>AI 工作流自動化</h3>
-          <p>多套 N8N 自動化流程，取代人工重複操作。</p>
-          <ul class="proj-highlights-sm">
-            <li>名片拍照 → AI 辨識 → 自動存入通訊錄</li>
-            <li>會議記錄 → AI 摘要 → 同步 Google Calendar</li>
-            <li>LINE 排程推播 + 美食連結自動收藏入庫</li>
-          </ul>
-          <div class="proj-tags"><span>N8N</span><span>OpenAI</span><span>LINE Bot</span><span>Google API</span></div>
+          <p>N8N 自動化：名片辨識入通訊錄、會議記錄同步行事曆、LINE 排程推播。</p>
+          <div class="proj-tags"><span>N8N</span><span>OpenAI</span><span>LINE Bot</span></div>
         </div>
       </div>
-      <div class="proj">
-        <div class="proj-img"><img src="images/together-map.jpg" alt="TogetherApp" loading="lazy"></div>
-        <div class="proj-body">
-          <div class="proj-type">社交 App</div>
+      <div class="proj-sm">
+        <img src="images/together-map.jpg" alt="TogetherApp" loading="lazy">
+        <div class="proj-sm-body">
+          <div class="proj-type">社交平台</div>
           <h3>Together 揪團活動</h3>
-          <p>地圖式活動平台，建立活動、邀請好友、即時互動。</p>
-          <ul class="proj-highlights-sm">
-            <li>Spring Boot 3 後端 + Vue.js 3 前端</li>
-            <li>Google Maps 整合地圖探索活動</li>
-            <li>即時通知 + 活動管理 + 報名系統</li>
-          </ul>
-          <div class="proj-tags"><span>Spring Boot 3</span><span>Vue.js 3</span><span>Google Maps</span><span>PostgreSQL</span></div>
+          <p>地圖式活動平台，Spring Boot 3 + Vue.js 3，支援建立活動、報名、即時通知。</p>
+          <div class="proj-tags"><span>Spring Boot</span><span>Vue.js</span><span>Google Maps</span></div>
         </div>
       </div>
     </div>
