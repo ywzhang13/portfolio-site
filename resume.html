@@ -1013,7 +1013,7 @@
               <div class="desc">企業專案</div>
             </div>
             <div class="stat">
-              <div class="num">5+</div>
+              <div class="num">7+</div>
               <div class="desc">作品集</div>
             </div>
           </div>
@@ -1316,6 +1316,86 @@
       </div>
     </div>
 
+    <!-- 新優生化 PIF 系統 -->
+    <div class="featured-project reveal">
+      <div class="project-preview">
+        <div class="carousel-wrapper">
+          <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarousel6(-1)">&#8249;</button>
+          <div class="carousel" id="pifCarousel">
+            <img src="images/pif-ingredients.png" alt="新優生化 PIF — 全成分自動彙整表" class="active" onclick="openLightbox(this)">
+            <img src="images/pif-raw-materials.png" alt="新優生化 PIF — 原料庫" onclick="openLightbox(this)">
+            <img src="images/pif-toxicology.png" alt="新優生化 PIF — 毒理資料庫" onclick="openLightbox(this)">
+            <img src="images/pif-products.png" alt="新優生化 PIF — 產品專案列表" onclick="openLightbox(this)">
+          </div>
+          <button class="carousel-btn next" aria-label="下一張" onclick="slideCarousel6(1)">&#8250;</button>
+        </div>
+        <div class="carousel-dots" id="pifDots"></div>
+      </div>
+      <div class="project-detail">
+        <span class="project-badge">Commercial · Delivered</span>
+        <h3>新優生化 PIF 系統 — 化粧品產品資訊檔案管理</h3>
+        <p>為化粧品公司打造的桌面應用，將原料、配方與法規文件數位化，一鍵產生符合規範的 18 章節「產品資訊檔案（PIF）」Word 文件。以 Electron 打包為 Windows 安裝檔交付業主，資料離線儲存於本機並每日自動備份。</p>
+        <ul class="feature-list">
+          <li>原料庫：純化物／混合物，含 INCI、CAS、模糊搜尋</li>
+          <li>配方編輯 → 全成分自動聚合、依濃度排序輸出</li>
+          <li>COA 批次管理（批號／效期），PIF 依產品選用批次</li>
+          <li>毒理資料庫：按成分(INCI)結構化、全產品共用</li>
+          <li>一鍵生成 Word PIF（標楷體、內嵌 PDF/圖片、親簽）</li>
+          <li>每日自動備份、GitHub Actions CI 自動打包交付</li>
+        </ul>
+        <div class="demo-tags" style="margin-bottom: 20px;">
+          <span class="demo-tag">Electron</span>
+          <span class="demo-tag">Node.js</span>
+          <span class="demo-tag">Fastify</span>
+          <span class="demo-tag">SQLite</span>
+          <span class="demo-tag">React 19</span>
+          <span class="demo-tag">TypeScript</span>
+          <span class="demo-tag">Vite</span>
+          <span class="demo-tag">docx</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 沐居良品 家具電商 -->
+    <div class="featured-project reveal" style="direction: rtl;">
+      <div class="project-preview" style="direction: ltr;">
+        <div class="carousel-wrapper">
+          <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarousel7(-1)">&#8249;</button>
+          <div class="carousel" id="mujuCarousel">
+            <img src="images/muju-home.png" alt="沐居良品 — 首頁品牌主視覺" class="active" onclick="openLightbox(this)">
+            <img src="images/muju-featured.png" alt="沐居良品 — 本月新進選品" onclick="openLightbox(this)">
+            <img src="images/muju-category.png" alt="沐居良品 — 分類頁（客廳）" onclick="openLightbox(this)">
+            <img src="images/muju-cart.png" alt="沐居良品 — 購物車" onclick="openLightbox(this)">
+          </div>
+          <button class="carousel-btn next" aria-label="下一張" onclick="slideCarousel7(1)">&#8250;</button>
+        </div>
+        <div class="carousel-dots" id="mujuDots"></div>
+      </div>
+      <div class="project-detail" style="direction: ltr;">
+        <span class="project-badge">E-commerce · Full-stack</span>
+        <h3>沐居良品 — 台灣家具電商平台</h3>
+        <p>主打台灣市場的家具選品電商，以 Next.js 15 App Router 打造高效能內容型店面，搭配 Payload Headless CMS 管理商品與內容、Supabase 處理資料／認證／儲存，並規劃整合綠界 ECPay 金流。米色極簡品牌風格，支援分類瀏覽、商品選規、購物車與願望清單。</p>
+        <ul class="feature-list">
+          <li>Next.js 15 App Router + RSC，內容型店面高效能</li>
+          <li>Payload Headless CMS 管理商品／分類／編輯專欄</li>
+          <li>Supabase 資料／Auth／儲存；願望清單、購物車</li>
+          <li>商品選規、分類篩選、排序、關鍵字搜尋</li>
+          <li>Resend 交易信、綠界 ECPay 金流（卡／ATM／超商）</li>
+          <li>shadcn/ui + Tailwind v4 設計系統、SEO／OG 完整</li>
+        </ul>
+        <div class="demo-tags" style="margin-bottom: 20px;">
+          <span class="demo-tag">Next.js 15</span>
+          <span class="demo-tag">TypeScript</span>
+          <span class="demo-tag">Tailwind v4</span>
+          <span class="demo-tag">shadcn/ui</span>
+          <span class="demo-tag">Payload CMS</span>
+          <span class="demo-tag">Supabase</span>
+          <span class="demo-tag">ECPay</span>
+          <span class="demo-tag">Vercel</span>
+        </div>
+      </div>
+    </div>
+
     <!-- 3. TogetherApp -->
     <div class="featured-project reveal" style="direction: rtl;">
       <div class="project-preview" style="direction: ltr;">
@@ -1615,12 +1695,16 @@
     initCarousel(3, 'foodCarousel', 'foodDots');
     initCarousel(4, 'n8nCarousel', 'n8nDots');
     initCarousel(5, 'raidCarousel', 'raidDots');
+    initCarousel(6, 'pifCarousel', 'pifDots');
+    initCarousel(7, 'mujuCarousel', 'mujuDots');
 
     function slideCarouselJiutrip(dir) { goTo(12, carousels[12].current + dir); }
     function slideCarousel2(dir) { goTo(2, carousels[2].current + dir); }
     function slideCarousel3(dir) { goTo(3, carousels[3].current + dir); }
     function slideCarousel4(dir) { goTo(4, carousels[4].current + dir); }
     function slideCarousel5(dir) { goTo(5, carousels[5].current + dir); }
+    function slideCarousel6(dir) { goTo(6, carousels[6].current + dir); }
+    function slideCarousel7(dir) { goTo(7, carousels[7].current + dir); }
 
     // Lightbox with navigation
     let lbItems = [];
