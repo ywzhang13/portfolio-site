@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ywzhang13.github.io/portfolio-site/sitemap.xml
+Sitemap: https://rwei-studio.com/sitemap.xml
