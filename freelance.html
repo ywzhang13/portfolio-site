@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>R-Wei Studio｜張育瑋 — 軟體開發服務</title>
-<meta name="description" content="R-Wei Studio（張育瑋）— 全端工程師，承接 Web App、LINE Bot、AI 自動化開發，從需求到上線一條龍交付。">
+<title>R-Wei Studio｜網站架設・電商・軟體開發｜張育瑋</title>
+<meta name="description" content="R-Wei Studio（張育瑋）承接一頁式網站、企業形象官網、電商網站架設與客製開發、AI 自動化、LINE Bot。一頁式 NT$20,000 起、企業官網 50,000 起、電商 80,000 起，從需求到上線一條龍交付。">
 <link rel="canonical" href="https://rwei-studio.com/freelance.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="R-Wei Studio">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:title" content="R-Wei Studio｜張育瑋 — 軟體開發服務">
-<meta property="og:description" content="全端工程師，承接 Web App、LINE Bot、AI 自動化開發，從需求到上線一條龍交付。">
+<meta property="og:title" content="R-Wei Studio｜網站架設・電商・軟體開發｜張育瑋">
+<meta property="og:description" content="一頁式網站、企業形象官網、電商網站架設與客製開發、AI 自動化、LINE Bot。一頁式 NT$20,000 起、企業官網 50,000 起、電商 80,000 起。">
 <meta property="og:url" content="https://rwei-studio.com/freelance.html">
 <meta property="og:image" content="https://rwei-studio.com/images/og-rwei.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="R-Wei Studio｜張育瑋 — 軟體開發服務">
-<meta name="twitter:description" content="全端工程師，承接 Web App、LINE Bot、AI 自動化開發，一條龍交付。">
+<meta name="twitter:title" content="R-Wei Studio｜網站架設・電商・軟體開發｜張育瑋">
+<meta name="twitter:description" content="一頁式網站、企業官網、電商網站架設、客製開發、AI 自動化、LINE Bot。一條龍交付。">
 <meta name="twitter:image" content="https://rwei-studio.com/images/og-rwei.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"R-Wei Studio","description":"全端軟體開發服務 — Web App、LINE Bot、AI 自動化，從需求到上線一條龍交付。","url":"https://rwei-studio.com/freelance.html","image":"https://rwei-studio.com/images/og-rwei.png","email":"rwei.studio@gmail.com","areaServed":"TW","founder":{"@type":"Person","name":"張育瑋","jobTitle":"全端工程師","sameAs":["https://github.com/ywzhang13"]},"knowsAbout":["Spring Boot","Next.js","React","TypeScript","AI 自動化","LINE Bot","Flutter"]}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"R-Wei Studio","description":"全端軟體開發服務 — Web App、LINE Bot、AI 自動化，從需求到上線一條龍交付。","url":"https://rwei-studio.com/freelance.html","image":"https://rwei-studio.com/images/og-rwei.png","email":"rwei.studio@gmail.com","areaServed":"TW","founder":{"@type":"Person","name":"張育瑋","jobTitle":"全端工程師","sameAs":["https://github.com/ywzhang13"]},"knowsAbout":["網站架設","一頁式網站","企業形象網站","電商網站架設","Spring Boot","Next.js","React","TypeScript","AI 自動化","LINE Bot","Flutter"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"網站架設與軟體開發服務","itemListElement":[{"@type":"Offer","name":"一頁式網站架設","priceCurrency":"TWD","price":"20000"},{"@type":"Offer","name":"企業形象網站・官網架設","priceCurrency":"TWD","price":"50000"},{"@type":"Offer","name":"基本電商網站架設","priceCurrency":"TWD","price":"80000"},{"@type":"Offer","name":"客製網站與企業流程自動化"}]}}
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
@@ -103,6 +103,26 @@ section{padding:80px 0}
 .svc-stack{display:flex;flex-wrap:wrap;gap:6px}
 .svc-stack span{font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;background:var(--bg-3);color:var(--text-3)}
 
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:900px){.pricing-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.pricing-grid{grid-template-columns:1fr}}
+.price-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;transition:all .25s}
+.price-card:hover{border-color:var(--blue);box-shadow:0 8px 32px rgba(37,99,235,.07);transform:translateY(-2px)}
+.price-card.featured{border-color:var(--blue);box-shadow:0 8px 32px rgba(37,99,235,.1)}
+.price-card .tier{font-size:12px;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.price-card h3{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:14px;line-height:1.45}
+.price-card .price{font-size:26px;font-weight:800;color:var(--navy);margin-bottom:2px}
+.price-card .price small{font-size:13px;font-weight:500;color:var(--text-3)}
+.price-card .price-note{font-size:12px;color:var(--text-3);margin-bottom:18px}
+.price-card ul{list-style:none;margin:0 0 22px;flex:1}
+.price-card li{font-size:13px;color:var(--text-2);padding:6px 0 6px 22px;position:relative;line-height:1.5}
+.price-card li::before{content:'✓';position:absolute;left:0;color:var(--blue);font-weight:700}
+.price-card .price-cta{text-align:center;background:var(--bg-2);color:var(--navy);border:1px solid var(--border);padding:11px;border-radius:8px;font-size:13px;font-weight:600;transition:all .2s}
+.price-card.featured .price-cta{background:var(--blue);color:#fff;border-color:var(--blue)}
+.price-card .price-cta:hover{border-color:var(--blue);box-shadow:0 4px 12px rgba(37,99,235,.12)}
+.price-note-foot{text-align:center;font-size:13px;color:var(--text-3);margin-top:28px;line-height:1.7}
+
 /* Skills */
 .skills-section{background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
@@ -168,9 +188,10 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
 
 <nav>
   <div class="inner">
-    <a href="#" class="logo">YW<span>.</span></a>
+    <a href="#" class="logo">R-Wei<span> Studio</span></a>
     <ul class="links">
       <li><a href="#services">服務項目</a></li>
+      <li><a href="#pricing">方案報價</a></li>
       <li><a href="#skills">技術能力</a></li>
       <li><a href="#projects">作品案例</a></li>
       <li><a href="#process">合作流程</a></li>
@@ -258,6 +279,72 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-overline">Pricing</div>
+      <h2 class="section-title">服務方案・參考報價</h2>
+      <p class="section-desc">一頁式網站、企業形象官網、電商網站架設到客製開發，依需求彈性報價</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="tier">Landing</div>
+        <h3>一頁式網站架設</h3>
+        <div class="price">NT$ 20,000 <small>起</small></div>
+        <div class="price-note">活動 / 產品 / 個人品牌頁</div>
+        <ul>
+          <li>單頁式 RWD 響應式設計</li>
+          <li>主視覺 + 內容區塊規劃</li>
+          <li>聯絡表單 / CTA 按鈕</li>
+          <li>基本 SEO + 網域上線部署</li>
+        </ul>
+        <a href="mailto:rwei.studio@gmail.com?subject=一頁式網站架設詢價" class="price-cta">詢價</a>
+      </div>
+      <div class="price-card featured">
+        <div class="tier">Corporate</div>
+        <h3>企業形象網站・官網架設</h3>
+        <div class="price">NT$ 50,000 <small>起</small></div>
+        <div class="price-note">多頁式品牌官網</div>
+        <ul>
+          <li>多頁式（首頁／關於／服務／聯絡…）</li>
+          <li>CMS 後台，內容自行更新</li>
+          <li>RWD + SEO 結構化資料</li>
+          <li>網域 / SSL / 部署設定</li>
+        </ul>
+        <a href="mailto:rwei.studio@gmail.com?subject=企業形象官網架設詢價" class="price-cta">詢價</a>
+      </div>
+      <div class="price-card">
+        <div class="tier">E-commerce</div>
+        <h3>基本電商網站架設</h3>
+        <div class="price">NT$ 80,000 <small>起</small></div>
+        <div class="price-note">線上商店 / 金流串接</div>
+        <ul>
+          <li>商品 / 分類 / 購物車 / 結帳</li>
+          <li>綠界 ECPay 金流（卡 / ATM / 超商）</li>
+          <li>訂單 / 會員管理後台</li>
+          <li>RWD + SEO + 上線部署</li>
+        </ul>
+        <a href="mailto:rwei.studio@gmail.com?subject=電商網站架設詢價" class="price-cta">詢價</a>
+      </div>
+      <div class="price-card">
+        <div class="tier">Custom</div>
+        <h3>客製網站・企業流程自動化</h3>
+        <div class="price" style="font-size:21px">專案報價</div>
+        <div class="price-note">依需求評估</div>
+        <ul>
+          <li>客製系統 / SaaS / 管理平台</li>
+          <li>企業流程模組自動化（AI / N8N）</li>
+          <li>API 串接、第三方整合</li>
+          <li>LINE Bot / LIFF</li>
+        </ul>
+        <a href="mailto:rwei.studio@gmail.com?subject=客製開發需求洽談" class="price-cta">洽談需求</a>
+      </div>
+    </div>
+    <p class="price-note-foot">＊以上為參考起價，實際依功能、頁數與時程客製報價；歡迎來信 <a href="mailto:rwei.studio@gmail.com" style="color:var(--blue);font-weight:600">rwei.studio@gmail.com</a> 討論需求。</p>
   </div>
 </section>
 
