@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>張育瑋 | 後端工程師</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <meta name="description" content="張育瑋 — 4+ 年全端開發經驗，專注 Spring Boot 微服務架構與 API 設計。作品集涵蓋旅行分帳 App、AI 自動化、LINE Bot、Flutter 跨平台開發。">
   <meta property="og:title" content="張育瑋 | 後端工程師">
   <meta property="og:description" content="4+ 年全端開發經驗，專注 Spring Boot 微服務架構與 API 設計">
@@ -1240,6 +1241,45 @@
       <h2>作品集</h2>
       <p>Side Projects & Automation</p>
     </div>
+    <!-- 0. Virtual Office AI -->
+    <div class="featured-project reveal">
+      <div class="project-preview">
+        <div class="carousel-wrapper">
+          <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarousel8(-1)">&#8249;</button>
+          <div class="carousel" id="voaiCarousel">
+            <img src="images/voai-office.png" alt="Virtual Office AI 像素風 AI 辦公室" class="active" onclick="openLightbox(this)">
+            <video src="images/voai-demo.mp4" muted loop playsinline onclick="openLightbox(this)"></video>
+            <img src="images/voai-tutorial.png" alt="Virtual Office AI 新手教學" onclick="openLightbox(this)">
+          </div>
+          <button class="carousel-btn next" aria-label="下一張" onclick="slideCarousel8(1)">&#8250;</button>
+        </div>
+        <div class="carousel-dots" id="voaiDots"></div>
+      </div>
+      <div class="project-detail">
+        <span class="project-badge">AI Platform</span>
+        <h3>Virtual Office AI — 像素風 AI 辦公室</h3>
+        <p>把你訂閱的 Claude Code 或 API 金鑰，變成一支可以派任務的像素員工團隊 —— 用既有訂閱就能跑，不用另外付 API 費。手機開網頁就能遠端指揮自己電腦上的 AI：左側名冊管理員工、中間辦公室即時走動、右側即時回收任務成果。</p>
+        <ul class="feature-list">
+          <li>Phaser 4 像素辦公室：場景編輯器、MMO 式捏臉合成器、內建新手教學</li>
+          <li>辦公室生活感：閒置員工會起身到茶水間、沙發區走動，接到任務自動回工位坐下工作</li>
+          <li>WebSocket 中繼站 + 零依賴單檔 worker（Windows / macOS / Linux），橋接本機 Claude Code CLI，不同員工可綁不同電腦</li>
+          <li>自帶金鑰（BYO-key）：支援 Anthropic / OpenRouter / OpenAI，由瀏覽器直連 AI 服務，預設不儲存、不經伺服器</li>
+          <li>逐字串流輸出、對話紀錄、檔案拖放上傳下載</li>
+          <li>Google 登入 + Supabase 雲端同步；沙盒權限控管，員工可存取的資料夾由網頁遠端授權</li>
+        </ul>
+        <div class="demo-tags" style="margin-bottom: 20px;">
+          <span class="demo-tag">React</span>
+          <span class="demo-tag">TypeScript</span>
+          <span class="demo-tag">Vite</span>
+          <span class="demo-tag">Phaser 4</span>
+          <span class="demo-tag">Node.js</span>
+          <span class="demo-tag">WebSocket</span>
+          <span class="demo-tag">Supabase</span>
+          <span class="demo-tag">Claude Code</span>
+        </div>
+      </div>
+    </div>
+
     <!-- 1. Claw Monitor (OpenClaw Skill) -->
     <div class="featured-project reveal">
       <div class="project-preview">
@@ -1247,9 +1287,9 @@
           <button class="carousel-btn prev" aria-label="上一張" onclick="slideCarousel(-1)">&#8249;</button>
           <div class="carousel" id="clawCarousel">
             <img src="images/claw-monitor-office.png" alt="Claw Monitor 虛擬辦公室全景" class="active" onclick="openLightbox(this)">
-            <video src="images/claw-monitor-v1.mov" muted loop playsinline onclick="openLightbox(this)"></video>
-            <video src="images/claw-monitor-v2.mov" muted loop playsinline onclick="openLightbox(this)"></video>
-            <video src="images/claw-monitor-v3.mov" muted loop playsinline onclick="openLightbox(this)"></video>
+            <video src="images/claw-monitor-v1.mp4" muted loop playsinline onclick="openLightbox(this)"></video>
+            <video src="images/claw-monitor-v2.mp4" muted loop playsinline onclick="openLightbox(this)"></video>
+            <video src="images/claw-monitor-v3.mp4" muted loop playsinline onclick="openLightbox(this)"></video>
           </div>
           <button class="carousel-btn next" aria-label="下一張" onclick="slideCarousel(1)">&#8250;</button>
         </div>
@@ -1707,6 +1747,7 @@
     initCarousel(5, 'raidCarousel', 'raidDots');
     initCarousel(6, 'pifCarousel', 'pifDots');
     initCarousel(7, 'mujuCarousel', 'mujuDots');
+    initCarousel(8, 'voaiCarousel', 'voaiDots');
 
     function slideCarouselJiutrip(dir) { goTo(12, carousels[12].current + dir); }
     function slideCarousel2(dir) { goTo(2, carousels[2].current + dir); }
@@ -1715,6 +1756,7 @@
     function slideCarousel5(dir) { goTo(5, carousels[5].current + dir); }
     function slideCarousel6(dir) { goTo(6, carousels[6].current + dir); }
     function slideCarousel7(dir) { goTo(7, carousels[7].current + dir); }
+    function slideCarousel8(dir) { goTo(8, carousels[8].current + dir); }
 
     // Lightbox with navigation
     let lbItems = [];

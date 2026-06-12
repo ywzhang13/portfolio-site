@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>R-Wei Studio｜網站架設・電商・軟體開發｜張育瑋</title>
+<link rel="icon" type="image/png" href="favicon.png">
 <meta name="description" content="R-Wei Studio（張育瑋）承接一頁式網站、企業形象官網、電商網站架設與客製開發、AI 自動化、LINE Bot。一頁式 NT$20,000 起、企業官網 60,000 起、電商 120,000 起、AI 自動化／LINE Bot 50,000 起，從需求到上線一條龍交付。">
 <link rel="canonical" href="https://rwei-studio.com/freelance.html">
 <meta property="og:type" content="website">
@@ -25,218 +26,256 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"做一個網站要多久？","acceptedAnswer":{"@type":"Answer","text":"一頁式網站約 3～5 天，企業形象官網約 1～2 週，電商或客製系統依功能複雜度約 6～12 週。確切時程會在需求訪談後一併報價。"}},{"@type":"Question","name":"報價包含網域和主機嗎？","acceptedAnswer":{"@type":"Answer","text":"報價為開發費用。網域、主機／雲端、金流手續費、簡訊、LINE 官方帳號等第三方費用為實支實付，我會協助申請與設定。"}},{"@type":"Question","name":"可以只做前端或只做後端嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。前端切版、後端 API、第三方串接、既有專案維護或重構都可以單獨承接。"}},{"@type":"Question","name":"網站上線後可以自己更新內容嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。多數方案會建置後台（CMS），讓你自行更新文章、商品與內容，交付時也會提供操作教學。"}},{"@type":"Question","name":"如何開始與付款方式？","acceptedAnswer":{"@type":"Answer","text":"先免費諮詢與需求訪談並提供報價，確認後收取訂金即開始開發，分階段交付，上線後收尾款，之後提供保固與維護。"}}]}
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --navy:#0F172A;--navy-2:#1E293B;--slate:#475569;--slate-light:#94A3B8;
-  --blue:#2563EB;--blue-light:#3B82F6;--blue-bg:#EFF6FF;
+  --ink:#0B1526;--navy:#0F172A;--navy-2:#1E293B;
+  --blue:#2563EB;--blue-dark:#1D4ED8;--blue-bg:#EFF6FF;--blue-line:#BFDBFE;
   --bg:#FFFFFF;--bg-2:#F8FAFC;--bg-3:#F1F5F9;
-  --border:#E2E8F0;
-  --text:#020617;--text-2:#334155;--text-3:#64748B;
+  --border:#E5EAF1;--border-2:#D8E0EA;
+  --text:#0B1526;--text-2:#3D4C61;--text-3:#64748B;--text-4:#94A3B8;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.05);
+  --shadow-md:0 10px 30px -8px rgba(15,23,42,.10);
+  --shadow-blue:0 12px 32px -10px rgba(37,99,235,.22);
+  --r-card:16px;--r-pill:999px;
+  --ease:cubic-bezier(.16,1,.3,1);
 }
-body{font-family:'Poppins','Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit','Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:inherit;text-decoration:none}
-.container{max-width:1100px;margin:0 auto;padding:0 40px}
-@media(max-width:768px){.container{padding:0 24px}}
+.container{max-width:1140px;margin:0 auto;padding:0 40px}
+@media(max-width:768px){.container{padding:0 22px}}
 
-/* Nav */
-nav{position:fixed;top:0;width:100%;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0}
-nav .inner{max-width:1100px;margin:0 auto;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between}
-@media(max-width:768px){nav .inner{padding:0 24px}}
-nav .logo{font-weight:800;font-size:20px;color:var(--navy);letter-spacing:-.5px}
+/* ───── Nav ───── */
+nav{position:fixed;top:0;width:100%;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:1140px;margin:0 auto;padding:0 40px;height:68px;display:flex;align-items:center;justify-content:space-between}
+@media(max-width:768px){nav .inner{padding:0 22px;height:62px}}
+nav .logo{font-weight:800;font-size:19px;color:var(--ink);letter-spacing:-.4px}
 nav .logo span{color:var(--blue)}
-nav .links{display:flex;gap:32px;list-style:none}
-nav .links a{color:var(--text-3);font-size:14px;font-weight:500;transition:color .2s;padding:4px 0;border-bottom:2px solid transparent}
-nav .links a:hover{color:var(--text);border-bottom-color:var(--blue)}
-nav .contact-btn{background:var(--navy);color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;font-weight:600;transition:all .2s;letter-spacing:.3px}
-nav .contact-btn:hover{background:var(--navy-2);box-shadow:0 4px 12px rgba(15,23,42,.15)}
-@media(max-width:768px){nav .links{display:none}}
+nav .links{display:flex;gap:34px;list-style:none}
+nav .links a{color:var(--text-3);font-size:14px;font-weight:500;transition:color .2s;position:relative;padding:4px 0}
+nav .links a::after{content:'';position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--blue);border-radius:2px;transition:right .25s var(--ease)}
+nav .links a:hover{color:var(--ink)}
+nav .links a:hover::after{right:0}
+nav .contact-btn{background:var(--ink);color:#fff;padding:10px 26px;border-radius:var(--r-pill);font-size:13.5px;font-weight:600;transition:all .25s var(--ease);letter-spacing:.2px}
+nav .contact-btn:hover{background:var(--navy-2);box-shadow:0 6px 16px rgba(15,23,42,.18);transform:translateY(-1px)}
+nav .contact-btn:active{transform:translateY(0) scale(.98)}
+@media(max-width:768px){nav .links,nav .contact-btn{display:none}}
 
-/* Hero */
-.hero{padding:140px 0 60px;position:relative}
-.hero-inner{text-align:center;max-width:720px;margin:0 auto}
-.hero .overline{font-size:13px;font-weight:600;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
-.hero h1{font-size:52px;font-weight:800;line-height:1.15;color:var(--navy);margin-bottom:20px;letter-spacing:-1.5px}
-@media(max-width:640px){.hero h1{font-size:32px}}
-.hero h1 .highlight{position:relative;display:inline}
-.hero h1 .highlight::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:14px;background:rgba(37,99,235,.12);z-index:-1;border-radius:2px}
-.hero p{font-size:18px;color:var(--text-2);line-height:1.8;margin-bottom:36px;max-width:560px;margin-left:auto;margin-right:auto}
-@media(max-width:640px){.hero p{font-size:15px}}
-.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn-fill{background:var(--blue);color:#fff;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:600;transition:all .2s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:inherit}
-.btn-fill:hover{background:var(--blue-light);box-shadow:0 8px 24px rgba(37,99,235,.2);transform:translateY(-1px)}
-.btn-outline{background:transparent;color:var(--navy);padding:14px 32px;border-radius:8px;font-size:15px;font-weight:600;border:1.5px solid var(--border);transition:all .2s;display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-family:inherit}
-.btn-outline:hover{border-color:var(--slate-light);background:var(--bg-2)}
-.hero-stats{display:flex;gap:0;justify-content:center;margin-top:48px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px;overflow:hidden;max-width:520px;margin-left:auto;margin-right:auto}
-.hero-stat{flex:1;padding:24px 20px;text-align:center;border-right:1px solid var(--border)}
+/* ───── Hero ───── */
+.hero{padding:158px 0 72px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(ellipse 900px 420px at 50% -120px,rgba(37,99,235,.07),transparent 65%);
+  pointer-events:none}
+.hero-inner{text-align:center;max-width:760px;margin:0 auto;position:relative}
+.hero .overline{font-size:12.5px;font-weight:600;color:var(--blue);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:20px}
+.hero h1{font-size:clamp(34px,5.4vw,58px);font-weight:800;line-height:1.16;color:var(--ink);margin-bottom:22px;letter-spacing:-.03em}
+.hero h1 .highlight{position:relative;display:inline-block;color:var(--blue)}
+.hero h1 .highlight::after{content:'';position:absolute;bottom:6px;left:-2px;right:-2px;height:.32em;background:rgba(37,99,235,.13);z-index:-1;border-radius:3px}
+.hero p{font-size:17.5px;color:var(--text-2);line-height:1.85;margin:0 auto 38px;max-width:560px}
+@media(max-width:640px){.hero{padding:128px 0 56px}.hero p{font-size:15px}}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-fill{background:var(--blue);color:#fff;padding:15px 34px;border-radius:var(--r-pill);font-size:15px;font-weight:600;transition:all .25s var(--ease);display:inline-flex;align-items:center;gap:9px;border:none;cursor:pointer;font-family:inherit}
+.btn-fill:hover{background:var(--blue-dark);box-shadow:var(--shadow-blue);transform:translateY(-2px)}
+.btn-fill:active{transform:translateY(0) scale(.98)}
+.btn-outline{background:#fff;color:var(--ink);padding:15px 34px;border-radius:var(--r-pill);font-size:15px;font-weight:600;border:1.5px solid var(--border-2);transition:all .25s var(--ease);display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-family:inherit}
+.btn-outline:hover{border-color:var(--text-4);background:var(--bg-2);transform:translateY(-2px)}
+.btn-outline:active{transform:translateY(0) scale(.98)}
+.hero-stats{display:flex;justify-content:center;align-items:stretch;gap:0;margin-top:56px}
+.hero-stat{padding:0 44px;text-align:center;border-right:1px solid var(--border)}
 .hero-stat:last-child{border-right:none}
-.hero-stat .num{font-size:28px;font-weight:800;color:var(--blue)}
-.hero-stat .label{font-size:12px;color:var(--text-3);font-weight:500;margin-top:2px}
+@media(max-width:640px){.hero-stat{padding:0 22px}}
+.hero-stat .num{font-size:30px;font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.2}
+.hero-stat .num em{font-style:normal;color:var(--blue)}
+.hero-stat .label{font-size:12.5px;color:var(--text-3);font-weight:500;margin-top:4px}
 
-/* Logos/Trust */
-.trust-bar{padding:40px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-2)}
-.trust-bar .inner{text-align:center}
-.trust-bar p{font-size:12px;color:var(--slate-light);text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:20px}
-.trust-logos{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;align-items:center;opacity:.5}
-.trust-logos span{font-size:15px;font-weight:700;color:var(--slate)}
+/* ───── Trust ───── */
+.trust-bar{padding:36px 0 44px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-2)}
+.trust-bar p{text-align:center;font-size:12px;color:var(--text-4);text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:22px}
+.trust-logos{display:flex;justify-content:center;gap:14px 36px;flex-wrap:wrap;align-items:center}
+.t-item{display:inline-flex;align-items:center;gap:9px;color:var(--text-3);font-size:14.5px;font-weight:600;opacity:.85}
+.t-item img{width:20px;height:20px;display:block}
+@media(max-width:640px){.trust-logos{gap:12px 22px}.t-item{font-size:13px}.t-item img{width:17px;height:17px}}
 
-/* Section */
-section{padding:80px 0}
-.section-header{margin-bottom:48px}
+/* ───── Section base ───── */
+section{padding:96px 0}
+@media(max-width:768px){section{padding:64px 0}}
+.section-header{margin-bottom:56px}
 .section-header.center{text-align:center}
-.section-overline{font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
-.section-title{font-size:32px;font-weight:800;color:var(--navy);letter-spacing:-.5px;margin-bottom:8px}
-@media(max-width:768px){.section-title{font-size:24px}}
-.section-desc{font-size:15px;color:var(--text-3);max-width:500px}
+.section-title{font-size:clamp(26px,3.4vw,38px);font-weight:800;color:var(--ink);letter-spacing:-.025em;line-height:1.25;margin-bottom:12px}
+.section-desc{font-size:15.5px;color:var(--text-3);max-width:520px}
 .section-header.center .section-desc{margin:0 auto}
+.tinted{background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 
-/* Services */
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+/* ───── Services ───── */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 @media(max-width:768px){.services-grid{grid-template-columns:1fr}}
-.svc{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:32px 28px;transition:all .25s;cursor:default}
-.svc:hover{border-color:var(--blue);box-shadow:0 8px 32px rgba(37,99,235,.06);transform:translateY(-2px)}
-.svc-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.svc{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);padding:34px 30px;transition:all .3s var(--ease)}
+.svc:hover{border-color:var(--blue-line);box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.svc-icon{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;background:var(--blue-bg);color:var(--blue)}
 .svc-icon svg{width:24px;height:24px}
-.svc-icon.blue{background:var(--blue-bg);color:var(--blue)}
-.svc-icon.green{background:#F0FDF4;color:#16A34A}
-.svc-icon.purple{background:#FAF5FF;color:#9333EA}
-.svc h3{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--navy)}
-.svc p{font-size:14px;color:var(--text-3);line-height:1.7;margin-bottom:16px}
+.svc h3{font-size:18px;font-weight:700;margin-bottom:10px;color:var(--ink);letter-spacing:-.01em}
+.svc p{font-size:14px;color:var(--text-3);line-height:1.75;margin-bottom:18px}
 .svc-stack{display:flex;flex-wrap:wrap;gap:6px}
-.svc-stack span{font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;background:var(--bg-3);color:var(--text-3)}
+.svc-stack span{font-size:11.5px;font-weight:600;padding:4px 11px;border-radius:var(--r-pill);background:var(--bg-3);color:var(--text-3)}
 
-/* Pricing */
-.pricing-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-@media(max-width:1024px){.pricing-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:720px){.pricing-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.pricing-grid{grid-template-columns:1fr}}
-.price-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:26px 20px;display:flex;flex-direction:column;transition:all .25s}
-.price-card:hover{border-color:var(--blue);box-shadow:0 8px 32px rgba(37,99,235,.07);transform:translateY(-2px)}
-.price-card.featured{border-color:var(--blue);box-shadow:0 8px 32px rgba(37,99,235,.1)}
-.price-card .tier{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
-.price-card h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:14px;line-height:1.45;min-height:44px}
-.price-card .price{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:2px;letter-spacing:-.5px;white-space:nowrap}
-.price-card .price.range{font-size:16px}
+/* ───── Value ───── */
+.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px 40px}
+@media(max-width:900px){.value-grid{grid-template-columns:repeat(2,1fr);gap:36px 28px}}
+@media(max-width:600px){.value-grid{grid-template-columns:1fr;gap:30px}}
+.value-item{display:flex;gap:18px;align-items:flex-start}
+.value-item .vc-icon{flex-shrink:0;width:44px;height:44px;border-radius:12px;background:#fff;border:1px solid var(--border);color:var(--blue);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm)}
+.value-item .vc-icon svg{width:21px;height:21px}
+.value-item h3{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:5px}
+.value-item p{font-size:13.5px;color:var(--text-3);line-height:1.75}
+
+/* ───── Pricing ───── */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:22px}
+@media(max-width:900px){.pricing-grid{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto}}
+.pricing-wide{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:900px){.pricing-wide{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
+.price-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);padding:32px 28px;display:flex;flex-direction:column;transition:all .3s var(--ease);position:relative}
+.price-card:hover{border-color:var(--blue-line);box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.price-card.featured{border-color:var(--blue);box-shadow:var(--shadow-blue)}
+.price-card .pop{position:absolute;top:-12px;left:28px;background:var(--blue);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;padding:4px 14px;border-radius:var(--r-pill)}
+.price-card .tier{font-size:11px;font-weight:700;color:var(--text-4);letter-spacing:1.8px;text-transform:uppercase;margin-bottom:10px}
+.price-card h3{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:16px;line-height:1.45;letter-spacing:-.01em}
+.price-card .price{font-size:26px;font-weight:800;color:var(--ink);margin-bottom:2px;letter-spacing:-.02em;white-space:nowrap}
+.price-card .price.range{font-size:21px}
 .price-card .price small{font-size:13px;font-weight:500;color:var(--text-3)}
-.price-card .price-note{font-size:12px;color:var(--text-3);margin-bottom:18px}
-.price-card ul{list-style:none;margin:0 0 22px;flex:1}
-.price-card li{font-size:13px;color:var(--text-2);padding:6px 0 6px 22px;position:relative;line-height:1.5}
-.price-card li::before{content:'✓';position:absolute;left:0;color:var(--blue);font-weight:700}
-.price-card .price-cta{text-align:center;background:var(--bg-2);color:var(--navy);border:1px solid var(--border);padding:11px;border-radius:8px;font-size:13px;font-weight:600;transition:all .2s}
+.price-card .price-note{font-size:12.5px;color:var(--text-3);margin-bottom:20px}
+.price-card ul{list-style:none;margin:0 0 26px;flex:1}
+.price-card li{font-size:13.5px;color:var(--text-2);padding:6px 0 6px 24px;position:relative;line-height:1.55}
+.price-card li::before{content:'';position:absolute;left:2px;top:13px;width:13px;height:13px;border-radius:50%;background:var(--blue-bg)}
+.price-card li::after{content:'';position:absolute;left:5.5px;top:16px;width:6px;height:3.5px;border-left:1.8px solid var(--blue);border-bottom:1.8px solid var(--blue);transform:rotate(-45deg)}
+.price-card .price-cta{text-align:center;background:var(--bg);color:var(--ink);border:1.5px solid var(--border-2);padding:12px;border-radius:var(--r-pill);font-size:13.5px;font-weight:600;transition:all .25s var(--ease)}
+.price-card .price-cta:hover{border-color:var(--blue);color:var(--blue)}
 .price-card.featured .price-cta{background:var(--blue);color:#fff;border-color:var(--blue)}
-.price-card .price-cta:hover{border-color:var(--blue);box-shadow:0 4px 12px rgba(37,99,235,.12)}
-.price-note-foot{text-align:center;font-size:13px;color:var(--text-3);margin-top:28px;line-height:1.7}
+.price-card.featured .price-cta:hover{background:var(--blue-dark);box-shadow:var(--shadow-blue);color:#fff}
+.price-card.wide{flex-direction:row;gap:30px;align-items:flex-start}
+@media(max-width:640px){.price-card.wide{flex-direction:column;gap:0}}
+.price-card.wide .pc-left{flex:0 0 220px}
+.price-card.wide .pc-right{flex:1;display:flex;flex-direction:column}
+.price-card.wide ul{margin-bottom:0;columns:1}
+.price-card.wide .price-cta{margin-top:20px;align-self:flex-start;padding:11px 30px}
+.price-note-foot{text-align:center;font-size:13px;color:var(--text-3);margin-top:34px;line-height:1.8;max-width:760px;margin-left:auto;margin-right:auto}
+.price-note-foot a{color:var(--blue);font-weight:600}
 
-/* Skills */
-.skills-section{background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
-@media(max-width:768px){.skills-grid{grid-template-columns:repeat(2,1fr);gap:24px}}
-.skill-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--blue);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--blue-bg)}
+/* ───── Skills ───── */
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:36px}
+@media(max-width:768px){.skills-grid{grid-template-columns:repeat(2,1fr);gap:28px}}
+.skill-col h4{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--blue);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--blue-bg)}
 .skill-col ul{list-style:none}
-.skill-col li{font-size:14px;color:var(--text-2);padding:7px 0;font-weight:500}
+.skill-col li{font-size:14.5px;color:var(--text-2);padding:7px 0;font-weight:500}
 
-/* Projects */
-.featured-project{background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:24px;transition:all .25s}
-.featured-project:hover{border-color:var(--blue);box-shadow:0 12px 40px rgba(37,99,235,.08)}
+/* ───── Projects ───── */
+.featured-project{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:28px;transition:all .3s var(--ease)}
+.featured-project:hover{border-color:var(--blue-line);box-shadow:var(--shadow-md)}
 @media(max-width:768px){.featured-project{grid-template-columns:1fr;direction:ltr !important}}
 .featured-project .project-preview{padding:0;overflow:hidden;position:relative}
 .carousel{position:relative;width:100%;min-height:300px;height:100%;background:var(--bg-3);display:flex;align-items:center;justify-content:center}
-.carousel img,.carousel video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none;transition:opacity .3s}
+.carousel img,.carousel video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none;transition:opacity .35s}
 .carousel img.active,.carousel video.active{opacity:1;pointer-events:auto}
 .carousel.portrait{aspect-ratio:3/4}
 .carousel.portrait img{object-fit:contain}
 .carousel.landscape{aspect-ratio:16/10;height:auto;min-height:0}
 .carousel.landscape img,.carousel.landscape video{object-fit:contain}
-.carousel-wrapper{display:flex;align-items:center}
-.carousel-btn{width:36px;height:36px;border:none;background:rgba(255,255,255,.9);border-radius:50%;cursor:pointer;font-size:20px;color:var(--navy);display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.1);position:absolute;top:50%;transform:translateY(-50%);z-index:5}
-.carousel-btn:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.15)}
-.carousel-btn.prev{left:8px}
-.carousel-btn.next{right:8px}
-.carousel-dots{display:flex;justify-content:center;gap:6px;padding:8px 0}
-.carousel-dots span{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .2s}
-.carousel-dots span.active{background:var(--blue);width:20px;border-radius:4px}
-.project-detail{padding:32px;display:flex;flex-direction:column;justify-content:center}
-@media(max-width:768px){.project-detail{padding:24px}}
-.project-badge{display:inline-block;font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
-.project-detail h3{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:8px}
-.project-detail p{font-size:13px;color:var(--text-3);line-height:1.7;margin-bottom:16px}
-.feature-list{list-style:none;margin-bottom:16px}
-.feature-list li{font-size:13px;color:var(--text-2);padding:4px 0;padding-left:20px;position:relative;line-height:1.6}
-.feature-list li::before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.carousel-btn{width:38px;height:38px;border:none;background:rgba(255,255,255,.92);border-radius:50%;cursor:pointer;font-size:20px;color:var(--ink);display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 2px 10px rgba(15,23,42,.12);position:absolute;top:50%;transform:translateY(-50%);z-index:5}
+.carousel-btn:hover{background:#fff;box-shadow:0 4px 16px rgba(15,23,42,.18)}
+.carousel-btn:active{transform:translateY(-50%) scale(.94)}
+.carousel-btn.prev{left:10px}
+.carousel-btn.next{right:10px}
+.carousel-dots{display:flex;justify-content:center;gap:6px;padding:10px 0}
+.carousel-dots span{width:8px;height:8px;border-radius:50%;background:var(--border-2);cursor:pointer;transition:all .25s var(--ease)}
+.carousel-dots span.active{background:var(--blue);width:22px;border-radius:var(--r-pill)}
+.project-detail{padding:36px;display:flex;flex-direction:column;justify-content:center}
+@media(max-width:768px){.project-detail{padding:26px 24px}}
+.project-badge{display:inline-block;font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1.6px;margin-bottom:10px}
+.project-detail h3{font-size:21px;font-weight:800;color:var(--ink);margin-bottom:10px;letter-spacing:-.015em;line-height:1.4}
+.project-detail p{font-size:13.5px;color:var(--text-3);line-height:1.8;margin-bottom:18px}
+.feature-list{list-style:none;margin-bottom:18px}
+.feature-list li{font-size:13.5px;color:var(--text-2);padding:4px 0 4px 20px;position:relative;line-height:1.65}
+.feature-list li::before{content:'';position:absolute;left:0;top:12px;width:6px;height:6px;border-radius:50%;background:var(--blue)}
 .demo-tags{display:flex;flex-wrap:wrap;gap:6px}
-.demo-tags span{font-size:11px;font-weight:600;padding:3px 10px;border-radius:5px;background:var(--blue-bg);color:var(--blue)}
+.demo-tags span{font-size:11.5px;font-weight:600;padding:4px 11px;border-radius:var(--r-pill);background:var(--blue-bg);color:var(--blue)}
+.project-link{margin-top:14px;font-size:13.5px;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:4px}
+.project-link:hover{text-decoration:underline}
 
-/* Process */
-.process-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-@media(max-width:768px){.process-row{grid-template-columns:repeat(2,1fr)}}
-.step{text-align:center;padding:24px 16px;position:relative}
-.step-circle{width:56px;height:56px;border-radius:50%;background:var(--blue-bg);color:var(--blue);font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-.step h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px}
-.step p{font-size:12px;color:var(--text-3);line-height:1.6}
-
-/* CTA */
-.cta-section{background:var(--navy);color:#fff;border-radius:20px;padding:64px 48px;text-align:center;margin:0 40px 80px}
-@media(max-width:768px){.cta-section{margin:0 24px 60px;padding:48px 28px;border-radius:16px}}
-.cta-section h2{font-size:32px;font-weight:800;margin-bottom:12px;letter-spacing:-.5px}
-@media(max-width:768px){.cta-section h2{font-size:24px}}
-.cta-section p{color:rgba(255,255,255,.6);font-size:15px;margin-bottom:32px;max-width:440px;margin-left:auto;margin-right:auto}
-.cta-section .btn-fill{background:#fff;color:var(--navy)}
-.cta-section .btn-fill:hover{background:var(--bg-2);box-shadow:0 8px 24px rgba(0,0,0,.2)}
-.cta-email{font-size:15px;color:rgba(255,255,255,.5);margin-top:16px;font-weight:500}
-
-/* Value diff */
-.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media(max-width:768px){.value-grid{grid-template-columns:1fr}}
-.value-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:26px 24px;transition:all .25s}
-.value-card:hover{border-color:var(--blue);box-shadow:0 8px 32px rgba(37,99,235,.06);transform:translateY(-2px)}
-.value-card .vc-icon{width:42px;height:42px;border-radius:10px;background:var(--blue-bg);color:var(--blue);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-.value-card .vc-icon svg{width:22px;height:22px}
-.value-card h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px}
-.value-card p{font-size:13.5px;color:var(--text-3);line-height:1.7}
-
-/* Why me */
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+/* ───── Why me ───── */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 @media(max-width:768px){.why-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.why-grid{grid-template-columns:1fr}}
-.why-card{text-align:center;padding:24px 18px}
-.why-card .wc-icon{width:52px;height:52px;border-radius:14px;background:#fff;border:1px solid var(--border);color:var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
-.why-card .wc-icon svg{width:24px;height:24px}
-.why-card h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px}
-.why-card p{font-size:13px;color:var(--text-3);line-height:1.65}
+.why-card{text-align:center;padding:28px 18px}
+.why-card .wc-icon{width:54px;height:54px;border-radius:16px;background:var(--blue-bg);color:var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.why-card .wc-icon svg{width:25px;height:25px}
+.why-card h3{font-size:15.5px;font-weight:700;color:var(--ink);margin-bottom:7px}
+.why-card p{font-size:13px;color:var(--text-3);line-height:1.7}
 
-/* Process 6-step */
-.process-row.six{grid-template-columns:repeat(6,1fr)}
-@media(max-width:900px){.process-row.six{grid-template-columns:repeat(3,1fr);gap:16px}}
-@media(max-width:480px){.process-row.six{grid-template-columns:repeat(2,1fr)}}
-.step .step-pay{display:inline-block;font-size:10px;font-weight:700;color:#16A34A;background:#F0FDF4;border-radius:5px;padding:2px 8px;margin-top:6px}
+/* ───── Process ───── */
+.process-row{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+@media(max-width:900px){.process-row{grid-template-columns:repeat(3,1fr);gap:20px}}
+@media(max-width:480px){.process-row{grid-template-columns:repeat(2,1fr)}}
+.step{text-align:center;padding:22px 12px}
+.step-circle{width:54px;height:54px;border-radius:50%;background:#fff;border:1.5px solid var(--blue-line);color:var(--blue);font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:var(--shadow-sm)}
+.step h3{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:7px}
+.step p{font-size:12px;color:var(--text-3);line-height:1.65}
+.step .step-pay{display:inline-block;font-size:10.5px;font-weight:700;color:#15803D;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:var(--r-pill);padding:2px 10px;margin-top:7px}
 
-/* FAQ */
+/* ───── FAQ ───── */
 .faq-list{max-width:760px;margin:0 auto}
-.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:12px;background:var(--bg);overflow:hidden}
-.faq-q{width:100%;text-align:left;background:none;border:none;padding:20px 22px;font-size:15px;font-weight:600;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:inherit;line-height:1.5}
+.faq-item{border:1px solid var(--border);border-radius:14px;margin-bottom:12px;background:var(--bg);overflow:hidden;transition:border-color .25s}
+.faq-item.open{border-color:var(--blue-line)}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:21px 24px;font-size:15.5px;font-weight:600;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:inherit;line-height:1.5}
 .faq-q:hover{color:var(--blue)}
 .faq-q .faq-mark{flex-shrink:0;width:20px;height:20px;position:relative;transition:transform .25s}
 .faq-q .faq-mark::before,.faq-q .faq-mark::after{content:'';position:absolute;background:var(--blue);border-radius:2px}
 .faq-q .faq-mark::before{top:9px;left:2px;right:2px;height:2px}
 .faq-q .faq-mark::after{left:9px;top:2px;bottom:2px;width:2px;transition:opacity .25s}
 .faq-item.open .faq-mark::after{opacity:0}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 22px}
-.faq-item.open .faq-a{max-height:240px;padding-bottom:20px}
-.faq-a p{font-size:14px;color:var(--text-2);line-height:1.75}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 24px}
+.faq-item.open .faq-a{max-height:240px;padding-bottom:21px}
+.faq-a p{font-size:14px;color:var(--text-2);line-height:1.8}
 
-/* Mobile menu */
-.nav-toggle{display:none;background:none;border:none;cursor:pointer;width:40px;height:40px;align-items:center;justify-content:center;color:var(--navy)}
+/* ───── CTA ───── */
+.cta-section{background:linear-gradient(160deg,var(--navy) 0%,#13233F 100%);color:#fff;border-radius:24px;padding:72px 48px;text-align:center;margin:0 40px 96px;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 280px at 50% -60px,rgba(96,165,250,.18),transparent 70%);pointer-events:none}
+@media(max-width:768px){.cta-section{margin:0 22px 64px;padding:52px 28px;border-radius:20px}}
+.cta-section h2{font-size:clamp(24px,3.4vw,36px);font-weight:800;margin-bottom:14px;letter-spacing:-.02em;position:relative}
+.cta-section p{color:rgba(255,255,255,.65);font-size:15.5px;margin:0 auto 34px;max-width:440px;position:relative}
+.cta-section .btn-fill{background:#fff;color:var(--ink);position:relative}
+.cta-section .btn-fill:hover{background:var(--bg-2);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.cta-email{font-size:15px;color:rgba(255,255,255,.55);margin-top:18px;font-weight:500;position:relative}
+
+/* ───── Mobile menu ───── */
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;width:40px;height:40px;align-items:center;justify-content:center;color:var(--ink)}
 .nav-toggle svg{width:26px;height:26px}
-.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;z-index:49;background:rgba(255,255,255,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 24px 20px;box-shadow:0 12px 30px rgba(15,23,42,.08)}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;z-index:49;background:rgba(255,255,255,.98);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:12px 22px 20px;box-shadow:0 16px 36px rgba(15,23,42,.09)}
 .mobile-menu.open{display:block}
 .mobile-menu a{display:block;padding:13px 4px;font-size:15px;font-weight:500;color:var(--text-2);border-bottom:1px solid var(--bg-3)}
 .mobile-menu a:last-child{border-bottom:none}
-.mobile-menu a.mm-cta{margin-top:12px;background:var(--navy);color:#fff;text-align:center;border-radius:8px;border:none;font-weight:600}
+.mobile-menu a.mm-cta{margin-top:12px;background:var(--ink);color:#fff;text-align:center;border-radius:var(--r-pill);border:none;font-weight:600}
 @media(max-width:768px){.nav-toggle{display:flex}}
 
-/* Footer */
-footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color:var(--text-3);font-size:12px}
+/* ───── Footer ───── */
+footer{border-top:1px solid var(--border);background:var(--bg-2);padding:56px 0 0}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:44px}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr;gap:32px}}
+.footer-brand .logo{font-weight:800;font-size:18px;color:var(--ink);letter-spacing:-.4px}
+.footer-brand .logo span{color:var(--blue)}
+.footer-brand p{font-size:13.5px;color:var(--text-3);margin-top:12px;max-width:300px;line-height:1.8}
+.footer-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:var(--text-4);margin-bottom:16px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{font-size:14px;color:var(--text-2);transition:color .2s}
+.footer-col a:hover{color:var(--blue)}
+.footer-bottom{border-top:1px solid var(--border);padding:20px 0;text-align:center;color:var(--text-4);font-size:12.5px}
+
+/* ───── Motion ───── */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+}
 </style>
 </head>
 <body>
@@ -281,8 +320,8 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
         <a href="#projects" class="btn-outline">查看作品</a>
       </div>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="num">4+</div><div class="label">年開發經驗</div></div>
-        <div class="hero-stat"><div class="num">10+</div><div class="label">交付專案</div></div>
+        <div class="hero-stat"><div class="num">4<em>+</em></div><div class="label">年開發經驗</div></div>
+        <div class="hero-stat"><div class="num">10<em>+</em></div><div class="label">交付專案</div></div>
         <div class="hero-stat"><div class="num">6</div><div class="label">技術領域</div></div>
       </div>
     </div>
@@ -291,16 +330,16 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
 
 <!-- Trust -->
 <div class="trust-bar">
-  <div class="inner">
+  <div class="container">
     <p>技術生態系</p>
     <div class="trust-logos">
-      <span>Spring Boot</span>
-      <span>Next.js</span>
-      <span>React</span>
-      <span>LINE LIFF</span>
-      <span>Supabase</span>
-      <span>AWS</span>
-      <span>Docker</span>
+      <span class="t-item"><img src="https://cdn.simpleicons.org/springboot/64748B" alt="" loading="lazy" onerror="this.style.display='none'">Spring Boot</span>
+      <span class="t-item"><img src="https://cdn.simpleicons.org/nextdotjs/64748B" alt="" loading="lazy" onerror="this.style.display='none'">Next.js</span>
+      <span class="t-item"><img src="https://cdn.simpleicons.org/react/64748B" alt="" loading="lazy" onerror="this.style.display='none'">React</span>
+      <span class="t-item"><img src="https://cdn.simpleicons.org/typescript/64748B" alt="" loading="lazy" onerror="this.style.display='none'">TypeScript</span>
+      <span class="t-item"><img src="https://cdn.simpleicons.org/line/64748B" alt="" loading="lazy" onerror="this.style.display='none'">LINE LIFF</span>
+      <span class="t-item"><img src="https://cdn.simpleicons.org/supabase/64748B" alt="" loading="lazy" onerror="this.style.display='none'">Supabase</span>
+      <span class="t-item"><img src="https://cdn.simpleicons.org/docker/64748B" alt="" loading="lazy" onerror="this.style.display='none'">Docker</span>
     </div>
   </div>
 </div>
@@ -309,13 +348,12 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
 <section id="services">
   <div class="container">
     <div class="section-header center">
-      <div class="section-overline">Services</div>
       <h2 class="section-title">服務項目</h2>
       <p class="section-desc">根據你的需求，提供最適合的技術方案</p>
     </div>
     <div class="services-grid">
       <div class="svc">
-        <div class="svc-icon blue">
+        <div class="svc-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
         <h3>Web & App 開發</h3>
@@ -325,7 +363,7 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
         </div>
       </div>
       <div class="svc">
-        <div class="svc-icon green">
+        <div class="svc-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
         </div>
         <h3>LINE Bot & LIFF</h3>
@@ -335,7 +373,7 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
         </div>
       </div>
       <div class="svc">
-        <div class="svc-icon purple">
+        <div class="svc-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
         </div>
         <h3>AI & 自動化</h3>
@@ -349,43 +387,54 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
 </section>
 
 <!-- Value diff -->
-<section id="value" style="background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<section id="value" class="tinted">
   <div class="container">
     <div class="section-header center">
-      <div class="section-overline">Why It Matters</div>
       <h2 class="section-title">不只是一個網站，而是能營運的系統</h2>
       <p class="section-desc">從需求到上線，我幫你顧到的每個細節</p>
     </div>
     <div class="value-grid">
-      <div class="value-card">
+      <div class="value-item">
         <div class="vc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-        <h3>需求拆解</h3>
-        <p>把「我想要一個網站」翻成可執行的規格與流程，先想清楚再動工，避免做完才發現不是你要的。</p>
+        <div>
+          <h3>需求拆解</h3>
+          <p>把「我想要一個網站」翻成可執行的規格與流程，先想清楚再動工，避免做完才發現不是你要的。</p>
+        </div>
       </div>
-      <div class="value-card">
+      <div class="value-item">
         <div class="vc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-        <h3>系統架構</h3>
-        <p>技術選對、架構可擴充，未來加功能不必打掉重練，從一開始就為成長與長期維護鋪路。</p>
+        <div>
+          <h3>系統架構</h3>
+          <p>技術選對、架構可擴充，未來加功能不必打掉重練，從一開始就為成長與長期維護鋪路。</p>
+        </div>
       </div>
-      <div class="value-card">
+      <div class="value-item">
         <div class="vc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
-        <h3>完整串接</h3>
-        <p>金流、物流、LINE、ERP 與第三方 API 真的接起來、能正常運作，不是只把畫面做出來而已。</p>
+        <div>
+          <h3>完整串接</h3>
+          <p>金流、物流、LINE、ERP 與第三方 API 真的接起來、能正常運作，不是只把畫面做出來而已。</p>
+        </div>
       </div>
-      <div class="value-card">
+      <div class="value-item">
         <div class="vc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
-        <h3>後台管理</h3>
-        <p>建置好用的後台，你自己就能更新內容、看訂單、管理會員，不必每次小改動都回頭找人。</p>
+        <div>
+          <h3>後台管理</h3>
+          <p>建置好用的後台，你自己就能更新內容、看訂單、管理會員，不必每次小改動都回頭找人。</p>
+        </div>
       </div>
-      <div class="value-card">
+      <div class="value-item">
         <div class="vc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3>安全穩定</h3>
-        <p>權限控管、資料備份、SSL 加密，客戶與營運資料受到保護，上線後跑得穩、睡得著。</p>
+        <div>
+          <h3>安全穩定</h3>
+          <p>權限控管、資料備份、SSL 加密，客戶與營運資料受到保護，上線後跑得穩、睡得著。</p>
+        </div>
       </div>
-      <div class="value-card">
+      <div class="value-item">
         <div class="vc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14"/></svg></div>
-        <h3>長期維護</h3>
-        <p>上線只是開始。提供保固與後續維護，能跟著你的生意持續優化、調整與成長。</p>
+        <div>
+          <h3>長期維護</h3>
+          <p>上線只是開始。提供保固與後續維護，能跟著你的生意持續優化、調整與成長。</p>
+        </div>
       </div>
     </div>
   </div>
@@ -395,7 +444,6 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
 <section id="pricing">
   <div class="container">
     <div class="section-header center">
-      <div class="section-overline">Pricing</div>
       <h2 class="section-title">服務方案・參考報價</h2>
       <p class="section-desc">一頁式、企業官網、電商到 AI 自動化與客製系統，依需求彈性報價</p>
     </div>
@@ -413,10 +461,10 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
         </ul>
         <a href="#contact" class="price-cta">詢價</a>
       </div>
-      <div class="price-card featured">
+      <div class="price-card">
         <div class="tier">Corporate</div>
         <h3>企業形象網站</h3>
-        <div class="price range">NT$60,000–120,000</div>
+        <div class="price range">NT$60,000-120,000</div>
         <div class="price-note">多頁式品牌官網</div>
         <ul>
           <li>多頁式（首頁／關於／服務／聯絡）</li>
@@ -426,10 +474,11 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
         </ul>
         <a href="#contact" class="price-cta">詢價</a>
       </div>
-      <div class="price-card">
+      <div class="price-card featured">
+        <div class="pop">最受歡迎</div>
         <div class="tier">E-commerce</div>
         <h3>基本電商網站</h3>
-        <div class="price range">NT$120,000–300,000</div>
+        <div class="price range">NT$120,000-300,000</div>
         <div class="price-note">線上商店 / 多元支付</div>
         <ul>
           <li>商品 / 分類 / 購物車 / 結帳</li>
@@ -439,42 +488,51 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
         </ul>
         <a href="#contact" class="price-cta">詢價</a>
       </div>
-      <div class="price-card">
-        <div class="tier">Automation</div>
-        <h3>AI 自動化・LINE Bot・模組化系統</h3>
-        <div class="price">NT$50,000 <small>起</small></div>
-        <div class="price-note">N8N / LINE Bot / LIFF</div>
-        <ul>
-          <li>AI 整合應用、RAG 知識庫</li>
-          <li>N8N 流程自動化、排程機器人</li>
-          <li>LINE Bot / LIFF / 推播</li>
-          <li>第三方 API 串接、模組化功能</li>
-        </ul>
-        <a href="#contact" class="price-cta">洽談需求</a>
+    </div>
+    <div class="pricing-wide">
+      <div class="price-card wide">
+        <div class="pc-left">
+          <div class="tier">Automation</div>
+          <h3>AI 自動化・LINE Bot・模組化系統</h3>
+          <div class="price">NT$50,000 <small>起</small></div>
+          <div class="price-note">N8N / LINE Bot / LIFF</div>
+        </div>
+        <div class="pc-right">
+          <ul>
+            <li>AI 整合應用、RAG 知識庫</li>
+            <li>N8N 流程自動化、排程機器人</li>
+            <li>LINE Bot / LIFF / 推播</li>
+            <li>第三方 API 串接、模組化功能</li>
+          </ul>
+          <a href="#contact" class="price-cta">洽談需求</a>
+        </div>
       </div>
-      <div class="price-card">
-        <div class="tier">Custom</div>
-        <h3>客製系統・SaaS・管理平台</h3>
-        <div class="price">NT$150,000 <small>起</small></div>
-        <div class="price-note">依需求評估</div>
-        <ul>
-          <li>客製系統 / SaaS / 管理後台</li>
-          <li>企業流程數位化與整合</li>
-          <li>多角色權限、資料報表</li>
-          <li>長期維護與擴充</li>
-        </ul>
-        <a href="#contact" class="price-cta">洽談需求</a>
+      <div class="price-card wide">
+        <div class="pc-left">
+          <div class="tier">Custom</div>
+          <h3>客製系統・SaaS・管理平台</h3>
+          <div class="price">NT$150,000 <small>起</small></div>
+          <div class="price-note">依需求評估</div>
+        </div>
+        <div class="pc-right">
+          <ul>
+            <li>客製系統 / SaaS / 管理後台</li>
+            <li>企業流程數位化與整合</li>
+            <li>多角色權限、資料報表</li>
+            <li>長期維護與擴充</li>
+          </ul>
+          <a href="#contact" class="price-cta">洽談需求</a>
+        </div>
       </div>
     </div>
-    <p class="price-note-foot">＊以上為常見報價區間，實際依頁數、功能與串接需求而定。報價<strong>不含</strong>網域、主機／雲端、金流手續費、簡訊、LINE 官方帳號等第三方費用（實支實付，可協助申請）。歡迎來信 <a href="mailto:rwei.studio@gmail.com" style="color:var(--blue);font-weight:600">rwei.studio@gmail.com</a> 免費評估。</p>
+    <p class="price-note-foot">＊以上為常見報價區間，實際依頁數、功能與串接需求而定。報價<strong>不含</strong>網域、主機／雲端、金流手續費、簡訊、LINE 官方帳號等第三方費用（實支實付，可協助申請）。歡迎來信 <a href="mailto:rwei.studio@gmail.com">rwei.studio@gmail.com</a> 免費評估。</p>
   </div>
 </section>
 
 <!-- Skills -->
-<section id="skills" class="skills-section">
+<section id="skills" class="tinted">
   <div class="container">
     <div class="section-header">
-      <div class="section-overline">Tech Stack</div>
       <h2 class="section-title">技術能力</h2>
     </div>
     <div class="skills-grid">
@@ -522,25 +580,52 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
 <section id="projects">
   <div class="container">
     <div class="section-header center">
-      <div class="section-overline">Portfolio</div>
       <h2 class="section-title">作品案例</h2>
       <p class="section-desc">從構想到上線，每個專案都是完整交付的產品</p>
     </div>
 
-    <!-- Project 1: 即時監控系統 -->
+    <!-- Project: Virtual Office AI -->
     <div class="featured-project">
       <div class="project-preview">
+        <div class="carousel landscape" id="voaiCarousel">
+          <video src="images/voai-demo.mp4" autoplay muted loop playsinline preload="metadata" class="active"></video>
+          <img src="images/voai-office.png" alt="Virtual Office AI 像素風 AI 辦公室" loading="lazy">
+          <img src="images/voai-tutorial.png" alt="Virtual Office AI 新手教學" loading="lazy">
+          <button class="carousel-btn prev" onclick="goTo(8,carousels[8].current-1)">&#8249;</button>
+          <button class="carousel-btn next" onclick="goTo(8,carousels[8].current+1)">&#8250;</button>
+        </div>
+        <div class="carousel-dots" id="voaiDots"></div>
+      </div>
+      <div class="project-detail">
+        <div class="project-badge">AI 平台・自主產品</div>
+        <h3>Virtual Office AI・像素風 AI 辦公室</h3>
+        <p>把你訂閱的 Claude Code 或 API 金鑰，變成一支可以派任務的像素員工團隊 —— 用既有訂閱就能跑，不用另外付 API 費。手機開網頁就能遠端指揮自己電腦上的 AI：左側名冊管理員工、中間辦公室即時走動、右側即時回收任務成果。</p>
+        <ul class="feature-list">
+          <li>Phaser 4 像素辦公室：場景編輯器、MMO 式捏臉合成器、內建新手教學</li>
+          <li>辦公室生活感：閒置員工會起身到茶水間、沙發區走動，接到任務自動回工位坐下工作</li>
+          <li>WebSocket 中繼站 + 零依賴單檔 worker（Windows / macOS / Linux），橋接本機 Claude Code CLI，不同員工可綁不同電腦</li>
+          <li>自帶金鑰（BYO-key）：支援 Anthropic / OpenRouter / OpenAI，由瀏覽器直連 AI 服務，預設不儲存、不經伺服器</li>
+          <li>逐字串流輸出、對話紀錄、檔案拖放上傳下載</li>
+          <li>Google 登入 + Supabase 雲端同步；沙盒權限控管，員工可存取的資料夾由網頁遠端授權</li>
+        </ul>
+        <div class="demo-tags"><span>React</span><span>TypeScript</span><span>Vite</span><span>Phaser 4</span><span>Node.js</span><span>WebSocket</span><span>Supabase</span><span>Claude Code</span></div>
+      </div>
+    </div>
+
+    <!-- Project: 即時監控系統 -->
+    <div class="featured-project" style="direction:rtl">
+      <div class="project-preview" style="direction:ltr">
         <div class="carousel landscape" id="monitorCarousel">
           <img src="images/claw-monitor-office.png" alt="即時監控系統" class="active">
-          <video src="images/claw-monitor-v1.mp4" muted loop playsinline></video>
-          <video src="images/claw-monitor-v2.mp4" muted loop playsinline></video>
-          <video src="images/claw-monitor-v3.mp4" muted loop playsinline></video>
+          <video src="images/claw-monitor-v1.mp4" muted loop playsinline preload="metadata"></video>
+          <video src="images/claw-monitor-v2.mp4" muted loop playsinline preload="metadata"></video>
+          <video src="images/claw-monitor-v3.mp4" muted loop playsinline preload="metadata"></video>
           <button class="carousel-btn prev" onclick="goTo(1,carousels[1].current-1)">&#8249;</button>
           <button class="carousel-btn next" onclick="goTo(1,carousels[1].current+1)">&#8250;</button>
         </div>
         <div class="carousel-dots" id="monitorDots"></div>
       </div>
-      <div class="project-detail">
+      <div class="project-detail" style="direction:ltr">
         <div class="project-badge">Full-Stack System</div>
         <h3>即時監控管理系統</h3>
         <p>前後端分離的即時監控平台，透過排程輪詢 + SSE 串流推送，遠端掌握系統狀態、即時告警、數據視覺化。</p>
@@ -554,24 +639,24 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
       </div>
     </div>
 
-    <!-- Project 2: 揪旅 JiuTrip -->
-    <div class="featured-project" style="direction:rtl">
-      <div class="project-preview" style="direction:ltr">
+    <!-- Project: 揪旅 JiuTrip -->
+    <div class="featured-project">
+      <div class="project-preview">
         <div class="carousel portrait" id="jiutripCarousel">
           <img src="images/jiutrip-splash.png" alt="揪旅 JiuTrip" class="active">
-          <img src="images/jiutrip-home.png" alt="揪旅 - 首頁">
-          <img src="images/jiutrip-itinerary.png" alt="揪旅 - 行程">
-          <img src="images/jiutrip-route.png" alt="揪旅 - 路線">
-          <img src="images/jiutrip-settle.png" alt="揪旅 - 結算">
-          <img src="images/jiutrip-todo.png" alt="揪旅 - 待辦">
+          <img src="images/jiutrip-home.png" alt="揪旅 - 首頁" loading="lazy">
+          <img src="images/jiutrip-itinerary.png" alt="揪旅 - 行程" loading="lazy">
+          <img src="images/jiutrip-route.png" alt="揪旅 - 路線" loading="lazy">
+          <img src="images/jiutrip-settle.png" alt="揪旅 - 結算" loading="lazy">
+          <img src="images/jiutrip-todo.png" alt="揪旅 - 待辦" loading="lazy">
           <button class="carousel-btn prev" onclick="goTo(2,carousels[2].current-1)">&#8249;</button>
           <button class="carousel-btn next" onclick="goTo(2,carousels[2].current+1)">&#8250;</button>
         </div>
         <div class="carousel-dots" id="jiutripDots"></div>
       </div>
-      <div class="project-detail" style="direction:ltr">
+      <div class="project-detail">
         <div class="project-badge">LINE LIFF App</div>
-        <h3>揪旅 JiuTrip — 旅行規劃 x 分帳</h3>
+        <h3>揪旅 JiuTrip・旅行規劃 × 分帳</h3>
         <p>多人旅行協作平台，整合行程規劃、分帳結算、待辦清單、即時討論。</p>
         <ul class="feature-list">
           <li>觸控拖拉排序 + auto-scroll</li>
@@ -580,26 +665,26 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
           <li>API 成本優化降低 80%+</li>
         </ul>
         <div class="demo-tags"><span>Next.js 15</span><span>TypeScript</span><span>Supabase</span><span>LINE LIFF</span><span>Google Maps API</span></div>
-        <a href="https://jiutrip.vercel.app/" target="_blank" style="margin-top:12px;font-size:13px;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:4px">查看專案 &rarr;</a>
+        <a href="https://jiutrip.vercel.app/" target="_blank" class="project-link">查看專案 &rarr;</a>
       </div>
     </div>
 
     <!-- Project: 新優生化 PIF 系統 -->
-    <div class="featured-project">
-      <div class="project-preview">
+    <div class="featured-project" style="direction:rtl">
+      <div class="project-preview" style="direction:ltr">
         <div class="carousel landscape" id="pifCarousel">
           <img src="images/pif-ingredients.png" alt="新優生化 PIF — 全成分彙整" class="active">
-          <img src="images/pif-raw-materials.png" alt="新優生化 PIF — 原料庫">
-          <img src="images/pif-toxicology.png" alt="新優生化 PIF — 毒理資料庫">
-          <img src="images/pif-products.png" alt="新優生化 PIF — 產品專案">
+          <img src="images/pif-raw-materials.png" alt="新優生化 PIF — 原料庫" loading="lazy">
+          <img src="images/pif-toxicology.png" alt="新優生化 PIF — 毒理資料庫" loading="lazy">
+          <img src="images/pif-products.png" alt="新優生化 PIF — 產品專案" loading="lazy">
           <button class="carousel-btn prev" onclick="goTo(6,carousels[6].current-1)">&#8249;</button>
           <button class="carousel-btn next" onclick="goTo(6,carousels[6].current+1)">&#8250;</button>
         </div>
         <div class="carousel-dots" id="pifDots"></div>
       </div>
-      <div class="project-detail">
-        <div class="project-badge">商業交付 · 桌面應用</div>
-        <h3>新優生化 PIF 系統 — 化粧品產品資訊檔案</h3>
+      <div class="project-detail" style="direction:ltr">
+        <div class="project-badge">商業交付・桌面應用</div>
+        <h3>新優生化 PIF 系統・化粧品產品資訊檔案</h3>
         <p>為化粧品公司打造的桌面應用，將原料、配方與法規文件數位化，一鍵產生 18 章節「產品資訊檔案（PIF）」Word 文件，以 Electron 打包為 Windows 安裝檔交付業主，資料離線儲存並每日自動備份。</p>
         <ul class="feature-list">
           <li>原料庫（INCI/CAS）+ 模糊搜尋配方編輯</li>
@@ -612,21 +697,21 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
     </div>
 
     <!-- Project: 沐居良品 家具電商 -->
-    <div class="featured-project" style="direction:rtl">
-      <div class="project-preview" style="direction:ltr">
+    <div class="featured-project">
+      <div class="project-preview">
         <div class="carousel landscape" id="mujuCarousel">
           <img src="images/muju-home.png" alt="沐居良品 — 首頁" class="active">
-          <img src="images/muju-featured.png" alt="沐居良品 — 新進選品">
-          <img src="images/muju-brand.png" alt="沐居良品 — 商品分類與品牌故事">
-          <img src="images/muju-shop.png" alt="沐居良品 — 商品選購">
+          <img src="images/muju-featured.png" alt="沐居良品 — 新進選品" loading="lazy">
+          <img src="images/muju-brand.png" alt="沐居良品 — 商品分類與品牌故事" loading="lazy">
+          <img src="images/muju-shop.png" alt="沐居良品 — 商品選購" loading="lazy">
           <button class="carousel-btn prev" onclick="goTo(7,carousels[7].current-1)">&#8249;</button>
           <button class="carousel-btn next" onclick="goTo(7,carousels[7].current+1)">&#8250;</button>
         </div>
         <div class="carousel-dots" id="mujuDots"></div>
       </div>
-      <div class="project-detail" style="direction:ltr">
-        <div class="project-badge">電商 · 全端</div>
-        <h3>沐居良品 — 台灣家具電商平台</h3>
+      <div class="project-detail">
+        <div class="project-badge">電商・全端</div>
+        <h3>沐居良品・台灣家具電商平台</h3>
         <p>Next.js 15 App Router 打造的內容型家具選品店面，搭配 Payload Headless CMS、Supabase。亮點：內建 <strong>AI 圖片解析後台</strong>，上傳型錄照即自動擷取品名／規格／價格，複核後一鍵批次建檔。</p>
         <ul class="feature-list">
           <li>AI 圖片解析批次匯入（AI 視覺擷取品名/規格/變體/價格）</li>
@@ -638,22 +723,22 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
       </div>
     </div>
 
-    <!-- Project 3: 美食收藏家 -->
-    <div class="featured-project">
-      <div class="project-preview">
+    <!-- Project: 美食收藏家 -->
+    <div class="featured-project" style="direction:rtl">
+      <div class="project-preview" style="direction:ltr">
         <div class="carousel portrait" id="foodCarousel">
           <img src="images/food-liff-home.webp" alt="美食收藏家" class="active">
-          <img src="images/food-collection.webp" alt="美食收藏家 - 收藏">
-          <img src="images/food-search.webp" alt="美食收藏家 - 搜尋">
-          <img src="images/food-ig-ingest.webp" alt="美食收藏家 - IG 匯入">
+          <img src="images/food-collection.webp" alt="美食收藏家 - 收藏" loading="lazy">
+          <img src="images/food-search.webp" alt="美食收藏家 - 搜尋" loading="lazy">
+          <img src="images/food-ig-ingest.webp" alt="美食收藏家 - IG 匯入" loading="lazy">
           <button class="carousel-btn prev" onclick="goTo(3,carousels[3].current-1)">&#8249;</button>
           <button class="carousel-btn next" onclick="goTo(3,carousels[3].current+1)">&#8250;</button>
         </div>
         <div class="carousel-dots" id="foodDots"></div>
       </div>
-      <div class="project-detail">
+      <div class="project-detail" style="direction:ltr">
         <div class="project-badge">LINE Bot + SaaS</div>
-        <h3>美食收藏家 — Food Map AI</h3>
+        <h3>美食收藏家 Food Map AI</h3>
         <p>LINE AI 美食助理，貼上 IG / Google Maps 連結自動收藏餐廳，自然語言搜尋推薦，多元支付 NT$39/月訂閱制。</p>
         <ul class="feature-list">
           <li>AI 解析連結自動擷取餐廳資訊</li>
@@ -665,24 +750,24 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
       </div>
     </div>
 
-    <!-- Project 4: AI 業務助理 -->
-    <div class="featured-project" style="direction:rtl">
-      <div class="project-preview" style="direction:ltr">
+    <!-- Project: AI 業務助理 -->
+    <div class="featured-project">
+      <div class="project-preview">
         <div class="carousel landscape" id="n8nCarousel">
           <img src="images/n8n-contact-scan.png" alt="AI 業務助理" class="active">
-          <img src="images/n8n-contact-info.png" alt="AI 業務助理 - 聯絡人">
-          <img src="images/n8n-schedule.png" alt="AI 業務助理 - 行程">
-          <img src="images/n8n-meeting.png" alt="AI 業務助理 - 會議">
-          <img src="images/n8n-calendar.png" alt="AI 業務助理 - 行事曆">
-          <img src="images/n8n-notes.png" alt="AI 業務助理 - 筆記">
+          <img src="images/n8n-contact-info.png" alt="AI 業務助理 - 聯絡人" loading="lazy">
+          <img src="images/n8n-schedule.png" alt="AI 業務助理 - 行程" loading="lazy">
+          <img src="images/n8n-meeting.png" alt="AI 業務助理 - 會議" loading="lazy">
+          <img src="images/n8n-calendar.png" alt="AI 業務助理 - 行事曆" loading="lazy">
+          <img src="images/n8n-notes.png" alt="AI 業務助理 - 筆記" loading="lazy">
           <button class="carousel-btn prev" onclick="goTo(4,carousels[4].current-1)">&#8249;</button>
           <button class="carousel-btn next" onclick="goTo(4,carousels[4].current+1)">&#8250;</button>
         </div>
         <div class="carousel-dots" id="n8nDots"></div>
       </div>
-      <div class="project-detail" style="direction:ltr">
+      <div class="project-detail">
         <div class="project-badge">AI Automation</div>
-        <h3>AI 業務助理 — N8N 自動化</h3>
+        <h3>AI 業務助理・N8N 自動化</h3>
         <p>79 節點 N8N 自動化 LINE Bot，名片拍照辨識、自然語言查行程、會議記錄摘要、RAG 向量搜尋聯絡人與會議。</p>
         <ul class="feature-list">
           <li>名片拍照 → AI 辨識 → 存通訊錄</li>
@@ -694,23 +779,23 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
       </div>
     </div>
 
-    <!-- Project 5: Together -->
-    <div class="featured-project">
-      <div class="project-preview">
+    <!-- Project: Together -->
+    <div class="featured-project" style="direction:rtl">
+      <div class="project-preview" style="direction:ltr">
         <div class="carousel portrait" id="togetherCarousel">
           <img src="images/together-map.jpg" alt="Together" class="active">
-          <img src="images/together-create.jpg" alt="Together - 建立活動">
-          <img src="images/together-detail.jpg" alt="Together - 活動詳情">
-          <img src="images/together-activities.jpg" alt="Together - 活動列表">
-          <img src="images/together-splash.jpg" alt="Together - 啟動畫面">
+          <img src="images/together-create.jpg" alt="Together - 建立活動" loading="lazy">
+          <img src="images/together-detail.jpg" alt="Together - 活動詳情" loading="lazy">
+          <img src="images/together-activities.jpg" alt="Together - 活動列表" loading="lazy">
+          <img src="images/together-splash.jpg" alt="Together - 啟動畫面" loading="lazy">
           <button class="carousel-btn prev" onclick="goTo(5,carousels[5].current-1)">&#8249;</button>
           <button class="carousel-btn next" onclick="goTo(5,carousels[5].current+1)">&#8250;</button>
         </div>
         <div class="carousel-dots" id="togetherDots"></div>
       </div>
-      <div class="project-detail">
+      <div class="project-detail" style="direction:ltr">
         <div class="project-badge">Social Platform</div>
-        <h3>Together — 地圖社交活動平台</h3>
+        <h3>Together・地圖社交活動平台</h3>
         <p>地圖式活動媒合平台，把你想做的事釘在地圖上等人一起來。FastAPI 後端 + Flutter 跨平台前端。</p>
         <ul class="feature-list">
           <li>Google Maps 即時地圖 + 膠囊標記</li>
@@ -726,10 +811,9 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
 </section>
 
 <!-- Why me -->
-<section id="why">
+<section id="why" class="tinted">
   <div class="container">
     <div class="section-header center">
-      <div class="section-overline">Why Me</div>
       <h2 class="section-title">為什麼選我</h2>
       <p class="section-desc">合作起來省心，是因為這些事我都先幫你想好</p>
     </div>
@@ -759,14 +843,13 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
 </section>
 
 <!-- Process -->
-<section id="process" style="background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<section id="process">
   <div class="container">
     <div class="section-header center">
-      <div class="section-overline">Workflow</div>
       <h2 class="section-title">合作流程</h2>
       <p class="section-desc">從需求到上線，付款節點清楚透明</p>
     </div>
-    <div class="process-row six">
+    <div class="process-row">
       <div class="step">
         <div class="step-circle">1</div>
         <h3>免費諮詢</h3>
@@ -802,10 +885,9 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
 </section>
 
 <!-- FAQ -->
-<section id="faq">
+<section id="faq" class="tinted">
   <div class="container">
     <div class="section-header center">
-      <div class="section-overline">FAQ</div>
       <h2 class="section-title">常見問題</h2>
       <p class="section-desc">合作前最常被問到的幾個問題</p>
     </div>
@@ -848,7 +930,31 @@ footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;color
 </section>
 
 <footer>
-  <div class="container">&copy; 2026 張育瑋. All rights reserved.</div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">R-Wei<span> Studio</span></div>
+        <p>網站架設、電商、AI 自動化與客製系統開發。從需求訪談到部署上線，一條龍交付。</p>
+      </div>
+      <div class="footer-col">
+        <h4>快速連結</h4>
+        <ul>
+          <li><a href="#services">服務項目</a></li>
+          <li><a href="#pricing">方案報價</a></li>
+          <li><a href="#projects">作品案例</a></li>
+          <li><a href="#faq">常見問題</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡方式</h4>
+        <ul>
+          <li><a href="mailto:rwei.studio@gmail.com">rwei.studio@gmail.com</a></li>
+          <li><a href="https://github.com/ywzhang13" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 張育瑋 R-Wei Studio. All rights reserved.</div>
+  </div>
 </footer>
 
 <script>
@@ -889,6 +995,7 @@ initCarousel(4,'n8nCarousel','n8nDots');
 initCarousel(5,'togetherCarousel','togetherDots');
 initCarousel(6,'pifCarousel','pifDots');
 initCarousel(7,'mujuCarousel','mujuDots');
+initCarousel(8,'voaiCarousel','voaiDots');
 
 // Mobile menu
 const navToggle=document.getElementById('navToggle');
@@ -905,6 +1012,7 @@ document.querySelectorAll('.faq-q').forEach(q=>{
   q.addEventListener('click',()=>q.parentElement.classList.toggle('open'));
 });
 
+// Smooth anchor
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     e.preventDefault();
@@ -912,12 +1020,16 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
   });
 });
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}});
-},{threshold:.1});
-document.querySelectorAll('.svc,.value-card,.featured-project,.step,.skill-col,.why-card,.faq-item').forEach(el=>{
-  el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .5s ease,transform .5s ease';obs.observe(el);
-});
+
+// Scroll reveal (skips entirely under prefers-reduced-motion)
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';obs.unobserve(e.target)}});
+  },{threshold:.08});
+  document.querySelectorAll('.svc,.value-item,.featured-project,.step,.skill-col,.why-card,.faq-item,.price-card').forEach((el,i)=>{
+    el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)';obs.observe(el);
+  });
+}
 </script>
 </body>
 </html>
