@@ -1,7 +1,7 @@
 # CLAUDE.md — R-Wei Studio 作品集 / 接案站 交接書
 
 > 全隊共用的進場背景文件。任何人(或 AI)進到 `portfolio-site/` 先讀這份，再動手。
-> 最後更新：2026-07-12（報價區補「金流串接為加購」揭露文字）。
+> 最後更新：2026-07-12（基本電商報價下修為 100,000-200,000，四處同步；另補「金流串接為加購」揭露文字）。
 >
 > 📌 **維護規則**：有大改動（新增頁面、改部署/網域、改報價方案、大幅改版）完工後同步更新本檔與「最後更新」日期。
 
@@ -54,7 +54,7 @@ portfolio-site/
 **Virtual Office AI**（首卡，AI 平台・自主產品；輪播 3 格＝voai-demo.mp4 影片自動播放 + voai-office.png + voai-tutorial.png；`freelance.html` 與 `resume.html` 兩頁都有，技術標籤用 **Phaser 4** 不是 3）、即時監控管理系統(claw-monitor)、揪旅 JiuTrip(旅行規劃+分帳)、新優生化 PIF 系統(化粧品產品資訊檔案)、沐居良品(台灣家具電商)、美食收藏家 Food Map AI、Together(地圖社交活動)、AI 業務助理(n8n 自動化)。
 
 ### 服務方案／報價（freelance.html，異動頻繁）
-一頁式網站 NT$20,000 起、企業形象官網 60,000 起、基本電商 120,000 起（含多元支付；基本金流串接為加購）、AI 自動化／LINE Bot 50,000 起、客製系統／SaaS 報價制。
+一頁式網站 NT$20,000 起、企業形象官網 60,000 起、基本電商 100,000 起（含多元支付；基本金流串接為加購）、AI 自動化／LINE Bot 50,000 起、客製系統／SaaS 報價制。
 > 注意：報價與文案是最常改的部分（見 git log）。改價時記得同步 `freelance.html` 的 `#pricing`、`<meta description>`、`og:description` 三處，否則 SEO 摘要會與頁面不一致。
 
 ---
