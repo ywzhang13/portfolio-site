@@ -1,7 +1,7 @@
 # CLAUDE.md — R-Wei Studio 作品集 / 接案站 交接書
 
 > 全隊共用的進場背景文件。任何人(或 AI)進到 `portfolio-site/` 先讀這份，再動手。
-> 最後更新：2026-07-12（四組報價改用純驗算值並以 5,000 為單位：一頁式 15,000 起／企業官網 35,000-95,000／基本電商 60,000-150,000／AI 自動化 35,000 起；客製系統・SaaS 因驗算樣本不具代表性、恐誤導客製案價格預期，例外維持 150,000 起。金流串接為加購揭露不變）。
+> 最後更新：2026-09-29（v3 改版：定位改為「全端 × AI 工程師」，Pixffice 為主打作品；新增 `#ai` 區塊「AI 是我的開發團隊」、AI Engineering 技能欄、問問六爻 / LINE 記帳機器人作品卡；hero 改左右分欄放 Pixffice 截圖；作品區改「主打卡 + 2 欄格狀」，只剩主打卡有輪播。報價、區塊 ID、導覽文字、SEO/JSON-LD 結構全部保留）。
 >
 > 📌 **維護規則**：有大改動（新增頁面、改部署/網域、改報價方案、大幅改版）完工後同步更新本檔與「最後更新」日期。
 
@@ -48,10 +48,11 @@ portfolio-site/
 ```
 
 ### freelance.html 區塊（主頁）
-`#services 服務項目` → `#value 不只是網站而是能營運的系統` → `#pricing 服務方案/參考報價` → `#skills 技術能力` → `#projects 作品案例` → `#why 為什麼選我` → `#process 合作流程` → `#faq 常見問題` → `#contact 聯絡`。手機版有漢堡選單。
+`hero（左文右圖，Pixffice 截圖）` → `.proof 數據列 + 技術 logo` → `#services 服務項目（1 大 2 小 bento，AI 產品與自動化為主卡）` → `#ai AI 是我的開發團隊（2×2 bento）` → `#value 不只是網站而是能營運的系統` → `#pricing 服務方案/參考報價` → `#skills 技術能力` → `#projects 作品案例` → `#why 為什麼選我` → `#process 合作流程` → `#faq 常見問題` → `#contact 聯絡`。手機版有漢堡選單。
 
 ### 作品案例(images/ 對應)
-**Virtual Office AI**（首卡，AI 平台・自主產品；輪播 3 格＝voai-demo.mp4 影片自動播放 + voai-office.png + voai-tutorial.png；`freelance.html` 與 `resume.html` 兩頁都有，技術標籤用 **Phaser 4** 不是 3）、即時監控管理系統(claw-monitor)、揪旅 JiuTrip(旅行規劃+分帳)、新優生化 PIF 系統(化粧品產品資訊檔案)、沐居良品(台灣家具電商)、美食收藏家 Food Map AI、Together(地圖社交活動)、AI 業務助理(n8n 自動化)。
+**Pixffice**（主打卡 `.flagship`，自建 AI 產品・已上線 pixffice.com；輪播 4 格＝voai-demo.mp4 自動播放 + pixffice-landing.png + voai-office.png + voai-tutorial.png；舊名 Virtual Office AI，`resume.html` 同步改名）。其餘為 `.project-grid` 2 欄卡（無輪播，單張或兩張直式截圖）：問問六爻（`liuyao-home/result/reading.png`，寬卡）、沐居良品（`muju-1/2/3.png` 業主 2026-09-29 提供的三張截圖；Spring Boot API + Supabase，不是 Payload CMS；連結 muju-jiaju.com）、LINE 群組記帳機器人（`ledger-*.png`）、即時監控管理系統(claw-monitor)、揪旅 JiuTrip、新優生化 PIF、美食收藏家 Food Map AI、AI 業務助理(n8n)、Together。`#ai` 區用 `liuyao-strip.png`（三張 App 截圖合成 16:9）。
+> 六爻截圖來自 iOS 模擬器 integration test；重拍時需在 `liuyao-divination/mobile` 臨時加 `integration_test/`（不要進 git）。
 
 ### 服務方案／報價（freelance.html，異動頻繁）
 一頁式網站 NT$15,000 起、企業形象官網 35,000 起、基本電商 60,000 起（含多元支付；基本金流串接為加購）、AI 自動化／LINE Bot 35,000 起、客製系統／SaaS 報價制（150,000 起，驗算樣本不具代表性，例外不套純驗算值）。
@@ -85,7 +86,7 @@ python3 -m http.server 8000   # 然後開 http://localhost:8000/freelance.html
 **已上線且持續優化中。**
 - `freelance.html` 2026-06-12 完成 **v2 大改版**：Outfit 字型、深色 Navy 色系、全站膠囊按鈕、fluid 字級、scroll-reveal 動畫、IntersectionObserver（含 prefers-reduced-motion 保護）、Simple Icons CDN 技術 logo、報價區改 3+2 格局、Virtual Office AI 作品首卡（輪播圖）。
 - `index.html` 同步升級 Outfit 字型、膠囊按鈕、新增 "接案服務・R-Wei Studio →" 連結。
-- `resume.html` 履歷頁完成（robots noindex）。
+- `resume.html` 2026-09-29 局部更新（業主明確要求**保留米色 cream 個人風格、主體顏色與內文不動**，只更新作品區 / 技能 + 少量 UI 潤飾）：技能卡加 AI Engineering（第一張、caramel 邊框、`.skill-tag.hot`）、作品集 Pixffice 主打卡（`.featured-project.flagship`，`.project-badge.live` 綠點）、新增問問六爻與 LINE 記帳機器人（carousel id 9 / 10）、沐居文案更新、橫式截圖的輪播加 `.carousel.wide`、卡片 hover 上浮。hero / 關於我 / 工作經歷 / head 文案完全未動。曾做過整頁改藍色系的版本被業主否決，不要再提。
 - 近期 commit 多在調報價與文案（電商 80k→120k、移除發票訴求、FAQ 製作時程、Hero 文案重定位、報價卡按鈕導向 #contact）。
 
 ---
